@@ -1,0 +1,26 @@
+{
+  "name": "itfac_batch21_group51",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KavithRashintha/ITFac_Batch21_Group51.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/KavithRashintha/ITFac_Batch21_Group51/issues"
+  },
+  "homepage": "https://github.com/KavithRashintha/ITFac_Batch21_Group51#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.6.0",
+    "@playwright/test": "^1.58.0",
+    "@types/node": "^25.1.0"
+  }
+}
