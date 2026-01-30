@@ -1,27 +1,18 @@
 import { When, Then } from "@cucumber/cucumber";
 import { expect } from '@playwright/test';
 
-When(/^User navigates to "\/ui\/plants"$/, async function () {
-    console.log("User navigated to '/ui/plants' Successfully");
-
-    await this.page.goto('http://localhost:8080/ui/plants');
+When('User navigates to {string}', async function (url) {
+    await this.page.goto(`http://localhost:8080${url}`);
 });
 
-
 Then('The "Add a Plant" button should be visible', async function () {
-    console.log("Login button clicked for ui");
-
     const button = this.page.getByRole('link', { name: 'Add a Plant' });
     await expect(button).toBeVisible();
 
     await this.browser.close();
 });
 
-//=================== Verify plant quantity cannot be a minus value ================================================
-
-When('User navigates to {string} to add a plant', async function (url) {
-    await this.page.goto(`http://localhost:8080${url}`);
-});
+//=================== Verify plant quantity cannot be a minus value ====================================================
 
 When('User clicks {string} button', async function (buttonName) {
     const button = this.page.getByRole('button', { name: buttonName });
@@ -31,10 +22,6 @@ When('User clicks {string} button', async function (buttonName) {
     } else {
         await this.page.getByRole('link', { name: buttonName }).click();
     }
-});
-
-When('User navigates to {string}', async function (url) {
-    await this.page.goto(`http://localhost:8080${url}`);
 });
 
 When('Provide valid plantName {string}, select category {string}, price as {string}, and incorrect quantity as {string} for ui', async function (name, category, price, quantity) {
@@ -53,3 +40,13 @@ Then('User see an error message as {string}', async function (errorMessage) {
 
     //await this.browser.close();
 });
+
+//=================== Verify visibility of the pagination for plants list ==============================================
+
+Then('The pagination should be visible', async function (){
+    const pagination = this.page.locator('.pagination');
+
+    await expect(pagination).toBeVisible()
+});
+
+
