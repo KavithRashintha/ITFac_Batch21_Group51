@@ -6,9 +6,6 @@
     "paths": ["src/test/features/**/*.feature"],
     "publishQuiet": true,
     "dryRun": false,
-    "require": [
-      "src/test/steps/**/*.js"
-    ],
     "import": [
       "src/test/steps/**/*.js"
     ]
