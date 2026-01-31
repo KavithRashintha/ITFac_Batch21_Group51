@@ -20,3 +20,9 @@ Feature: Plant management - Add Plant button visibility
     When User navigates to "/ui/plants"
     Then The pagination should be visible
 
+  Scenario: Verify the Next button functionality of the pagination
+    When User navigates to "/ui/plants"
+    And The pagination should be visible
+    And User clicks "Next" button
+    Then The page "2" should be currently active
+
