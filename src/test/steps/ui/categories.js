@@ -13,3 +13,14 @@ When('user clicks on Edit button', async function () {
 Then('user navigates to edit category page', async function(){
     await this.page.waitForURL('**/ui/categories/edit/**');
 });
+
+
+//-------------- Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10)------------
+
+When('user provide categoryName {string}', async function(newCategoryName){
+    await this.page.fill('input[name="name"]',newCategoryName);
+} );
+
+Then('user click save button', async function () {
+    await this.page.click('button[type="submit"]');
+});
