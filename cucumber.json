@@ -7,7 +7,8 @@
     "publishQuiet": true,
     "dryRun": false,
     "import": [
-      "src/test/steps/**/*.js"
+      "src/test/steps/**/*.js",
+      "src/test/hooks/**/*.js"
     ]
   }
 }
