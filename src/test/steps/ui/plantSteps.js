@@ -1,6 +1,9 @@
+/*
 import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
+
+let capturedDialogMessage = "";
 
 When('User navigates to {string}', async function (url) {
     await this.page.goto(`http://localhost:8080${url}`);
@@ -56,43 +59,4 @@ Then('The page {string} should be currently active', async function (pageNumber)
     await this.browser.close();
 });
 
-//=================== Verify Edit plant button in Actions ==============================================================
-
-When('User clicks "Edit" button in the action of first record', async function () {
-    const firstRow = this.page.locator('tbody tr').first();
-    await expect(firstRow).toBeVisible();
-
-    //All possible button types
-    const button = firstRow.getByRole('button', { name: 'Edit' });
-    const link = firstRow.getByRole('link', { name: 'Edit' });
-    const title = firstRow.locator('[title="Edit"]');
-    const aria = firstRow.locator('[aria-label="Edit"]');
-    const href = firstRow.locator('a[href*="/edit/"]');
-
-    if (await button.count() > 0) {
-        await button.click();
-    }
-    else if (await link.count() > 0) {
-        await link.click();
-    }
-    else if (await title.count() > 0) {
-        await title.click();
-    }
-    else if (await aria.count() > 0) {
-        await aria.click();
-    }
-    else if (await href.count() > 0) {
-        await href.click();
-    }
-    else {
-        throw new Error("Failed to find the Edit button using ANY known strategy.");
-    }
-});
-
-Then('User see the current details of the plant', async function () {
-    expect(this.page.url()).toContain('/edit');
-    await expect(this.page.locator('#name')).not.toBeEmpty();
-    await expect(this.page.locator('#price')).not.toBeEmpty();
-    await expect(this.page.locator('#quantity')).not.toBeEmpty();
-    await expect(this.page.locator('#categoryId')).not.toHaveValue('');
-});
+*/

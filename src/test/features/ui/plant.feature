@@ -74,3 +74,8 @@ Feature: Plant management
     And User clicks "Edit" button in the action of first record
     Then User see the current details of the plant
 
+  Scenario: Verify Delete plant button in Actions
+    When User navigates to "/ui/plants"
+    And User clicks "Delete" button in the action of first record
+    Then User see a confirmation message
+
