@@ -64,32 +64,32 @@ Feature: Plant management
     And User clicks "Add a Plant" button
     When Provide "valid" plantName "Daffodil1", select category "subcat 1.1", price as "700", and quantity as "15" for ui
     And User clicks "Cancel" button
-    Then User navigates to "/ui/plants"
+    Then The form should be reset
     And User navigates to "/ui/plants"
 
     When Provide "invalid" plantName "", select category "subcat 1.1", price as "700", and quantity as "15" for ui
     And User clicks "Cancel" button
-    Then User navigates to "/ui/plants"
+    Then The form should be reset
     And User navigates to "/ui/plants"
 
     When Provide "invalid" plantName "Daffodil1", select category "", price as "700", and quantity as "15" for ui
     And User clicks "Cancel" button
-    Then User navigates to "/ui/plants"
+    Then The form should be reset
     And User navigates to "/ui/plants"
 
     When Provide "invalid" plantName "Daffodil1", select category "subcat 1.1", price as "", and quantity as "15" for ui
     And User clicks "Cancel" button
-    Then User navigates to "/ui/plants"
+    Then The form should be reset
     And User navigates to "/ui/plants"
 
     When Provide "valid" plantName "Daffodil1", select category "subcat 1.1", price as "700", and quantity as "" for ui
     And User clicks "Cancel" button
-    Then User navigates to "/ui/plants"
+    Then The form should be reset
     And User navigates to "/ui/plants"
 
     When Provide "invalid" plantName "", select category "", price as "", and quantity as "" for ui
     And User clicks "Cancel" button
-    Then User navigates to "/ui/plants"
+    Then The form should be reset
     And User navigates to "/ui/plants"
 
   Scenario: Verify visibility of the pagination for plants list
