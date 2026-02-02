@@ -1,3 +1,4 @@
+
 Feature: Category management
 
 Background:
@@ -18,3 +19,4 @@ Scenario: Verify the Edit category button in Actions
   And user navigates to edit category page
   And user provide categoryName "AnthuriumAnthurium" 
   Then user click save button
+

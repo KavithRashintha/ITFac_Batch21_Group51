@@ -1,5 +1,6 @@
 import { When, Then } from "@cucumber/cucumber";
-import { expect } from '@playwright/test';
+import { expect } from "@playwright/test";
+
 
 When('User navigates to {string}', async function (url) {
     await this.page.goto(`http://localhost:8080${url}`);
@@ -24,9 +25,11 @@ When('User clicks {string} button', async function (buttonName) {
 });
 
 When('Provide valid plantName {string}, select category {string}, price as {string}, and incorrect quantity as {string} for ui', async function (name, category, price, quantity) {
+
     await this.page.fill('input[name="name"]', name);
     await this.page.fill('input[name="price"]', price);
     // select the first option in the selection of categories
+
     await this.page.selectOption('#categoryId', { index: 1 });
     await this.page.fill('input[name="quantity"]', quantity);
 });
@@ -42,6 +45,7 @@ Then('User see an error message as {string}', async function (errorMessage) {
 Then('The pagination should be visible', async function (){
     const pagination = this.page.locator('.pagination');
     await expect(pagination).toBeVisible()
+
 });
 
 //=================== Verify the Next button functionality of the pagination ===========================================
