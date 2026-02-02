@@ -69,12 +69,8 @@ Feature: Plant management
     And User clicks "Next" button
     Then The page "2" should be currently active
 
-#  Scenario: Verify Cancel button functionality
-#    Given User logged-in as Admin
-#    When User navigates to "/ui/plants"
-#    And User clicks "Add a Plant" button
-#    And User fills the plant form partially or completely
-#    And User clicks "Cancel" button
-#    Then User navigates to "/ui/plants"
-#    And The new plant should not be saved
+  Scenario: Verify Edit plant button in Actions
+    When User navigates to "/ui/plants"
+    And User clicks "Edit" button in the action of first record
+    Then User see the current details of the plant
 
