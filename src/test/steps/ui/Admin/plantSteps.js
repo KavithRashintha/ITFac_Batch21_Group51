@@ -125,14 +125,15 @@ Then('User see a confirmation message', async function () {
 });
 
 //====================Verify Cancel button functionality ========================================================
-Then('The form should be reset', async function () {
-    await this.page.waitForFunction(() => {
-        const name = document.querySelector('input[name="name"]')?.value === '';
-        const price = document.querySelector('input[name="price"]')?.value === '';
-        const qty = document.querySelector('input[name="quantity"]')?.value === '';
-        const cat = document.querySelector('#categoryId')?.value === '';
-        return name && price && qty && cat;
-    }, { timeout: 10000 });
+Then('User should be on the {string} page', async function (url) {
+    await expect(this.page).toHaveURL(new RegExp(url));
+});
+
+Then('The plant {string} should not be in the list', { timeout: 10000 }, async function (plantName) {
+    if (plantName && plantName.trim() !== "") {
+        const plantCell = this.page.locator('table').getByRole('cell', { name: plantName, exact: true });
+        await expect(plantCell).not.toBeVisible();
+    }
 });
 
 
