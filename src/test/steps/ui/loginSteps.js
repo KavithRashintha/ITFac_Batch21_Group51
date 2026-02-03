@@ -7,7 +7,7 @@ Given('User logged-in as Admin', async function () {
     this.context = await this.browser.newContext();
     this.page = await this.context.newPage();
 
-    await this.page.goto('http://localhost:8080/ui/login');
+    await this.page.goto('http://localhost:8081/ui/login');
 });
 
 
@@ -24,7 +24,7 @@ Then('click the login button for ui', async function () {
 
     // wait until login finishes
     await this.page.waitForURL('**/ui/**');
-    await this.page.goto('http://localhost:8080/ui/dashboard');
+    await this.page.goto('http://localhost:8081/ui/dashboard');
 
     // await browser.close();
 });

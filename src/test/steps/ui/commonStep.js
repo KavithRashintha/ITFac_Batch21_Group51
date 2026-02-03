@@ -1,7 +1,7 @@
 import { When, Then, After } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "http://localhost:8081";
 
 /**
  * Navigation step (REUSABLE)
