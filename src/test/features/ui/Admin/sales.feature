@@ -10,3 +10,10 @@ Feature: Sales management
     When User navigates to page "/ui/sales"
     Then The "Sell Plant" button should be visible
 
+  Scenario: Verify Sell Plant items visibility
+   When User navigates to page "/ui/sales"
+   Then The Sales Plant items should be visibile 
+
+  Scenario: Verify Sales items are sorted in ascending order by date
+    When User navigates to page "/ui/sales"
+    Then The Sales Plant items should be sorted by date in ascending order
