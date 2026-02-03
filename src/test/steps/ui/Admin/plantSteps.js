@@ -125,16 +125,14 @@ Then('User see a confirmation message', async function () {
 });
 
 //====================Verify Cancel button functionality ========================================================
-// When('User fills the plant form partially or completely', async function () {
-//     // Example: fill fields (modify as per your input selectors)
-//     await this.page.fill('input[name="name"]', 'TestPlant');
-//     await this.page.selectOption('#categoryId', {index: 1});
-//     await this.page.fill('input[name="price"]', '500');
-//     await this.page.fill('input[name="quantity"]', '10');
-// });
-//
-// Then('The new plant should not be saved', async function () {
-//     // Verify that 'TestPlant' is NOT in the plant list
-//     const plantExists = await this.page.locator(`text=TestPlant`).count();
-//     expect(plantExists).toBe(0);
-// });
+Then('The form should be reset', async function () {
+    await this.page.waitForFunction(() => {
+        const name = document.querySelector('input[name="name"]')?.value === '';
+        const price = document.querySelector('input[name="price"]')?.value === '';
+        const qty = document.querySelector('input[name="quantity"]')?.value === '';
+        const cat = document.querySelector('#categoryId')?.value === '';
+        return name && price && qty && cat;
+    }, { timeout: 10000 });
+});
+
+

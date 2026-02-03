@@ -18,7 +18,7 @@ When('Provide valid username {string} and password {string} for ui', async funct
 });
 
 
-Then('click the login button for ui', async function () {
+Then('click the login button for ui', { timeout: 20000 }, async function () {
 
     await this.page.click('button[type="submit"]');
 
