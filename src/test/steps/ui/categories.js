@@ -4,7 +4,7 @@ import { expect } from '@playwright/test';
 //--------------------------- Verify the Edit category button in Actions ---------------------------
 
 When('user navigates to {string}', async function (path) {
-    await this.page.goto(`http://localhost:8081/${path}`);
+    await this.page.goto(`http://localhost:8080/${path}`);
 });
 
 When('user clicks on Edit button', async function () {

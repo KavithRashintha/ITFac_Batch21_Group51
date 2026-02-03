@@ -5,7 +5,7 @@ Given('the user logged-in as {string}', async function (role) {
     this.browser = await chromium.launch({ headless: false });
     this.context = await this.browser.newContext();
     this.page = await this.context.newPage();
-    await this.page.goto('http://localhost:8081/ui/login');
+    await this.page.goto('http://localhost:8080/ui/login');
 });
 
 When('the user provide credentials with username {string} and password {string} and click the login button for ui', async function (username, password) {
