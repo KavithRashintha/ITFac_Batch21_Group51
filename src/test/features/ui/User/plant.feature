@@ -45,3 +45,6 @@ Feature: Plant Management
 
   Scenario: Verify Delete plants button visibility
     Then "Delete" button should not be visible
+
+  Scenario: Verify visibility of the pagination for plants list for non-admin user
+    Then The pagination should be visible for non-admin user
