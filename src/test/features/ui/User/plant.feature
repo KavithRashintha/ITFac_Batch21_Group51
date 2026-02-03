@@ -40,3 +40,8 @@ Feature: Plant Management
   Scenario: Display "Low" badge when plant quantity is below 5
     Then Plants with quantity below 5 should display the "Low" badge
 
+  Scenario: Verify Edit plants button visibility
+    Then "Edit" button should not be visible
+
+  Scenario: Verify Delete plants button visibility
+    Then "Delete" button should not be visible
