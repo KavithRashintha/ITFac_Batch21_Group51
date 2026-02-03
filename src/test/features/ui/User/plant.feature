@@ -43,4 +43,5 @@ Feature: Plant Management
   Scenario: Verify Edit plants button visibility
     Then "Edit" button should not be visible
 
-
+  Scenario: Verify Delete plants button visibility
+    Then "Delete" button should not be visible
