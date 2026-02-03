@@ -108,7 +108,7 @@ Then('Plants with quantity below 5 should display the {string} badge across all 
     expect(foundLowQuantityPlant).toBeTruthy();
 });
 
-// ==================================== Verify Edit plants button visibility ===========================================
+//==================================== Verify Action plants button visibility ==========================================
 
 Then('{string} button should not be visible', async function (buttonName) {
 
@@ -126,4 +126,11 @@ Then('{string} button should not be visible', async function (buttonName) {
     await expect(title).not.toBeVisible();
     await expect(aria).not.toBeVisible();
     await expect(href).not.toBeVisible();
+});
+
+//==================================== Verify visibility of the pagination for plants list =============================
+
+Then('The pagination should be visible for non-admin user', async function (){
+    const pagination = this.page.locator('ul.pagination');
+    await expect(pagination).toBeVisible()
 });

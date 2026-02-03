@@ -60,7 +60,7 @@ Then('User see a success message as {string}', async function (message) {
 
 //=================== Verify visibility of the pagination for plants list ==============================================
 
-Then('The pagination should be visible', async function (){
+Then('The pagination should be visible for admin', async function (){
     const pagination = this.page.locator('ul.pagination');
     await expect(pagination).toBeVisible()
 });

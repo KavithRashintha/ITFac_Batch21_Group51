@@ -69,8 +69,8 @@ Feature: Plant management
       | valid   | testplant   | subcat 1.1  | 700   |          |
       | invalid |             |             |       |          |
 
-  Scenario: Verify visibility of the pagination for plants list
-    Then The pagination should be visible
+  Scenario: Verify visibility of the pagination for plants list for admin
+    Then The pagination should be visible for admin
 
   Scenario: Verify the Next button functionality of the pagination
     And The pagination should be visible
