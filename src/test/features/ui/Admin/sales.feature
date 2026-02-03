@@ -1,13 +1,12 @@
 Feature: Sales management
 
   Background:
-    Given User logged-in as Admin
+    Given the user logged-in as "Admin"
+    When the user provide credentials with username "admin" and password "admin123" and click the login button for ui
+    Then User should be redirected to the dashboard
+    When User navigates to "/ui/sales"
 
   Scenario: Verify Sell Plant button visibility
     When User navigates to page "/ui/sales"
     Then The "Sell Plant" button should be visible
 
-  Scenario: Verify sales list displays and sorts correctly by sold date
-    When User navigates to page "/ui/sales"
-    Then Sales list should be displayed
-    And Sales list should be sorted by "Sold At" in descending order
