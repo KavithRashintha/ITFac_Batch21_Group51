@@ -59,38 +59,22 @@ Feature: Plant management
     And User clicks "Save" button
     Then User see an error message as "Plant 'Daffodil1' already exists in this category"
 
-  Scenario: Verify Cancel button functionality
+  Scenario Outline: Verify Cancel button functionality
     When User navigates to "/ui/plants"
     And User clicks "Add a Plant" button
-    When Provide "valid" plantName "Daffodil1", select category "subcat 1.1", price as "700", and quantity as "15" for ui
+    When Provide "<status>" plantName "<name>", select category "<category>", price as "<price>", and quantity as "<quantity>" for ui
     And User clicks "Cancel" button
-    Then The form should be reset
-    And User navigates to "/ui/plants"
+    Then User should be on the "/ui/plants" page
+    And The plant "<name>" should not be in the list
 
-    When Provide "invalid" plantName "", select category "subcat 1.1", price as "700", and quantity as "15" for ui
-    And User clicks "Cancel" button
-    Then The form should be reset
-    And User navigates to "/ui/plants"
-
-    When Provide "invalid" plantName "Daffodil1", select category "", price as "700", and quantity as "15" for ui
-    And User clicks "Cancel" button
-    Then The form should be reset
-    And User navigates to "/ui/plants"
-
-    When Provide "invalid" plantName "Daffodil1", select category "subcat 1.1", price as "", and quantity as "15" for ui
-    And User clicks "Cancel" button
-    Then The form should be reset
-    And User navigates to "/ui/plants"
-
-    When Provide "valid" plantName "Daffodil1", select category "subcat 1.1", price as "700", and quantity as "" for ui
-    And User clicks "Cancel" button
-    Then The form should be reset
-    And User navigates to "/ui/plants"
-
-    When Provide "invalid" plantName "", select category "", price as "", and quantity as "" for ui
-    And User clicks "Cancel" button
-    Then The form should be reset
-    And User navigates to "/ui/plants"
+    Examples:
+      | status  | name        | category    | price | quantity |
+      | valid   | testplant   | subcat 1.1  | 700   | 15       |
+      | invalid |             | subcat 1.1  | 700   | 15       |
+      | invalid | testplant   |             | 700   | 15       |
+      | invalid | testplant   | subcat 1.1  |       | 15       |
+      | valid   | testplant   | subcat 1.1  | 700   |          |
+      | invalid |             |             |       |          |
 
   Scenario: Verify visibility of the pagination for plants list
     When User navigates to "/ui/plants"
