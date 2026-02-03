@@ -2,9 +2,9 @@
 Feature: Category management
 
     Background:
-        Given User logged-in as Admin
-        When Provide valid username "admin" and password "admin123" for ui
-        Then click the login button for ui
+        Given the user logged-in as "Admin"
+        When the user provide credentials with username "admin" and password "admin123" and click the login button for ui
+        Then User should be redirected to the dashboard
 
     @viewcategories
     Scenario: Verify category page is visible to admin user
