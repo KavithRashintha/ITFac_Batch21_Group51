@@ -107,3 +107,23 @@ Then('Plants with quantity below 5 should display the {string} badge across all 
 
     expect(foundLowQuantityPlant).toBeTruthy();
 });
+
+// ==================================== Verify Edit plants button visibility ===========================================
+
+Then('{string} button should not be visible', async function (buttonName) {
+
+    const firstRow = this.page.locator('tbody tr').first();
+    await expect(firstRow).toBeVisible();
+
+    const button = firstRow.getByRole('button', { name: buttonName });
+    const link = firstRow.getByRole('link', { name: buttonName });
+    const title = firstRow.locator(`[title="${buttonName}"]`);
+    const aria = firstRow.locator(`[aria-label="${buttonName}"]`);
+    const href = firstRow.locator(`a[href*="/${buttonName.toLowerCase()}/"]`);
+
+    await expect(button).not.toBeVisible();
+    await expect(link).not.toBeVisible();
+    await expect(title).not.toBeVisible();
+    await expect(aria).not.toBeVisible();
+    await expect(href).not.toBeVisible();
+});
