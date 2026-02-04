@@ -50,4 +50,10 @@ Feature: Plant Management
     Then The pagination should be visible for non-admin user
 
   Scenario: Verify the visibility of the sort indicator
-    Then User see the sort indicator in the name column
+    Then User see the sort indicator in the Name column
+
+  Scenario: Verify the functionality of sort indicator
+    And User clicks on "Name" column header
+    Then User see the sort indicator "down" in the name column
+    When User clicks on "Name" column header
+    Then User see the sort indicator "up" in the name column

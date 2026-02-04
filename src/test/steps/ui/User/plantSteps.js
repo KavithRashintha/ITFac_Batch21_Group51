@@ -137,7 +137,7 @@ Then('The pagination should be visible for non-admin user', async function (){
 
 //==================================== Verify the visibility of the sort indicator =====================================
 
-Then('User see the sort indicator in the name column', async function () {
+Then('User see the sort indicator in the Name column', async function () {
 
     const header = this.page.getByRole('columnheader', { name: 'Name', exact: false });
     await expect(header).toBeVisible();
@@ -163,6 +163,59 @@ Then('User see the sort indicator in the name column', async function () {
         await expect(byXpath).toBeVisible();
     }
     else {
-        throw new Error("Failed to find the Sort Indicator using Text, CSS, HREF, or XPath strategies.");
+        throw new Error("Failed to find the Sort Indicator using Text, CSS, href, or XPath strategies.");
+    }
+});
+
+//==================================== Verify the functionality of sort indicator ======================================
+
+When('User clicks on {string} column header', async function (columnName) {
+    const byLink = this.page.locator('th a').filter({ hasText: columnName });
+    const byRole = this.page.getByRole('columnheader', { name: columnName, exact: false });
+    const byText = this.page.locator('th').filter({ hasText: columnName });
+    const byXpath = this.page.locator(`xpath=//th[contains(., "${columnName}")]`);
+
+    if (await byLink.count() > 0) {
+        await byLink.click();
+    }
+    else if (await byRole.count() > 0) {
+        await byRole.click();
+    }
+    else if (await byText.count() > 0) {
+        await byText.click();
+    }
+    else if (await byXpath.count() > 0) {
+        await byXpath.click();
+    }
+    else {
+        throw new Error(`Failed to find column header using Link, Role, Text, or XPath strategies.`);
+    }
+});
+
+Then('User see the sort indicator {string} in the name column', async function (direction) {
+    const header = this.page.getByRole('columnheader', { name: 'Name', exact: false });
+
+    const expectedChar = direction.toLowerCase() === 'up' ? '↑' : '↓';
+    const expectedClass = direction.toLowerCase() === 'up' ? 'bi-arrow-up' : 'bi-arrow-down';
+
+    const anyIndicator = header.locator('span').filter({ hasText: /[↑↓]/ }).or(header.locator(`.${expectedClass}`));
+
+    try {
+        await expect(anyIndicator).toBeVisible({ timeout: 5000 });
+    } catch (e) {
+        console.log(`Debug: Timed out waiting for sort indicator. Header text is: "${await header.innerText()}"`);
+        throw e;
+    }
+
+    const textIndicator = header.locator('span').filter({ hasText: expectedChar });
+    const iconIndicator = header.locator(`.${expectedClass}`);
+
+    if (await textIndicator.count() > 0) {
+        await expect(textIndicator).toBeVisible();
+    } else if (await iconIndicator.count() > 0) {
+        await expect(iconIndicator).toBeVisible();
+    } else {
+        const actualText = await header.innerText();
+        throw new Error(`Failed to find sort indicator for '${direction}'. Expected '${expectedChar}' or class '${expectedClass}'. Actual Header Text: "${actualText}"`);
     }
 });
