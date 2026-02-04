@@ -9,3 +9,11 @@ Feature: Sales management
   Scenario: Verify Sell Plant button hide in User view
     When User navigates to page "/ui/sales"
     Then The "Sell Plant" button should be hidden
+
+  Scenario: Verify Sell Plant items visibility in User view
+   When User navigates to page "/ui/sales"
+   Then The Sales Plant items should be visibile in User View
+
+  Scenario: Verify Sales items are sorted in ascending order by date in User view
+    When User navigates to page "/ui/sales"
+    Then The Sales Plant items should be sorted by date in ascending order in User View
