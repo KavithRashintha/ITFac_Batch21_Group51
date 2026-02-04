@@ -1,11 +1,11 @@
-Feature: Plant management API
+Feature: Plant Management API
 
   Background:
-    Given Admin logged-in with username "admin" and password "admin123"
+    Given Admin logs in with username "admin" and password "admin123"
 
   Scenario: Verify create plant with duplicate name
     And Admin sets the endpoint "/api/plants/category/5"
-    When Admin sends POST request with payload
+    When Admin sends POST request with token and payload
       """
       {
         "name": "Rose",
@@ -26,7 +26,7 @@ Feature: Plant management API
 
   Scenario: Verify create plant with valid data
     And Admin sets the endpoint "/api/plants/category/5"
-    When Admin sends POST request with payload
+    When Admin sends POST request with token and payload
       """
       {
         "name": "Rose",
@@ -52,7 +52,7 @@ Feature: Plant management API
 
   Scenario: Verify create plant with missing mandatory fields
     And Admin sets the endpoint "/api/plants/category/1"
-    When Admin sends POST request with payload
+    When Admin sends POST request with token and payload
       """
       {
         "name": "Rose",
@@ -75,7 +75,7 @@ Feature: Plant management API
 
   Scenario: Verify create plant with negative price
     And Admin sets the endpoint "/api/plants/category/1"
-    When Admin sends POST request with payload
+    When Admin sends POST request with token and payload
       """
       {
         "name": "Rose",
@@ -99,7 +99,7 @@ Feature: Plant management API
 
     Scenario: Verify create plant with invalid categoryId
       And Admin sets the endpoint "/api/plants/category/100"
-      When Admin sends POST request with payload
+      When Admin sends POST request with token and payload
       """
       {
         "name": "Rose",

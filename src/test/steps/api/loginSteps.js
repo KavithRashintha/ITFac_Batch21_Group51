@@ -1,15 +1,7 @@
-import { Given, When, Then } from "@cucumber/cucumber";
+import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import { loginAs } from "../../helper/helper.js";
 
-// -------------------- Login for Authentication (Background) --------------------
-Given('{word} logged-in with username {string} and password {string}', async function (role, username, password) {
-    const { token, tokenType } = await loginAs(this.apiContext, username, password);
-    this.token = token;       
-    this.tokenType = tokenType;
-});
-
-// -------------------- Login Test (sends request and captures response) --------------------
+// -------------------- Login Test --------------------
 When('{word} logs in with username {string} and password {string}', async function (role, username, password) {
     this.response = await this.apiContext.post("/api/auth/login", {
         data: { username, password }
@@ -79,8 +71,6 @@ Then('Response body should match JSON structure', function (docString) {
             expect(actualObj[key]).toBe(expectedObj[key]);
         }
     }
-
-
     validate(expected, this.responseBody);
 });
 
