@@ -6,8 +6,9 @@ Given('{word} sets the endpoint {string}', function (role, endpoint) {
     this.endpoint = endpoint;
 });
 
-// -------------------- Generic request WITH token --------------------
-When('{word} sends {word} request with token and payload', async function(role, method) {
+// -------------------- Generic request WITHOUT payload --------------------
+When('User sends GET request with token', async function () {
+
     if (!this.token) {
         throw new Error("Token is not available. Make sure login ran first.");
     }
@@ -18,26 +19,52 @@ When('{word} sends {word} request with token and payload', async function(role, 
         }
     };
 
+    this.response = await this.apiContext.get(this.endpoint, options);
+
+    try {
+        this.responseBody = await this.response.json();
+    } catch {
+        this.responseBody = {};
+    }
+});
+
+
+// -------------------- Generic request WITH token and payload --------------------
+When('{word} sends {word} request with token and payload', async function (role, method, body) {
+
+    if (!this.token) {
+        throw new Error("Token is not available. Make sure login ran first.");
+    }
+
+    const options = {
+        headers: {
+            Authorization: `${this.tokenType} ${this.token}`,
+            "Content-Type": "application/json"
+        },
+        data: JSON.parse(body)
+    };
+
     switch (method.toUpperCase()) {
-        case "GET":
-            this.response = await this.apiContext.get(this.endpoint, options);
-            break;
+
         case "POST":
             this.response = await this.apiContext.post(this.endpoint, options);
             break;
+
         case "PUT":
             this.response = await this.apiContext.put(this.endpoint, options);
             break;
+
         case "DELETE":
             this.response = await this.apiContext.delete(this.endpoint, options);
             break;
+
         default:
-            throw new Error(`Unsupported method: ${method}`);
+            throw new Error(`Unsupported method for payload request: ${method}`);
     }
 
     try {
         this.responseBody = await this.response.json();
-    } catch (error) {
+    } catch {
         this.responseBody = {};
     }
 });

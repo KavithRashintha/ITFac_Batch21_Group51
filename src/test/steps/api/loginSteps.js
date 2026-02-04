@@ -7,12 +7,20 @@ When('{word} logs in with username {string} and password {string}', async functi
         data: { username, password }
     });
 
+    // Parse response body
     try {
         this.responseBody = await this.response.json();
     } catch (error) {
         this.responseBody = {};
     }
+
+    // Store token
+    if (this.responseBody.token && this.responseBody.tokenType) {
+        this.token = this.responseBody.token;
+        this.tokenType = this.responseBody.tokenType;
+    }
 });
+
 
 // -------------------- Assertions --------------------
 Then('Response status code should be {int}', async function (statusCode) {
