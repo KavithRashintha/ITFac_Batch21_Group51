@@ -4,17 +4,20 @@ import { expect } from '@playwright/test';
 let capturedDialogMessage = "";
 
 // ============================== Navigation ==================================================
+
 When('User navigates to {string}', async function (url) {
     await this.page.goto(`http://localhost:8080${url}`);
 });
 
 //======================= Verify Add a Plant button visibility ===============================================
+
 Then('The "Add a Plant" button should be visible', async function () {
     const button = this.page.getByRole('link', { name: 'Add a Plant' });
     await expect(button).toBeVisible();
 });
 
 // ========================== Button Click =================================================
+
 When('User clicks {string} button', async function (buttonName) {
     const button = this.page.getByRole('button', { name: buttonName });
 
@@ -25,7 +28,8 @@ When('User clicks {string} button', async function (buttonName) {
     }
 });
 
-//============================= Verify plant quantity cannot be a minus value ====================================================
+//============================= Form Filling ====================================================
+
 When('Provide {string} plantName {string}, select category {string}, price as {string}, and quantity as {string} for ui',{ timeout: 15000 }, async function (_, name, category, price, quantity) {
     if (name !== undefined){
         await this.page.fill('input[name="name"]', name);
@@ -42,6 +46,7 @@ When('Provide {string} plantName {string}, select category {string}, price as {s
 });
 
 // ==================================== Display Messages ========================================================
+
 Then('User see an error message as {string}', async function (message) {
 
     const messageLocator = this.page.getByText(message, { exact: false });
@@ -54,7 +59,8 @@ Then('User see a success message as {string}', async function (message) {
 });
 
 //=================== Verify visibility of the pagination for plants list ==============================================
-Then('The pagination should be visible', async function (){
+
+Then('The pagination should be visible for admin', async function (){
     const pagination = this.page.locator('ul.pagination');
     await expect(pagination).toBeVisible()
 });
@@ -125,16 +131,15 @@ Then('User see a confirmation message', async function () {
 });
 
 //====================Verify Cancel button functionality ========================================================
-// When('User fills the plant form partially or completely', async function () {
-//     // Example: fill fields (modify as per your input selectors)
-//     await this.page.fill('input[name="name"]', 'TestPlant');
-//     await this.page.selectOption('#categoryId', {index: 1});
-//     await this.page.fill('input[name="price"]', '500');
-//     await this.page.fill('input[name="quantity"]', '10');
-// });
-//
-// Then('The new plant should not be saved', async function () {
-//     // Verify that 'TestPlant' is NOT in the plant list
-//     const plantExists = await this.page.locator(`text=TestPlant`).count();
-//     expect(plantExists).toBe(0);
-// });
+Then('User should be on the {string} page', async function (url) {
+    await expect(this.page).toHaveURL(new RegExp(url));
+});
+
+Then('The plant {string} should not be in the list', { timeout: 10000 }, async function (plantName) {
+    if (plantName && plantName.trim() !== "") {
+        const plantCell = this.page.locator('table').getByRole('cell', { name: plantName, exact: true });
+        await expect(plantCell).not.toBeVisible();
+    }
+});
+
+
