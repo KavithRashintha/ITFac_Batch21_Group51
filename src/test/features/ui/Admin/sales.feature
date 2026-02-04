@@ -17,3 +17,14 @@ Feature: Sales management
   Scenario: Verify Sales items are sorted in ascending order by date
     When User navigates to page "/ui/sales"
     Then The Sales Plant items should be sorted by date in ascending order
+
+  Scenario: Varify Delete button visibility in Admin View 
+    When User navigates to page "/ui/sales"
+    Then The Delete button should be visibile in Admin View 
+  
+  Scenario: Verify Delete Confirmation Dialog
+  When User navigates to page "/ui/sales"
+  And User clicks the Delete button on a sales item
+  Then The Delete confirmation dialog should be visible
+
+  
