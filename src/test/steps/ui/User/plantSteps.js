@@ -31,7 +31,8 @@ Then('All plants should be displayed', async function () {
 });
 
 
-// Only plants with specific category should be displayed
+//==================================== Only plants with specific category should be displayed ==========================
+
 Then('Only plants with category {string} should be displayed', { timeout: 10000 }, async function (category) {
     const categoryCells = this.page.locator('tbody tr td:nth-child(2)'); // Adjust column index as per table
     const count = await categoryCells.count();
@@ -40,14 +41,16 @@ Then('Only plants with category {string} should be displayed', { timeout: 10000 
     }
 });
 
-// Check if a specific plant is visible
+//==================================== Check if a specific plant is visible ============================================
+
 Then('The plant {string} should be visible in the results', { timeout: 10000 }, async function (plantName) {
     const plantCell = this.page.locator('tbody tr td', { hasText: plantName });
     await plantCell.waitFor({ timeout: 10000 });
     await expect(plantCell).toBeVisible();
 });
 
-// Check if no plants are displayed
+//==================================== Check if no plants are displayed ================================================
+
 Then('No plants should be displayed', { timeout: 10000 }, async function () {
 
     const noPlantsRow = this.page.locator('tbody tr td', {
@@ -57,14 +60,16 @@ Then('No plants should be displayed', { timeout: 10000 }, async function () {
     await expect(noPlantsRow).toBeVisible();
 });
 
-// Verify specific message is visible (e.g., "No plants found")
+//==================================== Verify specific message is visible (e.g., "No plants found") ====================
+
 Then('A message {string} should be visible', { timeout: 10000 }, async function (message) {
     const messageLocator = this.page.getByText(message, { exact: false });
     await messageLocator.waitFor({ timeout: 10000 });
     await expect(messageLocator).toBeVisible();
 });
 
-// Verify "Low" badge when plant quantity is below 5
+//==================================== Verify "Low" badge when plant quantity is below 5 ===============================
+
 Then('Plants with quantity below 5 should display the {string} badge across all pages', 
   { timeout: 60000 }, 
   async function (badgeText) {
