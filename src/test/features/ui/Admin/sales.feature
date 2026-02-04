@@ -21,3 +21,10 @@ Feature: Sales management
   Scenario: Varify Delete button visibility in Admin View 
     When User navigates to page "/ui/sales"
     Then The Delete button should be visibile in Admin View 
+  
+  Scenario: Verify Delete Confirmation Dialog
+  When User navigates to page "/ui/sales"
+  And User clicks the Delete button on a sales item
+  Then The Delete confirmation dialog should be visible
+
+  

@@ -77,3 +77,24 @@ Then("The Delete button should be visibile in Admin View", async function () {
     }
   }
 });
+
+/* ---------------- UI Delete Confirmation Message Visibility ---------------- */
+When("User clicks the Delete button on a sales item", async function () {
+  // Adjust selector if your delete button has an icon or tooltip
+  const deleteButton = this.page
+    .locator("table tbody tr")
+    .first()
+    .locator("button, a")
+    .first();
+
+  await expect(deleteButton).toBeVisible();
+  await deleteButton.click();
+});
+
+Then("The Delete confirmation dialog should be visible", async function () {
+  this.page.once("dialog", async (dialog) => {
+    expect(dialog.type()).toBe("confirm");
+    expect(dialog.message().toMatch(/delete/i));
+    await dialog.dismiss();
+  });
+});
