@@ -30,10 +30,10 @@ Feature: Plant Management
     And Only plants with category "Fl_01" should be displayed
 
   Scenario: Verify visibility of the pagination for plants list
-    Then The pagination should be visible
+    Then The pagination should be visible for non-admin user
 
   Scenario: Verify the Next button functionality of the pagination
-    And The pagination should be visible
+    And The pagination should be visible for non-admin user
     And User clicks "Next" button
     Then The page "2" should be currently active
 
@@ -48,3 +48,6 @@ Feature: Plant Management
 
   Scenario: Verify visibility of the pagination for plants list for non-admin user
     Then The pagination should be visible for non-admin user
+
+  Scenario: Verify the visibility of the sort indicator
+    Then User see the sort indicator in the name column

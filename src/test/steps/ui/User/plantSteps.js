@@ -134,3 +134,35 @@ Then('The pagination should be visible for non-admin user', async function (){
     const pagination = this.page.locator('ul.pagination');
     await expect(pagination).toBeVisible()
 });
+
+//==================================== Verify the visibility of the sort indicator =====================================
+
+Then('User see the sort indicator in the name column', async function () {
+
+    const header = this.page.getByRole('columnheader', { name: 'Name', exact: false });
+    await expect(header).toBeVisible();
+
+    const byText = header.locator('span').filter({ hasText: /[↓↑]/ });
+    const byCss = header.locator('a > span');
+    const byHrefContext = this.page.locator('th a[href*="sortField=name"] span');
+    const byXpath = header.locator('xpath=.//span');
+
+    if (await byText.count() > 0) {
+        await expect(byText).toBeVisible();
+    }
+    else if (await byHrefContext.count() > 0) {
+        await expect(byHrefContext).toBeVisible();
+    }
+    else if (await byCss.count() > 0) {
+        const text = await byCss.textContent();
+        if (text && text.trim().length > 0) {
+            await expect(byCss).toBeVisible();
+        }
+    }
+    else if (await byXpath.count() > 0) {
+        await expect(byXpath).toBeVisible();
+    }
+    else {
+        throw new Error("Failed to find the Sort Indicator using Text, CSS, HREF, or XPath strategies.");
+    }
+});
