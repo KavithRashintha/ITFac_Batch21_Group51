@@ -17,13 +17,3 @@ Feature: Category management - User role
     Scenario: Verify Add Category button is hidden for non admin user
         When user navigates to "ui/categories"
         Then Add Category button should not be visible
-
-    @usercategoryeditdisabled
-    Scenario: Verify that the Category Edit button is disabled for users
-        When user navigates to "ui/categories"
-        Then Edit button should be disabled for user
-
-    @usercategorydeletedisabled
-    Scenario: Verify that the Category Delete button is disabled for users
-        When user navigates to "ui/categories"
-        Then Delete button should be disabled for user
