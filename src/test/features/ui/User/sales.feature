@@ -1,4 +1,4 @@
-Feature: Sales management
+Feature: Sales management 
 
   Background:
     Given the user logged-in as "User"
@@ -25,5 +25,10 @@ Feature: Sales management
   Scenario: Verify Sales List Table responsiveness
     When User navigates to page "/ui/sales"
     Then Sales list table should be responsive
+
+  Scenario: Verify no single sale view page exists
+    When User navigates to page "/ui/sales"
+    Then No single sale view option should be available
+
 
  

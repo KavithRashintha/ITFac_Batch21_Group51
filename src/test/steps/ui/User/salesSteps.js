@@ -62,15 +62,25 @@ Then("The Delete button should be hidden in User View", async function () {
 Then("Sales list table should be responsive", async function () {
   const table = this.page.locator("table");
 
-  // ---------- Desktop ----------
+  // Desktop
   await this.page.setViewportSize({ width: 1280, height: 800 });
   await expect(table).toBeVisible();
 
-  // ---------- Tablet ----------
+  // Tablet
   await this.page.setViewportSize({ width: 768, height: 1024 });
   await expect(table).toBeVisible();
 
-  // ---------- Mobile ----------
+  // Mobile
   await this.page.setViewportSize({ width: 375, height: 667 });
   await expect(table).toBeVisible();
+});
+
+/* ---------------- UI Single Sale View Option in User View ---------------- */
+Then("No single sale view option should be available", async function () {
+  const firstRow = this.page.locator("table tbody tr").first();
+  const currentUrl = this.page.url();
+
+  await firstRow.click({ force: true });
+
+  await expect(this.page).toHaveURL(currentUrl);
 });
