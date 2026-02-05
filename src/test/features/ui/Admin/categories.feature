@@ -1,4 +1,3 @@
-
 Feature: Category management
 
     Background:

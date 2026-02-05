@@ -4,17 +4,20 @@ import { expect } from '@playwright/test';
 let capturedDialogMessage = "";
 
 // ============================== Navigation ==================================================
+
 When('User navigates to {string}', async function (url) {
     await this.page.goto(`http://localhost:8080${url}`);
 });
 
 //======================= Verify Add a Plant button visibility ===============================================
+
 Then('The "Add a Plant" button should be visible', async function () {
     const button = this.page.getByRole('link', { name: 'Add a Plant' });
     await expect(button).toBeVisible();
 });
 
 // ========================== Button Click =================================================
+
 When('User clicks {string} button', async function (buttonName) {
     const button = this.page.getByRole('button', { name: buttonName });
 
@@ -25,7 +28,8 @@ When('User clicks {string} button', async function (buttonName) {
     }
 });
 
-//============================= Verify plant quantity cannot be a minus value ====================================================
+//============================= Form Filling ====================================================
+
 When('Provide {string} plantName {string}, select category {string}, price as {string}, and quantity as {string} for ui',{ timeout: 15000 }, async function (_, name, category, price, quantity) {
     if (name !== undefined){
         await this.page.fill('input[name="name"]', name);
@@ -42,6 +46,7 @@ When('Provide {string} plantName {string}, select category {string}, price as {s
 });
 
 // ==================================== Display Messages ========================================================
+
 Then('User see an error message as {string}', async function (message) {
 
     const messageLocator = this.page.getByText(message, { exact: false });
@@ -54,7 +59,8 @@ Then('User see a success message as {string}', async function (message) {
 });
 
 //=================== Verify visibility of the pagination for plants list ==============================================
-Then('The pagination should be visible', async function (){
+
+Then('The pagination should be visible for admin', async function (){
     const pagination = this.page.locator('ul.pagination');
     await expect(pagination).toBeVisible()
 });
