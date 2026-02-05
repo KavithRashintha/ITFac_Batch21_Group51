@@ -1,0 +1,455 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "plant-management-api;verify-create-plant-with-duplicate-name",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Verify create plant with duplicate name",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6316499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "Admin logged-in with username \"admin\" and password \"admin123\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82778199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "Admin sets the endpoint \"/api/plants/category/5\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 106799
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n  \"name\": \"Rose\",\n  \"price\": 100,\n  \"quantity\": 20\n}",
+                "line": 9
+              }
+            ],
+            "keyword": "When ",
+            "line": 8,
+            "name": "Admin sends POST request with payload",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21331700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "Response status code should be 400",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1230200
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n  \"status\": 400,\n  \"error\": \"DUPLICATE_RESOURCE\",\n  \"message\": \"Plant 'Rose' already exists in this category\",\n  \"timestamp\": \"2026-02-04T10:05:11.9163253\"\n}",
+                "line": 18
+              }
+            ],
+            "keyword": "And ",
+            "line": 17,
+            "name": "Response body should match JSON structure",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1353800
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1135500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 125699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "plant-management-api;verify-create-plant-with-valid-data",
+        "keyword": "Scenario",
+        "line": 27,
+        "name": "Verify create plant with valid data",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 730000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "Admin logged-in with username \"admin\" and password \"admin123\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 73496200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "Admin sets the endpoint \"/api/plants/category/5\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 136399
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n  \"name\": \"Rose\",\n  \"price\": 100,\n  \"quantity\": 20\n}",
+                "line": 30
+              }
+            ],
+            "keyword": "When ",
+            "line": 29,
+            "name": "Admin sends POST request with payload",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33882499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "Response status code should be 201",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:26"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 1802300,
+              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m\n    at Proxy.<anonymous> (C:\\Users\\dinuk\\Desktop\\My Docs\\Projects\\ITFac_Batch21_Group51\\node_modules\\playwright\\lib\\matchers\\expect.js:213:24)\n    at World.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:27:36)"
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n  \"id\": 50,\n  \"name\": \"Rose\",\n  \"price\": 100,\n  \"quantity\": 20,\n  \"category\": {\n    \"id\": 5,\n    \"name\": \"FFF\",\n    \"subCategories\": []\n  }\n}",
+                "line": 39
+              }
+            ],
+            "keyword": "And ",
+            "line": 38,
+            "name": "Response body should match JSON structure",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:30"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 583200
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 93000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "plant-management-api;verify-create-plant-with-missing-mandatory-fields",
+        "keyword": "Scenario",
+        "line": 53,
+        "name": "Verify create plant with missing mandatory fields",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 581699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "Admin logged-in with username \"admin\" and password \"admin123\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 78153800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 54,
+            "name": "Admin sets the endpoint \"/api/plants/category/1\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 85199
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n  \"name\": \"Rose\",\n  \"price\": 100\n}",
+                "line": 56
+              }
+            ],
+            "keyword": "When ",
+            "line": 55,
+            "name": "Admin sends POST request with payload",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10882700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 62,
+            "name": "Response status code should be 400",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 251399
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n  \"details\": {\n    \"quantity\": \"Quantity is required\"\n  },\n  \"error\": \"BAD_REQUEST\",\n  \"message\": \"Validation failed\",\n  \"status\": 400,\n  \"timestamp\": \"any_non_empty_string\"\n}",
+                "line": 64
+              }
+            ],
+            "keyword": "And ",
+            "line": 63,
+            "name": "Response body should match JSON structure",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1081200
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 390200
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45900
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "plant-management-api;verify-create-plant-with-negative-price",
+        "keyword": "Scenario",
+        "line": 76,
+        "name": "Verify create plant with negative price",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 503700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "Admin logged-in with username \"admin\" and password \"admin123\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 70895800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 77,
+            "name": "Admin sets the endpoint \"/api/plants/category/1\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 62999
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n  \"name\": \"Rose\",\n  \"price\": -100,\n  \"quantity\": 25\n}",
+                "line": 79
+              }
+            ],
+            "keyword": "When ",
+            "line": 78,
+            "name": "Admin sends POST request with payload",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7938300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 86,
+            "name": "Response status code should be 400",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 282000
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n  \"details\": {\n    \"quantity\": \"Quantity cannot be negative\"\n  },\n  \"error\": \"BAD_REQUEST\",\n  \"message\": \"Validation failed\",\n  \"status\": 400,\n  \"timestamp\": \"2026-02-04T11:10:02.9029542\"\n}",
+                "line": 88
+              }
+            ],
+            "keyword": "And ",
+            "line": 87,
+            "name": "Response body should match JSON structure",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:30"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 893800,
+              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveProperty\u001b[2m(\u001b[22m\u001b[32mpath\u001b[39m\u001b[2m)\u001b[22m\n\nExpected path: \u001b[32m\"quantity\"\u001b[39m\nReceived path: \u001b[31m[]\u001b[39m\n\nReceived value: \u001b[31m{\"price\": \"Price must be greater than 0\"}\u001b[39m\n    at Proxy.<anonymous> (C:\\Users\\dinuk\\Desktop\\My Docs\\Projects\\ITFac_Batch21_Group51\\node_modules\\playwright\\lib\\matchers\\expect.js:213:24)\n    at validateJsonStructure (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/utils/apiValidation.js:8:83)\n    at validateJsonStructure (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/utils/apiValidation.js:54:13)\n    at World.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:32:5)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 368299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45299
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "plant-management-api",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Plant management API",
+    "tags": [],
+    "uri": "src\\test\\features\\api\\Admin\\plant.feature"
+  }
+]
