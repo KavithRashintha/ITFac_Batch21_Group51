@@ -23,6 +23,13 @@ Then("The {string} button should be visible", async function (buttonName) {
 });
 
 /**
+ * Generic validation message step (REUSABLE)
+ */
+Then('validation message {string} should be displayed', async function (message) {
+  await expect(this.page.locator(`text=${message}`)).toBeVisible();
+});
+
+/**
  * Cleanup and  close browser after each scenario (REUSABLE)
  */
 After(async function () {
