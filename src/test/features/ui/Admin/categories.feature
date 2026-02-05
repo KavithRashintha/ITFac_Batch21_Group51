@@ -1,4 +1,3 @@
-
 Feature: Category management
 
     Background:
@@ -32,4 +31,35 @@ Feature: Category management
         And user navigates to edit category page
         And user provide categoryName "AnthuriumAnthurium" 
         Then user click save button
+
+    @categoryname_required
+    Scenario: Verify category name is required to create a category
+        When user navigates to "ui/categories"
+        And user clicks on Add Category button
+        And user clicks save button without entering category name
+        Then validation message "Category name is required" should be displayed
+
+    @categorysorting
+    Scenario: Verify category list sorting works for ID, Name and Parent
+        When user navigates to "ui/categories"
+        Then user sorts category list by ID
+        And user sorts category list by Name
+        And user sorts category list by Parent
+
+    @searchwithoutparent
+    Scenario: Verify categories can be searched without selecting parent category
+        When user navigates to "ui/categories"
+        And user enters subcategory name "Sub_1" in search field
+        And user clicks Search button
+        Then search results should be displayed
+        And results should match the search criteria
+
+    @filterbyparent
+    Scenario: Verify filtering categories by parent category
+        When user navigates to "ui/categories"
+        And user selects parent category "Fruits"
+        And user clicks Search button
+        Then only subcategories belonging to parent category "Fruits" should be displayed
+
+
 
