@@ -36,3 +36,23 @@ Then(
     console.log("Dates are in descending order (newest first):", dateTexts);
   },
 );
+
+/* ---------------- UI Delete Button Hidden in User View ---------------- */
+Then("The Delete button should be hidden in User View", async function () {
+  const deleteButtons = this.page.locator(
+    "table tbody tr td:last-child button, table tbody tr td:last-child a",
+  );
+
+  const count = await deleteButtons.count();
+
+  // Best case: delete button is NOT rendered at all
+  if (count === 0) {
+    expect(count).toBe(0);
+    console.log("Delete buttons are not rendered, as expected.");
+  }
+  // Fallback: rendered but hidden
+  else {
+    await expect(deleteButtons.first()).not.toBeVisible();
+    console.log("Delete buttons are rendered but hidden, as expected.");
+  }
+});

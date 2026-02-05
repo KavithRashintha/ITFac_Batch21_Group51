@@ -7,7 +7,7 @@ Feature: Sales management
     Then User should be redirected to the dashboard
     When User navigates to "/ui/sales"
 
-  Scenario: Verify Sell Plant button hide in User view
+  Scenario: Verify Sell Plant button hidden in User view
     When User navigates to page "/ui/sales"
     Then The "Sell Plant" button should be hidden
 
@@ -18,3 +18,7 @@ Feature: Sales management
   Scenario: Verify Sales items are sorted in ascending order by date in User view
     When User navigates to page "/ui/sales"
     Then The Sales Plant items should be sorted by date in ascending order in User View
+
+  Scenario:  Scenario: Verify Sell Plant Delete button hidden in User view
+    When User navigates to page "/ui/sales"
+    Then The Delete button should be hidden in User View 
