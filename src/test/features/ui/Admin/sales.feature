@@ -1,3 +1,4 @@
+@sales
 Feature: Sales management
 
   Background:
