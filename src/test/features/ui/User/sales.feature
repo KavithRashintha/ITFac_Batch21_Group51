@@ -18,6 +18,12 @@ Feature: Sales management
     When User navigates to page "/ui/sales"
     Then The Sales Plant items should be sorted by date in ascending order in User View
 
-  Scenario:  Scenario: Verify Sell Plant Delete button hidden in User view
+  Scenario: Verify Sell Plant Delete button hidden in User view
     When User navigates to page "/ui/sales"
     Then The Delete button should be hidden in User View 
+  
+  Scenario: Verify Sales List Table responsiveness
+    When User navigates to page "/ui/sales"
+    Then Sales list table should be responsive
+
+ 
