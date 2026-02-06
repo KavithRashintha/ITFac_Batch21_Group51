@@ -20,7 +20,7 @@ Feature: Plant Management API
         "status": 400,
         "error": "DUPLICATE_RESOURCE",
         "message": "Plant 'Plant 2' already exists in this category",
-        "timestamp": "2any_non_empty_string"
+        "timestamp": "any_non_empty_string"
       }
       """
 
@@ -181,7 +181,7 @@ Feature: Plant Management API
         "status": 404,
         "error": "NOT_FOUND",
         "message": "Category not found",
-        "timestamp": "2026-02-06T04:06:45.539Z"
+        "timestamp": "any_non_empty_string"
       }
       """
 
