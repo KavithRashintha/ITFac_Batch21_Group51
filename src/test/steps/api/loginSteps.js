@@ -1,5 +1,5 @@
 import { When, Then } from "@cucumber/cucumber";
-import { expect } from "@playwright/test";
+import { expect, request } from "@playwright/test";
 
 // -------------------- Login Test --------------------
 When('{word} logs in with username {string} and password {string}', async function (role, username, password) {
@@ -18,6 +18,15 @@ When('{word} logs in with username {string} and password {string}', async functi
     if (this.responseBody.token && this.responseBody.tokenType) {
         this.token = this.responseBody.token;
         this.tokenType = this.responseBody.tokenType;
+
+        // Recreate apiContext with authentication
+        this.apiContext = await request.newContext({
+            baseURL: 'http://localhost:8080',
+            extraHTTPHeaders: {
+                'Content-Type': 'application/json',
+                Authorization: `${this.tokenType} ${this.token}`
+            }
+        });
     }
 });
 

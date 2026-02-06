@@ -1,3 +1,4 @@
+@categories
 Feature: Category management
 
     Background:

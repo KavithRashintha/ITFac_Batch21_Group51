@@ -1,4 +1,5 @@
-Feature: Sales management 
+@sales
+Feature: Sales management
 
   Background:
     Given the user logged-in as "User"

@@ -3,8 +3,14 @@ import { expect } from '@playwright/test';
 
 // ---------- Background login (Admin/User) ----------
 
-Given('the user logged-in as {string}', async function (role) {
-  await this.page.goto('http://localhost:8080/ui/login');
+Given('the user logged-in as {string}', { timeout: 10000 }, async function (role) {
+  await this.page.goto('http://localhost:8080/ui/login', { 
+    waitUntil: 'domcontentloaded',
+    timeout: 10000 
+  });
+  
+  // Wait for login form to be ready
+  await this.page.waitForSelector('input[name="username"]', { timeout: 5000 });
 });
 
 When(
@@ -68,4 +74,8 @@ Then(
 
 Then('user should remain on the login page', async function () {
   await expect(this.page).toHaveURL(/\/ui\/login/);
+});
+
+Then('user should be redirected to the dashboard', async function () {
+  await expect(this.page).toHaveURL(/\/ui\/dashboard/);
 });
