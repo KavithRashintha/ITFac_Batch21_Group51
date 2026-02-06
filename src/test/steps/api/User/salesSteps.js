@@ -18,7 +18,6 @@ When("User sends {string} request with token", async function (method) {
     },
   };
 
-  // Attach query params if exist (POST sales uses this)
   if (this.queryParams) {
     options.params = this.queryParams;
   }
@@ -56,3 +55,24 @@ Then("Response body should contain error {string}", function (expectedMessage) {
   expect(this.responseBody).toHaveProperty("message");
   expect(this.responseBody.message).toContain(expectedMessage);
 });
+
+Then("Response should use default pagination", function () {
+  // Response must be an array
+  expect(Array.isArray(this.responseBody)).toBeTruthy();
+
+  // Ensure at least one record exists
+  expect(this.responseBody.length).toBeGreaterThan(0);
+
+  // Default pagination usually limits results (example: <= 10)
+  expect(this.responseBody.length).toBeLessThanOrEqual(15);
+});
+
+Given(
+  "User sets query parameters page {string} and limit {string}",
+  function (page, limit) {
+    this.queryParams = {
+      page: Number(page),
+      limit: Number(limit),
+    };
+  },
+);
