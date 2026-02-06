@@ -1,7 +1,0 @@
-status,name,category,price,quantity
-valid,testplant,subcat 1.1,700,15
-invalid,,subcat 1.1,700,15
-invalid,testplant,,700,15
-invalid,testplant,subcat 1.1,,15
-valid,testplant,subcat 1.1,700,
-invalid,,,,
