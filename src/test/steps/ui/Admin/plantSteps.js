@@ -6,7 +6,7 @@ let capturedDialogMessage = "";
 // ============================== Navigation ==================================================
 
 When('User navigates to {string}', async function (url) {
-    await this.page.goto(`http://localhost:8080${url}`);
+    await this.page.goto(`${this.baseURL}${url}`);
 });
 
 //======================= Verify Add a Plant button visibility ===============================================

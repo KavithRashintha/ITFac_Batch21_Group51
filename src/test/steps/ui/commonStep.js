@@ -1,13 +1,12 @@
 // import { When, Then, After } from "@cucumber/cucumber";
 // import { expect } from "@playwright/test";
 
-// const BASE_URL = "http://localhost:8080;
 
 // /**
 //  * Navigation step (REUSABLE)
 //  */
 // When("User navigates to {string}", async function (path) {
-//   await this.page.goto(`${BASE_URL}${path}`);
+//   await this.page.goto(`${this.baseURL}${path}`);
 // });
 
 // /**

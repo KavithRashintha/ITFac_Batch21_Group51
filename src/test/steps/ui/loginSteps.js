@@ -1,11 +1,9 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
-const url = "http://localhost:8080";
-
 // ----------------------------- Background Navigation (Admin/User) --------------------------------------
 Given('the user logged-in as {string}', { timeout: 10000 }, async function (role) {
-  await this.page.goto(`${url}/ui/login`, {
+  await this.page.goto(`${this.baseURL}/ui/login`, {
     waitUntil: 'domcontentloaded'
   });
   
@@ -15,7 +13,7 @@ Given('the user logged-in as {string}', { timeout: 10000 }, async function (role
 
 // -------------------------------------------- Login Action ----------------------------------------------
 When('user navigates to {string}', async function (path) {
-  await this.page.goto(`${url}/${path}`);
+  await this.page.goto(`${this.baseURL}/${path}`);
 });
 
 When(
@@ -38,7 +36,7 @@ Given('user is not logged in', async function () {
 });
 
 Given('user is on the login page', async function () {
-  await this.page.goto(`${url}/ui/login`);
+  await this.page.goto(`${this.baseURL}/ui/login`);
 });
 
 Then('login page should be displayed', async function () {

@@ -1,10 +1,12 @@
 import { Before, After } from "@cucumber/cucumber";
 import { request } from "@playwright/test";
+import { config } from "./config.js";
 
 Before(async function () {
+    this.baseURL = config.baseURL;
     // Initialize API context once per scenario
     this.apiContext = await request.newContext({
-        baseURL: 'http://localhost:8080',
+        baseURL: this.baseURL,
         extraHTTPHeaders: { 'Content-Type': 'application/json' }
     });
 });

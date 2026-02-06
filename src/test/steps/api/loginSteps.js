@@ -21,7 +21,7 @@ When('{word} logs in with username {string} and password {string}', async functi
 
         // Recreate apiContext with authentication
         this.apiContext = await request.newContext({
-            baseURL: 'http://localhost:8080',
+            baseURL: this.baseURL,
             extraHTTPHeaders: {
                 'Content-Type': 'application/json',
                 Authorization: `${this.tokenType} ${this.token}`

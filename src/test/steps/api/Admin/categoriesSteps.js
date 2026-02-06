@@ -5,7 +5,7 @@ import { request, expect } from '@playwright/test';
 
 Given('Admin API user is authenticated', async function () {
   this.apiContext = await request.newContext({
-    baseURL: 'http://localhost:8080',
+    baseURL: this.baseURL,
     extraHTTPHeaders: {
       'Content-Type': 'application/json'
     }
@@ -25,7 +25,7 @@ Given('Admin API user is authenticated', async function () {
 
   // Recreate context with Authorization header
   this.apiContext = await request.newContext({
-    baseURL: 'http://localhost:8080',
+    baseURL: this.baseURL,
     extraHTTPHeaders: {
       'Content-Type': 'application/json',
       Authorization: `${this.tokenType} ${this.token}`
