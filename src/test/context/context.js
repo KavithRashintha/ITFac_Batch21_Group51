@@ -4,7 +4,7 @@ import { request } from "@playwright/test";
 Before(async function () {
     // Initialize API context once per scenario
     this.apiContext = await request.newContext({
-        baseURL: 'http://localhost:8080',
+        baseURL: 'http://localhost:8081',
         extraHTTPHeaders: { 'Content-Type': 'application/json' }
     });
 });
