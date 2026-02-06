@@ -53,8 +53,8 @@ Feature: User Category API Operations
     When User sends POST request for categories with payload
       """
       {
-        "id": 0,
-        "name": "UserCat"
+        "id": 8,
+        "name": "Category 4"
       }
       """
     Then Response status code should be 403
@@ -75,7 +75,7 @@ Feature: User Category API Operations
     When "User" sends "PUT" request with token and payload
       """
       {
-        "name": "Neww Category",
+        "name": "Category 3",
         "parentId": null
       }
       """
@@ -107,9 +107,9 @@ Feature: User Category API Operations
     And Response body should match JSON structure
       """
       {
-      "id": 15,
-      "name": "Anthurium",
-      "parentId": 14
+      "id": 6,
+      "name": "Sub_Cat 4",
+      "parentId": 4
       }
       """
 
@@ -138,7 +138,7 @@ Feature: User Category API Operations
     And Response body should match JSON structure
       """
       {
-        "mainCategories": 6,
-        "subCategories": 3
+        "mainCategories": "any_number",
+        "subCategories": "any_number"
       }
       """

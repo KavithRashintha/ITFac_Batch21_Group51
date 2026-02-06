@@ -10,8 +10,8 @@ Feature: Category API Management
     When Admin sends POST request for categories with payload
       """
       {
-        "id": 0,
-        "name": "API_Main_Category"
+        "id": 7,
+        "name": "Category 3"
       }
       """
     Then Response status code should be 201
@@ -25,8 +25,8 @@ Feature: Category API Management
     When Admin sends POST request for categories with payload
       """
       {
-        "id": 0,
-        "name": "Main 2"
+        "id": 8,
+        "name": "Category 2"
       }
       """
     Then Response status code should be 400
@@ -35,7 +35,7 @@ Feature: Category API Management
       {
         "status": 400,
         "error": "DUPLICATE_RESOURCE",
-        "message": "Main category 'Main 2' already exists",
+        "message": "Main category 'Category 2' already exists",
         "timestamp": "any_non_empty_string"
       }
       """
@@ -47,10 +47,10 @@ Feature: Category API Management
     When Admin sends POST request for categories with payload
       """
       {
-        "id": 0,
-        "name": "API_Sub_Category",
+        "id": 8,
+        "name": "Sub_Cat 5",
         "parent": {
-          "id": "stored_parent_id"
+          "id": 4
         }
       }
       """
@@ -66,10 +66,10 @@ Feature: Category API Management
     When Admin sends POST request for categories with payload
       """
       {
-        "id": 0,
-        "name": "CAT1",
+        "id": 9,
+        "name": "Sub_Cat 3",
         "parent": {
-          "id": "stored_parent_id"
+          "id": 4
         }
       }
       """
@@ -79,7 +79,7 @@ Feature: Category API Management
       {
         "status": 400,
         "error": "DUPLICATE_RESOURCE",
-        "message": "Sub-category 'CAT1' already exists under this parent",
+        "message": "Sub-category 'Sub_Cat 3' already exists under this parent",
         "timestamp": "any_non_empty_string"
       }
       """
@@ -90,8 +90,8 @@ Feature: Category API Management
     When Admin sends POST request for categories with payload
       """
       {
-        "id": 0,
-        "name": "AB"
+        "id": 10,
+        "name": "C5"
       }
       """
     Then Response status code should be 400
@@ -114,8 +114,8 @@ Feature: Category API Management
     When Admin sends POST request for categories with payload
       """
       {
-        "id": 0,
-        "name": "VeryLongCategoryName"
+        "id": 11,
+        "name": "Sub Category 5"
       }
       """
     Then Response status code should be 400
@@ -140,16 +140,16 @@ Feature: Category API Management
     When "Admin" sends "PUT" request with token and payload
       """
       {
-        "name": "Rose",
-        "parentId": 13
+        "name": "Sub_Cat4",
+        "parentId": 4
       }
       """
     Then Response status code should be 200
     And Response body should match JSON structure
       """
       {
-        "id": 15,
-        "name": "Rose",
+        "id": 5,
+        "name": "Sub_Cat4",
         "subCategories": []
       }
       """
@@ -162,16 +162,16 @@ Feature: Category API Management
     When "Admin" sends "PUT" request with token and payload
       """
       {
-        "name": "Rose",
-        "parentId": 13
+        "name": "Sub_Cat4_",
+        "parentId": 4
       }
       """
     Then Response status code should be 200
     And Response body should match JSON structure
       """
       {
-         "id": 15,
-         "name": "Rose",
+         "id": 5,
+         "name": "Sub_Cat4_",
          "subCategories": []
       }
       """
@@ -184,7 +184,7 @@ Feature: Category API Management
       """
       {
         "name": "",
-        "parentId": 13
+        "parentId": 4
       }
       """
     Then Response status code should be 400
@@ -201,7 +201,7 @@ Feature: Category API Management
   @deletecategoryWithNoSubcategory
   Scenario: Verify DELETE category by Id method for deleting a category that has no subcategories
     # ID 17 should be a category with NO subcategories
-    And "Admin" sets the endpoint "/api/categories/17"
+    And "Admin" sets the endpoint "/api/categories/7"
     When "Admin" sends "DELETE" request with token
     Then Response status code should be 204
     And Response body should contain "Category deleted successfully"
@@ -210,7 +210,7 @@ Feature: Category API Management
   @deletecategoryWithSubcategory
   Scenario: Verify DELETE category method for attempting to delete a category that has one or more subcategories
     # ID 7 should be a main category WITH subcategories
-    And "Admin" sets the endpoint "/api/categories/7"
+    And "Admin" sets the endpoint "/api/categories/4"
     When "Admin" sends "DELETE" request with token
     Then Response status code should be 409
     And Response body should match JSON structure
@@ -226,7 +226,7 @@ Feature: Category API Management
   @deletecategoryHaveRecords
   Scenario: Verify DELETE category method for attempting to delete a category that has related records
     # ID 5 should be a category linked to existing Plants/Sales
-    And "Admin" sets the endpoint "/api/categories/5"
+    And "Admin" sets the endpoint "/api/categories/4"
     When "Admin" sends "DELETE" request with token
     Then Response status code should be 409
     And Response body should match JSON structure
