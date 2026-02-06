@@ -33,3 +33,10 @@ Feature: Sales API management
       """
     Then Response should have status code 404
     And Response body should contain error message "Plant not found"
+
+  Scenario: Ensure deletion fails with non-existent sale ID
+    And Admin sets the endpoint "/api/sales/9999"  
+    When Admin sends "DELETE" request with token
+    Then Response should have status code 404
+    And Response body should contain error message "Sale not found"
+
