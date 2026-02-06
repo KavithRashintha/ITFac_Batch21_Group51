@@ -165,7 +165,7 @@ Then("Total price should be calculated correctly", function () {
   expect(sale.totalPrice).toBe(expectedTotal);
 });
 
-// -------------------- Invalid  id testing --------------------
+// -------------------- Invalid  testing --------------------
 
 Then(
   "Response body should contain error message {string}",
