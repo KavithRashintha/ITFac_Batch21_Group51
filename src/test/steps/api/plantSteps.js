@@ -2,13 +2,11 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 // -------------------- Set API Endpoint --------------------
-
 Given('{string} sets the endpoint {string}', function (role, endpoint) {
     this.endpoint = endpoint;
 });
 
 // -------------------- Generic request WITHOUT payload --------------------
-
 When('{string} sends {string} request with token', async function (role, method) {
 
     if (!this.token) {
@@ -43,7 +41,6 @@ When('{string} sends {string} request with token', async function (role, method)
 
 
 // -------------------- Generic request WITH token and payload --------------------
-
 When('{string} sends {string} request with token and payload', async function (role, method, body) {
 
     if (!this.token) {
@@ -85,7 +82,6 @@ When('{string} sends {string} request with token and payload', async function (r
 
 
 // -------------------- Generic request without token --------------------
-
 When('{string} sends {string} request without token', async function(role, method) {
     const options = {};
 
@@ -138,6 +134,13 @@ Then("Response body 'content' should be an array with at most {int} items", func
     expect(arrayToCheck).toBeDefined();
     expect(Array.isArray(arrayToCheck)).toBeTruthy();
     expect(arrayToCheck.length).toBeLessThanOrEqual(expectedCount);
+});
+
+Then("Response body 'content' should be an array with at least {int} items", function(expectedCount) {
+    const arrayToCheck = this.responseBody.content;
+    expect(arrayToCheck).toBeDefined();
+    expect(Array.isArray(arrayToCheck)).toBeTruthy();
+    expect(arrayToCheck.length).toBeGreaterThanOrEqual(expectedCount);
 });
 
 Then("The first plant in 'content' should have name {string}", function(expectedName) {

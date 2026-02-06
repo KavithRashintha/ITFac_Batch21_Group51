@@ -12,7 +12,7 @@ Feature: Sales API management
     And The sale should include plant details
 
   Scenario: Ensure that an admin user can create a sale using POST method
-    And Admin sets the endpoint "/api/sales/plant/1?quantity=2"
+    And Admin sets the endpoint "/api/sales/plant/7?quantity=2"
     When Admin sends "POST" request with token and payload
     """
       {
@@ -42,7 +42,7 @@ Feature: Sales API management
 
   Scenario: Ensure deletion fails when attempting to delete a sale that was already deleted
     # First, delete a valid sale
-    And Admin sets the endpoint "/api/sales/2"  
+    And Admin sets the endpoint "/api/sales/3"
     When Admin sends "DELETE" request with token
     Then Response should have status code 204
 
