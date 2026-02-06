@@ -20,7 +20,7 @@ Feature: Login test validation for UI
 
   @login_mandatory_fields
   Scenario: Verify username and password fields are mandatory
-    Given user is on the login page
+    Given user navigates to "ui/login"
     When user clicks the login button
     Then validation message "Username is required" should be displayed
     And validation message "Password is required" should be displayed

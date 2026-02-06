@@ -342,9 +342,9 @@ Failures:
     √ Given the user logged-in as "Admin" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
     √ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
     √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
-    √ When user navigates to "ui/categories" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categories.js:13
-    √ And user clicks on Add Category button # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categories.js:72
-    √ And user clicks save button without entering category name # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categories.js:81
+    √ When user navigates to "ui/categories" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:13
+    √ And user clicks on Add Category button # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:72
+    √ And user clicks save button without entering category name # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:81
     ? Then validation message "Category name is required" should be displayed
         Undefined. Implement with the following snippet:
 
