@@ -33,7 +33,7 @@ Given('user is not logged in', async function () {
 });
 
 Given('user is on the login page', async function () {
-  await this.page.goto('http://localhost:8081/ui/login');
+  await this.page.goto('http://localhost:8080/ui/login');
 });
 
 Then('login page should be displayed', async function () {

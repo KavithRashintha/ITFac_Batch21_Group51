@@ -11,7 +11,7 @@ function sortStrings(arr, direction = 'asc') {
 //--------------------------- Verify the Edit category button in Actions ---------------------------
 
 When('user navigates to {string}', { timeout: 30000 }, async function (path) {
-    await this.page.goto(`http://localhost:8081/${path}`, { 
+    await this.page.goto(`http://localhost:8080/${path}`, { 
         waitUntil: 'domcontentloaded',
         timeout: 30000 
     });
