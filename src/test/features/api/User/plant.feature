@@ -76,7 +76,7 @@ Feature: Plant Management API
         "status": 403,
         "error": "Forbidden",
         "message": "string",
-        "timestamp": "2026-02-06T09:08:18.880Z"
+        "timestamp": "any_non_empty_string"
       }
       """
 
@@ -103,7 +103,7 @@ Feature: Plant Management API
         "status": 403,
         "error": "Forbidden",
         "message": "string",
-        "timestamp": "2026-02-06T09:08:18.880Z"
+        "timestamp": "any_non_empty_string"
       }
       """
 
@@ -130,6 +130,6 @@ Feature: Plant Management API
         "status": 403,
         "error": "Forbidden",
         "message": "string",
-        "timestamp": "2026-02-06T09:08:18.880Z"
+        "timestamp": "any_non_empty_string"
       }
       """
