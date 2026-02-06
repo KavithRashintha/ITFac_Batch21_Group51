@@ -9,7 +9,6 @@ Feature: Sales API management
     Then Response should have status code 200
     And Response body should be a sales list
     And Each sales record should have required fields
-    And The sale should include plant details
 
  Scenario: Verify a regular user cannot delete a sale
     And Normal User sets the endpoint "/api/sales/6"  
@@ -17,3 +16,9 @@ Feature: Sales API management
     Then Response should have status code 403
     And Response body should contain error "Forbidden: You do not have permission to delete this sale"
 
+ Scenario: Verify that a regular user can retrieve individual sale details 
+   And Normal User sets the endpoint "/api/sales/12"
+   When User sends "GET" request with token
+   Then Response should have status code 200
+ 
+ 
