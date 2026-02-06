@@ -132,3 +132,17 @@ Feature: Plant Management API
         "categoryId": 3
       }
       """
+
+    Scenario: Verify the GET plant method by ID for a non-existing ID
+      Given "Admin" sets the endpoint "/api/plants/100"
+      When "Admin" sends "GET" request with token
+      Then Response status code should be 404
+      And Response body should match JSON structure
+      """
+      {
+        "status": 404,
+        "error": "NOT_FOUND",
+        "message": "Plant not found: 100",
+        "timestamp": "2026-02-06T04:06:45.539Z"
+      }
+      """
