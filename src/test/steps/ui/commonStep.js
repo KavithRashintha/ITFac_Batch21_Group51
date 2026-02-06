@@ -1,7 +1,7 @@
 // import { When, Then, After } from "@cucumber/cucumber";
 // import { expect } from "@playwright/test";
 
-// const BASE_URL = "http://localhost:8080";
+// const BASE_URL = "http://localhost:8080;
 
 // /**
 //  * Navigation step (REUSABLE)
@@ -20,6 +20,13 @@
 //       : this.page.getByRole("link", { name: buttonName });
 
 //   await expect(button).toBeVisible();
+// });
+
+// /**
+//  * Generic validation message step (REUSABLE)
+//  */
+// Then('validation message {string} should be displayed', async function (message) {
+//   await expect(this.page.locator(`text=${message}`)).toBeVisible();
 // });
 
 // /**

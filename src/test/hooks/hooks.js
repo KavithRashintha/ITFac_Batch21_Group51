@@ -1,28 +1,20 @@
-import { Before, After } from "@cucumber/cucumber";
+import { Before, After, Status } from '@cucumber/cucumber';
+import { chromium } from '@playwright/test';
 
-
-/*Before({ tags: '@admin' }, async function () {
-    await this.page.goto('/login');
-    await this.page.fill('#username', 'admin');
-    await this.page.fill('#password', 'admin123');
-    await this.page.click('#login');
+Before(async function () {
+  this.browser = await chromium.launch({ headless: false });
+  this.context = await this.browser.newContext();
+  this.page = await this.context.newPage();
 });
 
-Before({ tags: '@nonadmin' }, async function () {
-    await this.page.goto('/login');
-    await this.page.fill('#username', 'user');
-    await this.page.fill('#password', 'testuser');
-    await this.page.click('#login');
-});*/
+After(async function (scenario) {
 
-After(async function () {
-
+  if (scenario.result.status === Status.FAILED) {
     if (this.page) {
-        await this.page.close();
+      const screenshot = await this.page.screenshot({ fullPage: true });
+      this.attach(screenshot, 'image/png');
     }
+  }
 
-    if (this.browser) {
-        await this.browser.close();
-    }
-
+  await this.browser.close();
 });

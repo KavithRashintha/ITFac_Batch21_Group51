@@ -1,3 +1,4 @@
+@plants
 Feature: Plant Management
 
   Background:
@@ -11,7 +12,7 @@ Feature: Plant Management
     And All plants should be displayed
 
   Scenario: Verify filter by a specific plant category
-    Then User selects category "ABC" from filter
+    Then User selects category "Fl_01" from filter
     And Only plants with category "ABC" should be displayed
 
   Scenario: Verify search plants by existing plant name

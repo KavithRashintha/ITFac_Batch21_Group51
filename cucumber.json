@@ -1,13 +1,19 @@
 {
   "default": {
+    "format": [
+      "summary",
+      "allure-cucumberjs/reporter"
+    ],
     "formatOptions": {
-      "snippetInterface": "async-await"
+      "snippetInterface": "async-await",
+      "resultsDir": "allure-results"
     },
     "publishQuiet": true,
     "dryRun": false,
     "import": [
       "src/test/steps/**/*.js",
-      "src/test/hooks/**/*.js"
+      "src/test/hooks/**/*.js",
+      "src/test/context/**/*.js"
     ]
   }
 }

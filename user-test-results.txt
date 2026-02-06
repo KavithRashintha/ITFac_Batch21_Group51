@@ -1,0 +1,590 @@
+....A--......A--......A--......A--......A--.....A--.....A---.....A---.....A----.....A---..............................✓ Subcategory 'Sub7195' created successfully (parent validation skipped - API doesn't return parent info)
+.................................................A----.....A----.....A----.....A----.....AU--.....................................................U...............................................................................................................................................................................................................F........U--.................................................Dates are in descending order (newest first): []
+..........Actions cell content: 
+          No sales found
+        
+Warning: Actions cell doesn't contain obvious interactive elements
+..........F-.......................................F-.........F....................F--........F........F--........U..........................F..................................................Dates are in descending order (newest first): []
+..........Delete buttons are not rendered, as expected.
+.............................UU-..................U..
+
+Failures:
+
+1) Scenario: Verify create plant with duplicate name # src\test\features\api\Admin\plant.feature:6
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+   √ Given Admin logs in with username "admin" and password "admin123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   √ And Admin sets the endpoint "/api/plants/category/5" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   × When Admin sends POST request with token and payload
+       """
+       {
+         "name": "Rose",
+         "price": 100,
+         "quantity": 20
+       }
+       """
+       Multiple step definitions match:
+         {word} sends POST request with token and payload   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:189
+         {word} sends {word} request with token and payload - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:33      
+   - Then Response status code should be 400 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+   - And Response body should match JSON structure # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+         "status": 400,
+         "error": "DUPLICATE_RESOURCE",
+         "message": "Plant 'Rose' already exists in this category",
+         "timestamp": "2026-02-04T10:05:11.9163253"
+       }
+       """
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+2) Scenario: Verify create plant with valid data # src\test\features\api\Admin\plant.feature:27
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+   √ Given Admin logs in with username "admin" and password "admin123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   √ And Admin sets the endpoint "/api/plants/category/5" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   × When Admin sends POST request with token and payload
+       """
+       {
+         "name": "Rose",
+         "price": 100,
+         "quantity": 20
+       }
+       """
+       Multiple step definitions match:
+         {word} sends POST request with token and payload   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:189
+         {word} sends {word} request with token and payload - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:33      
+   - Then Response status code should be 201 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+   - And Response body should match JSON structure # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+         "id": 50,
+         "name": "Rose",
+         "price": 100,
+         "quantity": 20,
+         "category": {
+           "id": 5,
+           "name": "FFF",
+           "subCategories": []
+         }
+       }
+       """
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+3) Scenario: Verify create plant with missing mandatory fields # src\test\features\api\Admin\plant.feature:53
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+   √ Given Admin logs in with username "admin" and password "admin123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   √ And Admin sets the endpoint "/api/plants/category/1" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   × When Admin sends POST request with token and payload
+       """
+       {
+         "name": "Rose",
+         "price": 100
+       }
+       """
+       Multiple step definitions match:
+         {word} sends POST request with token and payload   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:189
+         {word} sends {word} request with token and payload - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:33      
+   - Then Response status code should be 400 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+   - And Response body should match JSON structure # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+         "details": {
+           "quantity": "Quantity is required"
+         },
+         "error": "BAD_REQUEST",
+         "message": "Validation failed",
+         "status": 400,
+         "timestamp": "any_non_empty_string"
+       }
+       """
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+4) Scenario: Verify create plant with negative price # src\test\features\api\Admin\plant.feature:76
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+   √ Given Admin logs in with username "admin" and password "admin123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   √ And Admin sets the endpoint "/api/plants/category/1" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   × When Admin sends POST request with token and payload
+       """
+       {
+         "name": "Rose",
+         "price": -100,
+         "quantity": 25
+       }
+       """
+       Multiple step definitions match:
+         {word} sends POST request with token and payload   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:189
+         {word} sends {word} request with token and payload - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:33      
+   - Then Response status code should be 400 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+   - And Response body should match JSON structure # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+         "details": {
+           "price": "Price must be greater than 0"
+         },
+         "error": "BAD_REQUEST",
+         "message": "Validation failed",
+         "status": 400,
+         "timestamp": "2026-02-04T11:10:02.9029542"
+       }
+       """
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+5) Scenario: Verify create plant with invalid categoryId # src\test\features\api\Admin\plant.feature:100
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+   √ Given Admin logs in with username "admin" and password "admin123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   √ And Admin sets the endpoint "/api/plants/category/100" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   × When Admin sends POST request with token and payload
+       """
+       {
+         "name": "Rose",
+         "price": 100,
+         "quantity": 25
+       }
+       """
+       Multiple step definitions match:
+         {word} sends POST request with token and payload   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:189
+         {word} sends {word} request with token and payload - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:33      
+   - Then Response status code should be 404 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+   - And Response body should match JSON structure # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+         "status": 404,
+         "error": "NOT_FOUND",
+         "message": "Category not found",
+         "timestamp": "2026-02-04T11:40:14.3800173"
+       }
+       """
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+6) Scenario: Verify unauthorized access # src\test\features\api\User\plant.feature:6
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+   √ Given User logs in with username "testuser" and password "test123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   × And User sets the endpoint "/api/plants/paged?page=0&size=5"
+       Multiple step definitions match:
+         User sets the endpoint {string}   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:412
+         {word} sets the endpoint {string} - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5       
+   - When User sends GET request without token # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:74
+   - Then Response should have status code 401 and message containing "Unauthorized" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:102
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+7) Scenario: Verify fetch plants with default pagination # src\test\features\api\User\plant.feature:11
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+   √ Given User logs in with username "testuser" and password "test123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   × And User sets the endpoint "/api/plants/paged?page=0&size=10"
+       Multiple step definitions match:
+         User sets the endpoint {string}   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:412
+         {word} sets the endpoint {string} - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5       
+   - When User sends GET request with token # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+   - Then Response status code should be 200 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+   - And Response body 'content' should be an array with at most 10 items # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:121
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+8) Scenario: Verify pagination to the next page # src\test\features\api\User\plant.feature:17
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+   √ Given User logs in with username "testuser" and password "test123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   × And User sets the endpoint "/api/plants/paged?page=1&size=10"
+       Multiple step definitions match:
+         User sets the endpoint {string}   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:412
+         {word} sets the endpoint {string} - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5       
+   - When User sends GET request with token # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+   - Then Response status code should be 200 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+   - And Response page number should be 1 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:134
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+9) Scenario: Verify search plants by existing name # src\test\features\api\User\plant.feature:23
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+   √ Given User logs in with username "testuser" and password "test123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   × And User sets the endpoint "/api/plants/paged?name=Anthurium&page=0&size=10"
+       Multiple step definitions match:
+         User sets the endpoint {string}   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:412
+         {word} sets the endpoint {string} - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5       
+   - When User sends GET request with token # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+   - Then Response status code should be 200 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+   - And Response body 'content' should be an array with 1 items # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:114
+   - And The first plant in 'content' should have name "Anthurium" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:128
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+   √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+10) Scenario: Verify search plants by non-existing name # src\test\features\api\User\plant.feature:30
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given User logs in with username "testuser" and password "test123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    × And User sets the endpoint "/api/plants/paged?name=NonExistingPlant&page=0&size=10"
+        Multiple step definitions match:
+          User sets the endpoint {string}   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:412
+          {word} sets the endpoint {string} - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5       
+    - When User sends GET request with token # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+    - Then Response status code should be 200 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    - And Response body 'content' should be an array with 0 items # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:114
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+11) Scenario: User retrieves complete list of categories # src\test\features\api\userCategories.feature:8
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given User logs in with username "user" and password "user123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    × Given User sets the endpoint "/api/categories"
+        Multiple step definitions match:
+          User sets the endpoint {string}   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:412
+          {word} sets the endpoint {string} - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5       
+    - When User sends GET request # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:416
+    - Then Response status code should be 200 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    - And Response body should be a non-empty array # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:450
+    - And Each category should have properties "id", "name", "parentName" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:455
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+12) Scenario: User retrieves list of parent categories only # src\test\features\api\userCategories.feature:16
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given User logs in with username "user" and password "user123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    × Given User sets the endpoint "/api/categories/main"
+        Multiple step definitions match:
+          User sets the endpoint {string}   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:412
+          {word} sets the endpoint {string} - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5       
+    - When User sends GET request # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:416
+    - Then Response status code should be 200 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    - And Response body should be a non-empty array # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:450
+    - And Each category should have properties "id", "name", "subCategories" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:455
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+13) Scenario: User retrieves complete list of sub categories # src\test\features\api\userCategories.feature:24
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given User logs in with username "user" and password "user123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    × Given User sets the endpoint "/api/categories/sub-categories"
+        Multiple step definitions match:
+          User sets the endpoint {string}   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:412
+          {word} sets the endpoint {string} - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5       
+    - When User sends GET request # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:416
+    - Then Response status code should be 200 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    - And Response body should be a non-empty array # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:450
+    - And Each category should have properties "id", "name" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:466
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+14) Scenario: User searches categories with pagination # src\test\features\api\userCategories.feature:32
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given User logs in with username "user" and password "user123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    × Given User sets the endpoint "/api/categories/page"
+        Multiple step definitions match:
+          User sets the endpoint {string}   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:412
+          {word} sets the endpoint {string} - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5       
+    - And User sets query parameters # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:437
+        | name      |      |
+        | parentId  |      |
+        | page      | 0    |
+        | size      | 10   |
+        | sortField | name |
+        | sortDir   | asc  |
+    - When User sends GET request # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:416
+    - Then Response status code should be 200 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    - And Response body should have pagination structure # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:476
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+15) Scenario: User attempts to create category and is denied # src\test\features\api\userCategories.feature:46
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given User logs in with username "user" and password "user123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    × Given User sets the endpoint "/api/categories"
+        Multiple step definitions match:
+          User sets the endpoint {string}   - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\categoriesSteps.js:412
+          {word} sets the endpoint {string} - file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5       
+    ? When User sends POST request for categories with payload
+        """
+        {
+          "id": 0,
+          "name": "UserCat"
+        }
+        """
+        Undefined. Implement with the following snippet:
+
+          When('User sends POST request for categories with payload', async function (docString) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    - Then Response status code should be 403 # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    - And Response body should match JSON structure # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+        """
+        {
+          "status": 403,
+          "error": "FORBIDDEN",
+          "message": "Access Denied",
+          "timestamp": "any_non_empty_string"
+        }
+        """
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+16) Scenario: Verify category name is required to create a category # src\test\features\ui\Admin\categories.feature:37
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "Admin" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When user navigates to "ui/categories" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:13
+    √ And user clicks on Add Category button # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:72
+    √ And user clicks save button without entering category name # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:81
+    ? Then validation message "Category name is required" should be displayed
+        Undefined. Implement with the following snippet:
+
+          Then('validation message {string} should be displayed', async function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+17) Scenario: Verify visibility of the pagination for plants list for admin # src\test\features\ui\Admin\plant.feature:73
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "Admin" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When User navigates to "/ui/plants" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:8
+    × Then The pagination should be visible for admin # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:63
+        Error: function timed out, ensure the promise resolves within 5000 milliseconds
+            at Timeout.<anonymous> (D:\B21S8\IS4600 - IT Quality Assurance\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:594:17)
+            at process.processTimers (node:internal/timers:529:7)
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+18) Scenario: Verify the Next button functionality of the pagination # src\test\features\ui\Admin\plant.feature:76
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "Admin" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When User navigates to "/ui/plants" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:8
+    ? And The pagination should be visible
+        Undefined. Implement with the following snippet:
+
+          When('The pagination should be visible', async function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    - And User clicks "Next" button # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+    - Then The page "2" should be currently active # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:70
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+19) Scenario: Verify Delete Confirmation Dialog # src\test\features\ui\Admin\sales.feature:26
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "Admin" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When User navigates to "/ui/sales" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:8
+    √ When User navigates to page "/ui/sales" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\salesSteps.js:6
+    × And User clicks the Delete button on a sales item # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\salesSteps.js:82
+        Error: expect(locator).toBeVisible() failed
+
+        Locator: locator('table tbody tr').first().locator('button, a').first()
+        Expected: visible
+        Timeout: 5000ms
+        Error: element(s) not found
+
+        Call log:
+          - Expect "to.be.visible" with timeout 5000ms
+          - waiting for locator('table tbody tr').first().locator('button, a').first()
+
+            at Proxy.<anonymous> (D:\B21S8\IS4600 - IT Quality Assurance\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at World.<anonymous> (file:///D:/B21S8/IS4600%20-%20IT%20Quality%20Assurance/ITFac_Batch21_Group51/src/test/steps/ui/Admin/salesSteps.js:90:30)
+    - Then The Delete confirmation dialog should be visible # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\salesSteps.js:94
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+20) Scenario: Verify filter by a specific plant category # src\test\features\ui\User\plant.feature:14
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "User" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When User navigates to "/ui/plants" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:8
+    × Then User selects category "ABC" from filter # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:5
+        Error: function timed out, ensure the promise resolves within 15000 milliseconds
+            at Timeout.<anonymous> (D:\B21S8\IS4600 - IT Quality Assurance\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:594:17)
+            at process.processTimers (node:internal/timers:529:7)
+    - And Only plants with category "ABC" should be displayed # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:36
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+21) Scenario: Verify search plants by existing plant name # src\test\features\ui\User\plant.feature:18
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "User" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When User navigates to "/ui/plants" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:8
+    √ Then User searches for plant "Anthurium" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:12
+    × And The plant "Anthurium" should be visible in the results # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:46
+        Error: function timed out, ensure the promise resolves within 10000 milliseconds
+            at Timeout.<anonymous> (D:\B21S8\IS4600 - IT Quality Assurance\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:594:17)
+            at process.processTimers (node:internal/timers:529:7)
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+22) Scenario: Verify search with a valid plant name and a specific category filter # src\test\features\ui\User\plant.feature:27
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "User" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When User navigates to "/ui/plants" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:8
+    √ Then User searches for plant "Anthurium" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:12
+    × And User selects category "Fl_01" from filter # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:5
+        Error: function timed out, ensure the promise resolves within 15000 milliseconds
+            at Timeout.<anonymous> (D:\B21S8\IS4600 - IT Quality Assurance\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:594:17)
+            at process.processTimers (node:internal/timers:529:7)
+    - Then The plant "Anthurium" should be visible in the results # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:46
+    - And Only plants with category "Fl_01" should be displayed # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:36
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+23) Scenario: Verify visibility of the pagination for plants list # src\test\features\ui\User\plant.feature:33
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "User" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When User navigates to "/ui/plants" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:8
+    × Then The pagination should be visible for non-admin user # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:138
+        Error: function timed out, ensure the promise resolves within 5000 milliseconds
+            at Timeout.<anonymous> (D:\B21S8\IS4600 - IT Quality Assurance\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:594:17)
+            at process.processTimers (node:internal/timers:529:7)
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+24) Scenario: Verify the Next button functionality of the pagination # src\test\features\ui\User\plant.feature:36
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "User" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When User navigates to "/ui/plants" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:8
+    × And The pagination should be visible for non-admin user # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:138
+        Error: function timed out, ensure the promise resolves within 5000 milliseconds
+            at Timeout.<anonymous> (D:\B21S8\IS4600 - IT Quality Assurance\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:594:17)
+            at process.processTimers (node:internal/timers:529:7)
+    - And User clicks "Next" button # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+    - Then The page "2" should be currently active # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:70
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+25) Scenario: Display "Low" badge when plant quantity is below 5 # src\test\features\ui\User\plant.feature:41
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "User" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When User navigates to "/ui/plants" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:8
+    ? Then Plants with quantity below 5 should display the "Low" badge
+        Undefined. Implement with the following snippet:
+
+          Then('Plants with quantity below {int} should display the {string} badge', async function (int, string) {
+          // Then('Plants with quantity below {float} should display the {string} badge', async function (float, string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+26) Scenario: Verify visibility of the pagination for plants list for non-admin user # src\test\features\ui\User\plant.feature:50
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given the user logged-in as "User" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:6
+    √ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:10
+    √ Then User should be redirected to the dashboard # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:19
+    √ When User navigates to "/ui/plants" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:8
+    × Then The pagination should be visible for non-admin user # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:138
+        Error: expect(locator).toBeVisible() failed
+
+        Locator: locator('ul.pagination')
+        Expected: visible
+        Timeout: 5000ms
+        Error: element(s) not found
+
+        Call log:
+          - Expect "to.be.visible" with timeout 5000ms
+          - waiting for locator('ul.pagination')
+
+            at Proxy.<anonymous> (D:\B21S8\IS4600 - IT Quality Assurance\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at World.<anonymous> (file:///D:/B21S8/IS4600%20-%20IT%20Quality%20Assurance/ITFac_Batch21_Group51/src/test/steps/ui/User/plantSteps.js:140:30)
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+27) Scenario: Verify username and password fields are mandatory # src\test\features\ui\login.feature:22
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given user is on the login page # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:29
+    √ When user clicks the login button # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:44
+    ? Then validation message "Username is required" should be displayed
+        Undefined. Implement with the following snippet:
+
+          Then('validation message {string} should be displayed', async function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? And validation message "Password is required" should be displayed
+        Undefined. Implement with the following snippet:
+
+          Then('validation message {string} should be displayed', async function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    - And user should not be logged in # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:48
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+28) Scenario: Verify successful login redirects to Dashboard # src\test\features\ui\login.feature:39
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    √ Before # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:4
+    √ Given user is on the login page # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:29
+    √ When user enters username "testuser" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:54
+    √ And user enters password "test123" # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:58
+    √ And user clicks the login button # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:44
+    ? Then user should be redirected to the dashboard
+        Undefined. Implement with the following snippet:
+
+          Then('user should be redirected to the dashboard', async function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\context\context.js:12
+    √ After # file:\D:\B21S8\IS4600%20-%20IT%20Quality%20Assurance\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+78 scenarios (8 failed, 15 ambiguous, 5 undefined, 50 passed)
+486 steps (8 failed, 15 ambiguous, 7 undefined, 52 skipped, 404 passed)
+4m16.215s (executing steps: 4m15.721s)

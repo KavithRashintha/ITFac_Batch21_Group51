@@ -31,23 +31,26 @@ Then('All plants should be displayed', async function () {
 });
 
 
-// Only plants with specific category should be displayed
+//==================================== Only plants with specific category should be displayed ==========================
+
 Then('Only plants with category {string} should be displayed', { timeout: 10000 }, async function (category) {
-    const categoryCells = this.page.locator('tbody tr td:nth-child(2)'); // Adjust column index as per table
+    const categoryCells = this.page.locator('tbody tr td:nth-child(2)');
     const count = await categoryCells.count();
     for (let i = 0; i < count; i++) {
         await expect(categoryCells.nth(i)).toHaveText(category);
     }
 });
 
-// Check if a specific plant is visible
+//==================================== Check if a specific plant is visible ============================================
+
 Then('The plant {string} should be visible in the results', { timeout: 10000 }, async function (plantName) {
     const plantCell = this.page.locator('tbody tr td', { hasText: plantName });
     await plantCell.waitFor({ timeout: 10000 });
     await expect(plantCell).toBeVisible();
 });
 
-// Check if no plants are displayed
+//==================================== Check if no plants are displayed ================================================
+
 Then('No plants should be displayed', { timeout: 10000 }, async function () {
 
     const noPlantsRow = this.page.locator('tbody tr td', {
@@ -57,57 +60,63 @@ Then('No plants should be displayed', { timeout: 10000 }, async function () {
     await expect(noPlantsRow).toBeVisible();
 });
 
-// Verify specific message is visible (e.g., "No plants found")
+//==================================== Verify specific message is visible (e.g., "No plants found") ====================
+
 Then('A message {string} should be visible', { timeout: 10000 }, async function (message) {
     const messageLocator = this.page.getByText(message, { exact: false });
     await messageLocator.waitFor({ timeout: 10000 });
     await expect(messageLocator).toBeVisible();
 });
 
-// Verify "Low" badge when plant quantity is below 5
-Then('Plants with quantity below 5 should display the {string} badge across all pages', 
-  { timeout: 60000 }, 
-  async function (badgeText) {
+//==================================== Verify "Low" badge when plant quantity is below 5 ===============================
+Then('Plants with quantity below {int} should display the {string} badge',
+    { timeout: 60000 },
+    async function (threshold, badgeText) {
 
-    const getRows = () => this.page.locator('tbody tr');
-    const nextButton = this.page.locator('.pagination li a', { hasText: 'Next' });
+        const getRows = () => this.page.locator('tbody tr');
+        let foundLowQuantityPlant = false;
 
-    let foundLowQuantityPlant = false;
+        while (true) {
+            const rows = getRows();
+            const rowCount = await rows.count();
 
-    while (true) {
-        const rows = getRows();
-        const rowCount = await rows.count();
+            for (let i = 0; i < rowCount; i++) {
+                const row = rows.nth(i);
 
-        for (let i = 0; i < rowCount; i++) {
-            const row = rows.nth(i);
+                // Skip "No plants found"
+                if ((await row.locator('text=No plants found').count()) > 0) continue;
 
-            if ((await row.locator('text=No plants found').count()) > 0) continue;
+                const quantitySpan = row.locator('td:nth-child(4) > span.text-danger.fw-bold');
+                if ((await quantitySpan.count()) === 0) continue;
 
-            const quantityText = await row.locator('td:nth-child(4)').innerText();
-            const quantity = Number(quantityText.trim());
+                const quantityText = await quantitySpan.innerText();
+                const quantity = Number(quantityText.trim());
 
-            if (Number.isNaN(quantity)) continue;
+                if (Number.isNaN(quantity)) continue;
 
-            if (quantity < 5) {
-                foundLowQuantityPlant = true;
+                if (quantity < threshold) {
+                    foundLowQuantityPlant = true;
 
-                const badge = row.locator(`text=${badgeText}`);
-                await expect(badge).toBeVisible();
-                break; 
+                    // Badge
+                    const badge = row.locator('td:nth-child(4) > span.badge', { hasText: badgeText });
+
+                    await expect(badge).toBeVisible();
+                }
             }
+
+            // Pagination
+            const nextButtonLi = this.page.locator('.pagination li', { hasText: 'Next' });
+            if ((await nextButtonLi.count()) === 0) break;
+            const isDisabled = await nextButtonLi.first().getAttribute('class');
+            if (isDisabled && isDisabled.includes('disabled')) break;
+
+            await nextButtonLi.locator('a').click();
+            await this.page.waitForLoadState('networkidle');
+            await getRows().first().waitFor({ timeout: 10000 });
         }
 
-        if (foundLowQuantityPlant) break;
-        if ((await nextButton.count()) === 0 || !(await nextButton.isEnabled())) break;
-
-        await nextButton.click();
-        await getRows().first().waitFor({ timeout: 10000 });
-        await this.page.waitForTimeout(300); 
-    }
-
-    expect(foundLowQuantityPlant).toBeTruthy();
-});
-
+        expect(foundLowQuantityPlant).toBeTruthy();
+    });
 //==================================== Verify Action plants button visibility ==========================================
 
 Then('{string} button should not be visible', async function (buttonName) {
