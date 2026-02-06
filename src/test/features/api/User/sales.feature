@@ -20,5 +20,18 @@ Feature: Sales API management
    And Normal User sets the endpoint "/api/sales/12"
    When User sends "GET" request with token
    Then Response should have status code 200
- 
- 
+
+ Scenario: Test sales list retrieval with default pagination
+  And Normal User sets the endpoint "/api/sales"
+  When User sends "GET" request with token
+  Then Response should have status code 200
+  And Response body should be a sales list
+  And Response should use default pagination
+
+ Scenario: Test retrieving first page with 1 item per page
+  And Normal User sets the endpoint "/api/sales"
+  And User sets query parameters page "1" and limit "1"
+  When User sends "GET" request with token
+  Then Response should have status code 200
+  And Response body should be a sales list
+
