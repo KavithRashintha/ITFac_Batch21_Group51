@@ -19,19 +19,58 @@ Feature: Category management
         When user navigates to "ui/categories"
         Then Add Category button should be visible and enabled
 
+    #TC_ADMIN_CAT_13
     @editcategory
     Scenario: Verify the Edit category button in Actions 
         When user navigates to "ui/categories"
         And user clicks on Edit button
         Then user navigates to edit category page
 
+    #TC_ADMIN_CAT_14
     @editcategoryname
-    Scenario: Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10)
+    Scenario Outline: Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10)
         When user navigates to "ui/categories"
         And user clicks on Edit button
         And user navigates to edit category page
-        And user provide categoryName "AnthuriumAnthurium" 
-        Then user click save button
+        And user provide categoryName "<name>"
+        Then the error message should be visible
+
+    Examples:
+      | name            |
+      |                 |
+      |An               |
+      |Anthuriummm      |
+      |Anthuriummmmmmmmm|
+
+    #TC_ADMIN_CAT_15
+    @editcategorySaveButton
+    Scenario: Verify the Save button functionality in the Edit Category
+        When user navigates to "ui/categories"
+        And user clicks on edit button for category "Anthurium"
+        And user navigates to edit category page
+        And user edits the categoryname "Rose"
+        And user click save button
+        Then user navigates to category page
+        And the success message should be displayed
+        And the category name should be updated to "Rose"
+
+    #TC_ADMIN_CAT_16
+    @editcategoryCancelButton
+    Scenario: Verify the Cancel button functionality in the Edit Category
+        When user navigates to "ui/categories"
+        And user clicks on edit button for category "Anthurium"
+        And user navigates to edit category page
+        And user edits the categoryname "RoseTemp"
+        And user clicks on cancel button
+        Then user navigates to category page
+        And the category name should remain as "Anthurium"
+
+    #TC_ADMIN_CAT_17
+    @deleteCategoryConfirmation
+    Scenario: Verify the Delete Category button in Action
+        When user navigates to "ui/categories"
+        And user clicks on delete button for category "Anthurium"
+        Then delete confirmation popup should be displayed
 
     @categoryname_required
     Scenario: Verify category name is required to create a category

@@ -1,6 +1,8 @@
 import { When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
+let capturedDialogMessage = "";
+
 function sortStrings(arr, direction = 'asc') {
   const sorted = [...arr].sort((a, b) =>
     a.localeCompare(b, undefined, { numeric: true })
@@ -8,7 +10,7 @@ function sortStrings(arr, direction = 'asc') {
   return direction === 'asc' ? sorted : sorted.reverse();
 }
 
-//--------------------------- Verify the Edit category button in Actions ---------------------------
+//--------------------------- TC_ADMIN_CAT_13: Verify the Edit category button in Actions ---------------------------
 
 When('user navigates to {string}', { timeout: 30000 }, async function (path) {
     await this.page.goto(`http://localhost:8080/${path}`, { 
@@ -26,14 +28,83 @@ Then('user navigates to edit category page', async function(){
 });
 
 
-//-------------- Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10)------------
+//-------------- TC_ADMIN_CAT_14: Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10)------------
 
 When('user provide categoryName {string}', async function(newCategoryName){
     await this.page.fill('input[name="name"]',newCategoryName);
 } );
 
+Then('the error message should be visible', async function () {
+    await this.page.click('button[type="submit"]');
+    await this.page.waitForSelector('.invalid-feedback');
+});
+
+
+//------------------ TC_ADMIN_CAT_15: Verify the Save button functionality in the Edit Category -------------
+
+When('user clicks on edit button for category {string}', async function (oldCategoryName) {
+  await this.page.waitForSelector('table tbody tr');
+  const row = this.page.locator('table tbody tr').filter({
+    hasText: oldCategoryName
+  }).first();
+  await expect(row).toBeVisible();
+  await row.locator('[title="Edit"]').click();
+});
+
+When('user edits the categoryname {string}', async function (newName) {
+  await this.page.fill('input[name="name"]', newName);
+});
+
 Then('user click save button', async function () {
     await this.page.click('button[type="submit"]');
+});
+
+Then('user navigates to category page', async function(){
+  await this.page.waitForURL('**/ui/categories');
+});
+
+Then('the success message should be displayed', async function () {
+  await this.page.waitForSelector('.alert.alert-success');
+});
+
+Then('the category name should be updated to {string}', async function (newName) {
+  const updatedRow = this.page.locator(`td:has-text("${newName}")`);
+  expect(await updatedRow.count()).toBeGreaterThan(0);
+});
+
+//------------------ TC_ADMIN_CAT_16: Verify the Cancel button functionality in the Edit Category -------------
+
+When('user clicks on cancel button', async function () {
+  await this.page.getByText('Cancel').click();
+});
+
+Then('the category name should remain as {string}', async function (originalName) {
+  const row = this.page.locator(`td:has-text("${originalName}")`);
+  await expect(row).toBeVisible();
+});
+
+//------------------ TC_ADMIN_CAT_17: Verify the Delete Category button in Action -------------
+
+When('user clicks on delete button for category {string}', async function (categoryName) {
+  await this.page.waitForSelector('table tbody tr');
+
+  const row = this.page.locator('table tbody tr').filter({
+    hasText: categoryName
+  }).first();
+  await expect(row).toBeVisible();
+  this.page.once('dialog', async dialog => {
+    this.lastDialogMessage = dialog.message(); 
+    await dialog.dismiss(); 
+  });
+
+  await row.locator('[title="Delete"]').click();
+});
+
+Then('delete confirmation popup should be displayed', async function () {
+  if (!this.lastDialogMessage) {
+    throw new Error("No confirmation message appeared!");
+  }
+  expect(this.lastDialogMessage).toBe('Delete this category?');
 });
 
 // ---------- View Categories ----------
