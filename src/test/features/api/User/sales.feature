@@ -17,7 +17,7 @@ Feature: Sales API management
     And Response body should contain error "Forbidden: You do not have permission to delete this sale"
 
  Scenario: Verify that a regular user can retrieve individual sale details 
-   And Normal User sets the endpoint "/api/sales/12"
+   And Normal User sets the endpoint "/api/sales/1"
    When User sends "GET" request with token
    Then Response should have status code 200
 

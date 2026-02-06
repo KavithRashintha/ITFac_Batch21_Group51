@@ -1,4 +1,4 @@
-import { When, Then } from "@cucumber/cucumber";
+import { Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 /* ---------------- UI  Sale Button Hidden in User View ---------------- */
