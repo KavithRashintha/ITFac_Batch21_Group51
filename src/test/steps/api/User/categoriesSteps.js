@@ -5,8 +5,13 @@ import { expect } from '@playwright/test';
 // USER CATEGORY API OPERATIONS
 // ===========================
 
+// ---------- User Endpoint Setup ----------
+
+Given('User sets the endpoint {string}', function (endpoint) {
+  this.endpoint = endpoint;
+});
+
 // ---------- User GET Requests ----------
-// Note: User sets the endpoint is handled by plantSteps.js {word} generic step
 
 When('User sends GET request', async function () {
   // Build URL with query parameters if they exist

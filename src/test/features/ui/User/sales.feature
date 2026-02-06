@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 @sales
 Feature: Sales management
-=======
-Feature: Sales management 
->>>>>>> 6ec06d636ff52ad0424e89c5a9e09b70f520dfc7
 
   Background:
     Given the user logged-in as "User"
