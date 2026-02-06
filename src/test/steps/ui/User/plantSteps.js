@@ -32,6 +32,17 @@ Then('All plants should be displayed', async function () {
 
 
 //==================================== Only plants with specific category should be displayed ==========================
+When('User clicks {string} button', async function (buttonName) {
+
+    const button = this.page.getByRole('button', { name: buttonName });
+
+    await button.waitFor({ state: 'visible' });
+
+    await Promise.all([
+        this.page.waitForLoadState('networkidle'),
+        button.click()
+    ]);
+});
 
 Then('Only plants with category {string} should be displayed', { timeout: 10000 }, async function (category) {
     const categoryCells = this.page.locator('tbody tr td:nth-child(2)');
