@@ -4,7 +4,7 @@ import { expect } from '@playwright/test';
 // ---------- Background login (Admin/User) ----------
 
 Given('the user logged-in as {string}', { timeout: 10000 }, async function (role) {
-  await this.page.goto('http://localhost:8081/ui/login', { 
+  await this.page.goto('http://localhost:8080/ui/login', { 
     waitUntil: 'domcontentloaded',
     timeout: 10000 
   });

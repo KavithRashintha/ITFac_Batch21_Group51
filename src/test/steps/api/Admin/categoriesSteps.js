@@ -25,7 +25,7 @@ Given('Admin API user is authenticated', async function () {
 
   // Recreate context with Authorization header
   this.apiContext = await request.newContext({
-    baseURL: 'http://localhost:8081',
+    baseURL: 'http://localhost:8080',
     extraHTTPHeaders: {
       'Content-Type': 'application/json',
       Authorization: `${this.tokenType} ${this.token}`
@@ -183,106 +183,6 @@ When('Admin sends POST request for categories with payload', async function (doc
     console.log('Response:', JSON.stringify(this.responseBody, null, 2));
   }
 });
-
-// ---------- Legacy POST Steps (kept for backward compatibility) ----------
-
-When('{word} sends POST request with token and payload', async function (role, docString) {
-  if (!this.token) {
-    throw new Error('Token is not available. Make sure login ran first.');
-  }
-
-  let payload = JSON.parse(docString);
-
-  // Add timestamp to name if it starts with "API_" for uniqueness in positive tests
-  if (payload.name && payload.name.startsWith('API_')) {
-    const uniqueName = `${payload.name}_${Date.now()}`;
-    payload.name = uniqueName;
-    this.expectedCategoryName = uniqueName;
-  } else {
-    this.expectedCategoryName = payload.name;
-  }
-
-  // Replace "stored_parent_id" placeholder with actual parentId
-  if (payload.parent && payload.parent.id === 'stored_parent_id') {
-    payload.parent.id = this.parentId;
-  }
-
-  const options = {
-    headers: {
-      Authorization: `${this.tokenType} ${this.token}`,
-      'Content-Type': 'application/json'
-    },
-    data: payload
-  };
-
-  this.response = await this.apiContext.post(this.endpoint, options);
-
-  try {
-    this.responseBody = await this.response.json();
-  } catch {
-    this.responseBody = {};
-  }
-});
-
-// ---------- Legacy POST Steps (kept for backward compatibility) ----------
-
-When(
-  'Admin sends POST request to {string} with category name {string}',
-  async function (endpoint, categoryName) {
-    const uniqueName = `${categoryName}_${Date.now()}`;
-
-    this.response = await this.apiContext.post(endpoint, {
-      data: {
-        id: 0,
-        name: uniqueName
-      }
-    });
-
-    this.responseBody = await this.response.json();
-    this.createdCategoryName = uniqueName;
-  }
-);
-
-When(
-  'Admin sends POST request to {string} to create unique subcategory {string}',
-  async function (endpoint, subCategoryName) {
-    // Use unique name to avoid conflicts in positive test
-    const uniqueName = `${subCategoryName}_${Date.now()}`;
-
-    this.response = await this.apiContext.post(endpoint, {
-      data: {
-        id: 0,
-        name: uniqueName,
-        parent: {
-          id: this.parentId
-        }
-      }
-    });
-
-    this.responseBody = await this.response.json();
-
-    // Store actual name for later validation
-    this.createdSubCategoryName = uniqueName;
-  }
-);
-
-When(
-  'Admin sends POST request to {string} to create subcategory {string}',
-  async function (endpoint, subCategoryName) {
-    // Use actual name (for duplicate testing)
-    this.response = await this.apiContext.post(endpoint, {
-      data: {
-        id: 0,
-        name: subCategoryName,
-        parent: {
-          id: this.parentId
-        }
-      }
-    });
-
-    this.responseBody = await this.response.json();
-  }
-);
 
 // ---------- Status Code Validation (Legacy - for backward compatibility) ----------
 
