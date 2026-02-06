@@ -22,3 +22,14 @@ Feature: Sales API management
     Then Response should have status code 201
     And Response body should contain created sale details
     And Total price should be calculated correctly
+
+  Scenario: Ensure sale creation fails with non-existent plantId
+    And Admin sets the endpoint "/api/sales/plant/999?quantity=2"
+    When Admin sends "POST" request with token and payload
+      """
+      {
+        "quantity": 2
+      }
+      """
+    Then Response should have status code 404
+    And Response body should contain error message "Plant not found"
