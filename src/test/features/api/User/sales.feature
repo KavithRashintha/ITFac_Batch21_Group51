@@ -11,7 +11,7 @@ Feature: Sales API management
     And Each sales record should have required fields
 
  Scenario: Verify a regular user cannot delete a sale
-    And Normal User sets the endpoint "/api/sales/6"  
+    And Normal User sets the endpoint "/api/sales/5"
     When User sends "DELETE" request with token
     Then Response should have status code 403
     And Response body should contain error "Forbidden: You do not have permission to delete this sale"
