@@ -1,5 +1,5 @@
 @categories
-Feature: Category management - User role
+Feature: Category Management - User
 
     Background:
         Given the user logged-in as "User"

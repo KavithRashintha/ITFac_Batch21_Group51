@@ -1,22 +1,7 @@
 import { When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
-function sortStrings(arr, direction = 'asc') {
-  const sorted = [...arr].sort((a, b) =>
-    a.localeCompare(b, undefined, { numeric: true })
-  );
-  return direction === 'asc' ? sorted : sorted.reverse();
-}
-
-//--------------------------- Verify the Edit category button in Actions ---------------------------
-
-When('user navigates to {string}', { timeout: 30000 }, async function (path) {
-    await this.page.goto(`http://localhost:8080/${path}`, { 
-        waitUntil: 'domcontentloaded',
-        timeout: 30000 
-    });
-});
-
+// ------------ Edit Category -----------------
 When('user clicks on Edit button', async function () {
     await this.page.locator('[title="Edit"]').first().click();
 });
@@ -26,7 +11,7 @@ Then('user navigates to edit category page', async function(){
 });
 
 
-//-------------- Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10)------------
+//-------------- Edit Category - Validation ------------
 
 When('user provide categoryName {string}', async function(newCategoryName){
     await this.page.fill('input[name="name"]',newCategoryName);
@@ -36,7 +21,7 @@ Then('user click save button', async function () {
     await this.page.click('button[type="submit"]');
 });
 
-// ---------- View Categories ----------
+// --------------- View Categories ------------------
 
 Then('category list table should be visible', async function () {
   await expect(this.page.locator('table')).toBeVisible();
@@ -67,7 +52,7 @@ Then('Add Category button should be visible and enabled', { timeout: 15000 }, as
   await expect(addCategoryButton).toBeEnabled();
 });
 
-// ---------- Category name required validation ----------
+// ---------------------- Add category – required validation -------------------------
 
 When('user clicks on Add Category button', async function () {
   const addCategoryButton = this.page.locator(
@@ -91,7 +76,7 @@ Then('validation message {string} should be displayed', async function (expected
   await expect(validationMessage.first()).toBeVisible({ timeout: 5000 });
 });
 
-// ---------- Category sorting verification ----------
+// --------------------------- Category sorting verification -------------------------------
 
 Then('user sorts category list by ID', async function () {
   const idHeader = this.page.locator('th', { hasText: 'ID' });
@@ -126,19 +111,14 @@ Then('user sorts category list by Name', async function () {
     (await this.page.locator('tbody tr td:nth-child(2)').allTextContents())
       .map(name => name.trim());
 
-  // First click
   await nameHeader.click();
   await this.page.waitForLoadState('networkidle');
   const namesAfterFirstClick = await getNames();
 
-  // Second click
   await nameHeader.click();
   await this.page.waitForLoadState('networkidle');
   const namesAfterSecondClick = await getNames();
 
-  // At least one of these must be true:
-  // 1. Order changes
-  // 2. Order remains consistent (already sorted / single rule)
   const orderChanged =
     JSON.stringify(namesAfterFirstClick) !==
     JSON.stringify(namesAfterSecondClick);
@@ -166,14 +146,13 @@ Then('user sorts category list by Parent', async function () {
   expect(firstOrder.length).toBeGreaterThan(0);
 });
 
-// ---------- Search categories without parent filter ----------
+// ---------------------- Search categories without parent filter ------------------------
 
 When('user enters subcategory name {string} in search field', async function (subcategory) {
   const searchInput = this.page.getByPlaceholder('Search sub category');
   await expect(searchInput).toBeVisible();
   await searchInput.fill(subcategory);
-  
-  // Store search term for validation
+
   this.searchTerm = subcategory;
 });
 
@@ -182,7 +161,6 @@ When('user clicks Search button', async function () {
   await expect(searchButton).toBeVisible();
   await searchButton.click();
   
-  // Wait for search results to load
   await this.page.waitForLoadState('networkidle');
 });
 
@@ -197,9 +175,7 @@ Then('results should match the search criteria', async function () {
   
   const names = await this.page.locator('tbody tr td:nth-child(2)').allTextContents();
   expect(names.length).toBeGreaterThan(0);
-  
-  // Verify at least one result contains the searched term (stored in context)
-  // If search was for "Sub_1", check that at least one name contains it
+
   const hasMatchingResult = names.some(name => 
     name.toLowerCase().includes(this.searchTerm?.toLowerCase() || '')
   );
@@ -207,15 +183,13 @@ Then('results should match the search criteria', async function () {
   expect(hasMatchingResult).toBe(true);
 });
 
-// ---------- Filter categories by parent ----------
+// -------------------------- Filter categories by parent ------------------------
 
 When('user selects parent category {string}', async function (parentCategory) {
-  // Use more specific selector - the dropdown next to search field
   const parentDropdown = this.page.locator('select').first();
   await expect(parentDropdown).toBeVisible();
   await parentDropdown.selectOption({ label: parentCategory });
-  
-  // Store selected parent for validation
+
   this.selectedParent = parentCategory;
 });
 
@@ -229,10 +203,8 @@ Then(
       .locator('tbody tr td:nth-child(3)')
       .allTextContents();
 
-    // Verify we have results
     expect(parentColumnValues.length).toBeGreaterThan(0);
     
-    // All rows should match selected parent (filter out empty/dash values)
     const nonEmptyParents = parentColumnValues.filter(p => p.trim() && p.trim() !== '-');
     
     nonEmptyParents.forEach(parent => {

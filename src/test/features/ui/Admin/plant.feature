@@ -71,7 +71,7 @@ Feature: Plant management
       | invalid |             |             |       |          |
 
   Scenario: Verify visibility of the pagination for plants list for admin
-    Then The pagination should be visible for admin
+    Then The pagination should be visible
 
   Scenario: Verify the Next button functionality of the pagination
     And The pagination should be visible

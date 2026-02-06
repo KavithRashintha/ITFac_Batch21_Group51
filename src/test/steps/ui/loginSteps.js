@@ -1,16 +1,21 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
-// ---------- Background login (Admin/User) ----------
+const url = "http://localhost:8080";
 
+// ----------------------------- Background Navigation (Admin/User) --------------------------------------
 Given('the user logged-in as {string}', { timeout: 10000 }, async function (role) {
-  await this.page.goto('http://localhost:8080/ui/login', { 
-    waitUntil: 'domcontentloaded',
-    timeout: 10000 
+  await this.page.goto(`${url}/ui/login`, {
+    waitUntil: 'domcontentloaded'
   });
   
-  // Wait for login form to be ready
+  // Wait for the login form to be ready
   await this.page.waitForSelector('input[name="username"]', { timeout: 5000 });
+});
+
+// -------------------------------------------- Login Action ----------------------------------------------
+When('user navigates to {string}', async function (path) {
+  await this.page.goto(`${url}/${path}`);
 });
 
 When(
@@ -26,14 +31,14 @@ Then('User should be redirected to the dashboard', async function () {
   await expect(this.page).toHaveURL(/\/ui\/dashboard/);
 });
 
-// ---------- Login page validation ----------
+// ---------------------------------------------- Login page validation --------------------------------------
 
 Given('user is not logged in', async function () {
   // Precondition only
 });
 
 Given('user is on the login page', async function () {
-  await this.page.goto('http://localhost:8080/ui/login');
+  await this.page.goto(`${url}/ui/login`);
 });
 
 Then('login page should be displayed', async function () {
@@ -45,7 +50,7 @@ Then('username and password fields should be visible', async function () {
   await expect(this.page.locator('input[name="password"]')).toBeVisible();
 });
 
-// ---------- Login validation ----------
+// ------------------------------------------ Empty login form submit validation -------------------------------
 
 When('user clicks the login button', async function () {
   await this.page.click('button[type="submit"]');
@@ -55,7 +60,7 @@ Then('user should not be logged in', async function () {
   await expect(this.page).toHaveURL(/\/ui\/login/);
 });
 
-// ---------- Invalid credentials ----------
+// ------------------------------------------- Invalid credentials ---------------------------------------------
 
 When('user enters username {string}', async function (username) {
   await this.page.fill('input[name="username"]', username);
@@ -76,6 +81,7 @@ Then('user should remain on the login page', async function () {
   await expect(this.page).toHaveURL(/\/ui\/login/);
 });
 
+// ------------------------------------- Successful Login ------------------------------------------------------
 Then('user should be redirected to the dashboard', async function () {
   await expect(this.page).toHaveURL(/\/ui\/dashboard/);
 });
