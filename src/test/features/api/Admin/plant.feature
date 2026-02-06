@@ -146,3 +146,47 @@ Feature: Plant Management API
         "timestamp": "2026-02-06T04:06:45.539Z"
       }
       """
+
+    Scenario: Verify the GET plant method by Category ID for a existing valid ID
+      Given "Admin" sets the endpoint "/api/plants/category/6"
+      When "Admin" sends "GET" request with token
+      Then Response status code should be 200
+      And Response body should match JSON structure
+      """
+      [
+        {
+          "id": 4,
+          "name": "Plant 4",
+          "price": 950,
+          "quantity": 50,
+          "category": {
+            "id": 6,
+            "name": "SubCat 2.2",
+            "parent": "string",
+            "subCategories": [
+
+            ]
+          }
+        }
+      ]
+      """
+
+    Scenario: Verify the GET plant method by Category ID for a non-existing ID
+      Given "Admin" sets the endpoint "/api/plants/category/100"
+      When "Admin" sends "GET" request with token
+      Then Response status code should be 404
+      And Response body should match JSON structure
+      """
+      {
+        "status": 404,
+        "error": "NOT_FOUND",
+        "message": "Category not found",
+        "timestamp": "2026-02-06T04:06:45.539Z"
+      }
+      """
+
+    Scenario: Verify the DELETE plant method by ID for a existing valid ID
+      Given "Admin" sets the endpoint "/api/plants/5"
+      When "Admin" sends "DELETE" request with token
+      Then Response status code should be 204
+      ##And Response body should contain "Plant deleted successfully"

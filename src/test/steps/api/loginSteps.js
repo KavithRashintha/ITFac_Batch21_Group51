@@ -52,6 +52,11 @@ Then('Response body should match JSON structure', function (docString) {
                 continue;
             }
 
+            if (expectedObj[key] === "any_number") {
+                expect(typeof actualObj[key]).toBe("number");
+                continue;
+            }
+
             // auto generated id
             if (key === "id") {
                 expect(actualObj[key]).toBeDefined();
