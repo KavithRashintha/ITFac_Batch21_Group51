@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 @sales
 Feature: Sales management
+=======
+Feature: Sales management 
+>>>>>>> 6ec06d636ff52ad0424e89c5a9e09b70f520dfc7
 
   Background:
     Given the user logged-in as "User"
@@ -19,6 +23,17 @@ Feature: Sales management
     When User navigates to page "/ui/sales"
     Then The Sales Plant items should be sorted by date in ascending order in User View
 
-  Scenario:  Scenario: Verify Sell Plant Delete button hidden in User view
+  Scenario: Verify Sell Plant Delete button hidden in User view
     When User navigates to page "/ui/sales"
     Then The Delete button should be hidden in User View 
+  
+  Scenario: Verify Sales List Table responsiveness
+    When User navigates to page "/ui/sales"
+    Then Sales list table should be responsive
+
+  Scenario: Verify no single sale view page exists
+    When User navigates to page "/ui/sales"
+    Then No single sale view option should be available
+
+
+ 

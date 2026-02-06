@@ -17,6 +17,7 @@ Then(
   },
 );
 
+/* ---------------- UI Sale Item Sorting in User View ---------------- */
 Then(
   "The Sales Plant items should be sorted by date in ascending order in User View",
   async function () {
@@ -55,4 +56,31 @@ Then("The Delete button should be hidden in User View", async function () {
     await expect(deleteButtons.first()).not.toBeVisible();
     console.log("Delete buttons are rendered but hidden, as expected.");
   }
+});
+
+/* ---------------- UI Responsiveness of Sales List ---------------- */
+Then("Sales list table should be responsive", async function () {
+  const table = this.page.locator("table");
+
+  // Desktop
+  await this.page.setViewportSize({ width: 1280, height: 800 });
+  await expect(table).toBeVisible();
+
+  // Tablet
+  await this.page.setViewportSize({ width: 768, height: 1024 });
+  await expect(table).toBeVisible();
+
+  // Mobile
+  await this.page.setViewportSize({ width: 375, height: 667 });
+  await expect(table).toBeVisible();
+});
+
+/* ---------------- UI Single Sale View Option in User View ---------------- */
+Then("No single sale view option should be available", async function () {
+  const firstRow = this.page.locator("table tbody tr").first();
+  const currentUrl = this.page.url();
+
+  await firstRow.click({ force: true });
+
+  await expect(this.page).toHaveURL(currentUrl);
 });
