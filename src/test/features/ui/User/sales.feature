@@ -8,27 +8,21 @@ Feature: Sales management
     When User navigates to "/ui/sales"
 
   Scenario: Verify Sell Plant button hidden in User view
-    When User navigates to page "/ui/sales"
     Then The "Sell Plant" button should be hidden
 
   Scenario: Verify Sell Plant items visibility in User view
-   When User navigates to page "/ui/sales"
    Then The Sales Plant items should be visibile in User View
 
   Scenario: Verify Sales items are sorted in ascending order by date in User view
-    When User navigates to page "/ui/sales"
     Then The Sales Plant items should be sorted by date in ascending order in User View
 
   Scenario: Verify Sell Plant Delete button hidden in User view
-    When User navigates to page "/ui/sales"
     Then The Delete button should be hidden in User View 
   
   Scenario: Verify Sales List Table responsiveness
-    When User navigates to page "/ui/sales"
     Then Sales list table should be responsive
 
   Scenario: Verify no single sale view page exists
-    When User navigates to page "/ui/sales"
     Then No single sale view option should be available
 
 

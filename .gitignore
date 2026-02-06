@@ -1,3 +1,9 @@
 node_modules
 .idea
 package-lock.json
+allure-results/
+allure-report/
+test-results/
+playwright-report/
+blob-report/
+.DS_Store
