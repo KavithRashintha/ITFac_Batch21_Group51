@@ -40,3 +40,13 @@ Feature: Sales API management
     Then Response should have status code 404
     And Response body should contain error message "Sale not found"
 
+  Scenario: Ensure deletion fails when attempting to delete a sale that was already deleted
+    # First, delete a valid sale
+    And Admin sets the endpoint "/api/sales/2"  
+    When Admin sends "DELETE" request with token
+    Then Response should have status code 204
+
+    # Attempt to delete it again
+    When Admin sends "DELETE" request with token
+    Then Response should have status code 404
+    And Response body should contain error message "Sale not found"
