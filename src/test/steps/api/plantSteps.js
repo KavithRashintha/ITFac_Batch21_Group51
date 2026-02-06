@@ -2,12 +2,14 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 // -------------------- Set API Endpoint --------------------
-Given('{word} sets the endpoint {string}', function (role, endpoint) {
+
+Given('{string} sets the endpoint {string}', function (role, endpoint) {
     this.endpoint = endpoint;
 });
 
 // -------------------- Generic request WITHOUT payload --------------------
-When('User sends GET request with token', async function () {
+
+When('{string} sends {string} request with token', async function (role, method) {
 
     if (!this.token) {
         throw new Error("Token is not available. Make sure login ran first.");
@@ -19,7 +21,18 @@ When('User sends GET request with token', async function () {
         }
     };
 
-    this.response = await this.apiContext.get(this.endpoint, options);
+    switch (method.toUpperCase()) {
+        case "GET":
+            this.response = await this.apiContext.get(this.endpoint, options);
+            break;
+
+        case "DELETE":
+            this.response = await this.apiContext.delete(this.endpoint, options);
+            break;
+
+        default:
+            throw new Error(`Unsupported method for non-payload request: ${method}`);
+    }
 
     try {
         this.responseBody = await this.response.json();
@@ -30,7 +43,8 @@ When('User sends GET request with token', async function () {
 
 
 // -------------------- Generic request WITH token and payload --------------------
-When('{word} sends {word} request with token and payload', async function (role, method, body) {
+
+When('{string} sends {string} request with token and payload', async function (role, method, body) {
 
     if (!this.token) {
         throw new Error("Token is not available. Make sure login ran first.");
@@ -71,7 +85,8 @@ When('{word} sends {word} request with token and payload', async function (role,
 
 
 // -------------------- Generic request without token --------------------
-When('{word} sends {word} request without token', async function(role, method) {
+
+When('{string} sends {string} request without token', async function(role, method) {
     const options = {};
 
     switch (method.toUpperCase()) {
