@@ -6,8 +6,8 @@ Given("Admin sets the endpoint {string}", function (endpoint) {
   this.endpoint = endpoint;
 });
 
-// -------------------- GET request with token --------------------
-When("Admin sends GET request with token", async function () {
+// -------------------- Request with token (GET | POST | PUT | DELETE) --------------------
+When("Admin sends {string} request with token", async function (method) {
   if (!this.token) {
     throw new Error("Token is not available. Make sure login ran first.");
   }
@@ -18,7 +18,31 @@ When("Admin sends GET request with token", async function () {
     },
   };
 
-  this.response = await this.apiContext.get(this.endpoint, options);
+  // Attach query params if exist (POST sales uses this)
+  if (this.queryParams) {
+    options.params = this.queryParams;
+  }
+
+  switch (method.toUpperCase()) {
+    case "GET":
+      this.response = await this.apiContext.get(this.endpoint, options);
+      break;
+
+    case "POST":
+      this.response = await this.apiContext.post(this.endpoint, options);
+      break;
+
+    case "PUT":
+      this.response = await this.apiContext.put(this.endpoint, options);
+      break;
+
+    case "DELETE":
+      this.response = await this.apiContext.delete(this.endpoint, options);
+      break;
+
+    default:
+      throw new Error(`Unsupported HTTP method: ${method}`);
+  }
 
   try {
     this.responseBody = await this.response.json();
@@ -27,7 +51,62 @@ When("Admin sends GET request with token", async function () {
   }
 });
 
-// -------------------- Sales List Assertions --------------------
+// -------------------- Request with token AND JSON payload --------------------
+When(
+  "Admin sends {string} request with token and payload",
+  async function (method, docString) {
+    if (!this.token) {
+      throw new Error("Token is not available. Make sure login ran first.");
+    }
+
+    // Parse JSON payload from doc string
+    let payload = {};
+    try {
+      payload = JSON.parse(docString);
+    } catch (error) {
+      throw new Error("Invalid JSON payload: " + error.message);
+    }
+
+    const options = {
+      headers: {
+        Authorization: `${this.tokenType} ${this.token}`,
+        "Content-Type": "application/json",
+      },
+      data: payload,
+    };
+
+    // Attach query parameters if they exist
+    if (this.queryParams) {
+      options.params = this.queryParams;
+    }
+
+    switch (method.toUpperCase()) {
+      case "POST":
+        this.response = await this.apiContext.post(this.endpoint, options);
+        break;
+
+      case "PUT":
+        this.response = await this.apiContext.put(this.endpoint, options);
+        break;
+
+      case "DELETE":
+        this.response = await this.apiContext.delete(this.endpoint, options);
+        break;
+
+      default:
+        throw new Error(`Unsupported method for payload request: ${method}`);
+    }
+
+    // Parse response body
+    try {
+      this.responseBody = await this.response.json();
+    } catch {
+      this.responseBody = {};
+    }
+  },
+);
+
+// -------------------- GET All Sales List Assertions --------------------
 
 //Check the request code
 Then("Response should have status code {int}", function (statusCode) {
@@ -59,4 +138,29 @@ Then("The sale should include plant details", function () {
   expect(sale.plant).toHaveProperty("name");
   expect(sale.plant).toHaveProperty("price");
   expect(sale.plant).toHaveProperty("quantity");
+});
+
+// -------------------- POST Sale Assertions --------------------
+
+Then("Response body should contain created sale details", function () {
+  const sale = this.responseBody;
+
+  expect(sale).toHaveProperty("id");
+  expect(sale).toHaveProperty("plant");
+  expect(sale).toHaveProperty("quantity");
+  expect(sale).toHaveProperty("totalPrice");
+  expect(sale).toHaveProperty("soldAt");
+
+  expect(sale.plant).toHaveProperty("id");
+  expect(sale.plant).toHaveProperty("name");
+  expect(sale.plant).toHaveProperty("price");
+});
+
+//Check the Total price
+Then("Total price should be calculated correctly", function () {
+  const sale = this.responseBody;
+
+  const expectedTotal = Number(sale.plant.price) * Number(sale.quantity);
+
+  expect(sale.totalPrice).toBe(expectedTotal);
 });
