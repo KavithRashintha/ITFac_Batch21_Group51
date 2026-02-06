@@ -82,6 +82,15 @@ When('user clicks save button without entering category name', async function ()
   await this.page.click('button[type="submit"]');
 });
 
+Then('validation message {string} should be displayed', async function (expectedMessage) {
+  // Wait for validation message to appear
+  const validationMessage = this.page.locator('text=' + expectedMessage).or(
+    this.page.locator('.error-message, .validation-error, .invalid-feedback, [role="alert"]')
+  );
+  
+  await expect(validationMessage.first()).toBeVisible({ timeout: 5000 });
+});
+
 // ---------- Category sorting verification ----------
 
 Then('user sorts category list by ID', async function () {

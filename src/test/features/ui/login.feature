@@ -1,3 +1,4 @@
+@login
 Feature: Login test validation for UI
 
   Scenario: Admin login with valid credentials

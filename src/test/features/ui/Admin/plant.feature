@@ -1,3 +1,4 @@
+@plants
 Feature: Plant management
 
   Background:
