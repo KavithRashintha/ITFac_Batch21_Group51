@@ -21,14 +21,14 @@ Feature: Plant Management API
     And Response page number should be 1
 
   Scenario: Verify search plants by existing name
-    And "User" sets the endpoint "/api/plants/paged?name=Anthurium&page=0&size=10"
+    And "User" sets the endpoint "/api/plants/paged?name=Plant 1&page=0&size=10"
     When "User" sends "GET" request with token
     Then Response status code should be 200
     And Response body 'content' should be an array with 1 items
-    And The first plant in 'content' should have name "Anthurium"
+    And The first plant in 'content' should have name "Plant 1"
 
   Scenario: Verify search plants by non-existing name
-    And "User" sets the endpoint "/api/plants/paged?name=NonExistingPlant&page=0&size=10"
+    And "User" sets the endpoint "/api/plants/paged?name=Plant 25&page=0&size=10"
     When "User" sends "GET" request with token
     Then Response status code should be 200
     And Response body 'content' should be an array with 0 items
