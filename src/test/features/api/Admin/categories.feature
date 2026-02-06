@@ -1,4 +1,4 @@
-@categories-apitests
+@categories-api
 Feature: Category API Management
 
   Background:
@@ -20,7 +20,7 @@ Feature: Category API Management
 
   @duplicate_category_without_parent
   Scenario: Create category with duplicate name without parent
-    Given main category "Main 2" already exists
+    Given main category "Flowering" already exists
     And Admin sets the endpoint "/api/categories"
     When Admin sends POST request for categories with payload
       """
@@ -42,7 +42,7 @@ Feature: Category API Management
 
   @create_subcategory_under_parent
   Scenario: Create sub category under parent category
-    Given parent category "Main 1" exists
+    Given parent category "Flowering" exists
     And Admin sets the endpoint "/api/categories"
     When Admin sends POST request for categories with payload
       """
@@ -60,14 +60,14 @@ Feature: Category API Management
 
   @duplicate_subcategory_same_parent
   Scenario: Create sub category with duplicate name under same parent
-    Given parent category "Main 1" exists
-    And subcategory "Sub_1" already exists under parent "Main 1"
+    Given parent category "Flowering" exists
+    And subcategory "CAT1" already exists under parent "Flowering"
     And Admin sets the endpoint "/api/categories"
     When Admin sends POST request for categories with payload
       """
       {
         "id": 0,
-        "name": "Sub_1",
+        "name": "CAT1",
         "parent": {
           "id": "stored_parent_id"
         }
@@ -79,7 +79,7 @@ Feature: Category API Management
       {
         "status": 400,
         "error": "DUPLICATE_RESOURCE",
-        "message": "Sub-category 'Sub_1' already exists under this parent",
+        "message": "Sub-category 'CAT1' already exists under this parent",
         "timestamp": "any_non_empty_string"
       }
       """
