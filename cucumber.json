@@ -5,9 +5,7 @@
     },
     "publishQuiet": true,
     "dryRun": false,
-    "paths": [
-      "src/test/features/**/*.feature"
-    ],
+    "paths": [],
     "import": [
       "src/test/steps/**/*.js",
       "src/test/hooks/**/*.js",
