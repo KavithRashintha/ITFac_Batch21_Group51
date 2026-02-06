@@ -164,3 +164,13 @@ Then("Total price should be calculated correctly", function () {
 
   expect(sale.totalPrice).toBe(expectedTotal);
 });
+
+// -------------------- Invalid plant id testing --------------------
+
+Then(
+  "Response body should contain error message {string}",
+  function (expectedMessage) {
+    expect(this.responseBody).toHaveProperty("message");
+    expect(this.responseBody.message).toContain(expectedMessage);
+  },
+);
