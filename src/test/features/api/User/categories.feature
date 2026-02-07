@@ -1,5 +1,5 @@
 @categories-user-apitests
-Feature: User Category API Operations
+Feature: Category Management - User
 
   Background:
     Given User logs in with username "testuser" and password "test123"
@@ -53,8 +53,8 @@ Feature: User Category API Operations
     When User sends POST request for categories with payload
       """
       {
-        "id": 0,
-        "name": "UserCat"
+        "id": 8,
+        "name": "Category 4"
       }
       """
     Then Response status code should be 403
@@ -65,5 +65,80 @@ Feature: User Category API Operations
         "error": "Forbidden",
         "path": "/api/categories",
         "timestamp": "any_non_empty_string"
+      }
+      """
+
+  # TC_USER_CAT_16
+  @updateCategoryNonAdmin
+  Scenario: Verify PUT category method (Forbidden for User)
+    And "User" sets the endpoint "/api/categories/15"
+    When "User" sends "PUT" request with token and payload
+      """
+      {
+        "name": "Category 3",
+        "parentId": null
+      }
+      """
+    Then Response status code should be 403
+    # Matches the structure we defined for the bug report in previous turns
+    And Response body should match JSON structure
+      """
+      {
+        "status": 403,
+        "error": "Forbidden",
+        "path": "any_non_empty_string",
+        "timestamp": "any_non_empty_string"
+      }
+      """
+
+  # TC_USER_CAT_17
+  @deleteCategoryNonAdmin
+  Scenario: Verify DELETE category by Id method (Forbidden for User)
+    And "User" sets the endpoint "/api/categories/1"
+    When "User" sends "DELETE" request with token
+    Then Response status code should be 403
+
+  # TC_USER_CAT_18
+  @getValidCategory
+  Scenario: Verify GET specific category by ID for an existing valid category ID
+    And "User" sets the endpoint "/api/categories/8"
+    When "User" sends "GET" request with token
+    Then Response status code should be 200
+    And Response body should match JSON structure
+      """
+      {
+      "id": 8,
+      "name": "Sub_Cat 5",
+      "parentId": 4
+      }
+      """
+
+  # TC_USER_CAT_19
+  @getInvalidCategory
+  Scenario: Verify GET specific category by ID for a non existing category ID
+    And "User" sets the endpoint "/api/categories/99999"
+    When "User" sends "GET" request with token
+    Then Response status code should be 404
+    And Response body should match JSON structure
+      """
+      {
+        "status": 404,
+        "error": "NOT_FOUND",
+        "message": "Category not found: 99999",
+        "timestamp": "any_non_empty_string"
+      }
+      """
+
+  # TC_USER_CAT_20
+  @getCatgorySummary
+  Scenario: Verify GET Category summary method
+    And "User" sets the endpoint "/api/categories/summary"
+    When "User" sends "GET" request with token
+    Then Response status code should be 200
+    And Response body should match JSON structure
+      """
+      {
+        "mainCategories": "any_number",
+        "subCategories": "any_number"
       }
       """

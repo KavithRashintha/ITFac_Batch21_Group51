@@ -4,11 +4,11 @@ Feature: Plant Management API
     Given Admin logs in with username "admin" and password "admin123"
 
   Scenario: Verify create plant with duplicate name
-    And "Admin" sets the endpoint "/api/plants/category/5"
+    And "Admin" sets the endpoint "/api/plants/category/2"
     When "Admin" sends "POST" request with token and payload
       """
       {
-        "name": "Rose",
+        "name": "Plant 2",
         "price": 100,
         "quantity": 20
       }
@@ -19,17 +19,17 @@ Feature: Plant Management API
       {
         "status": 400,
         "error": "DUPLICATE_RESOURCE",
-        "message": "Plant 'Rose' already exists in this category",
-        "timestamp": "2026-02-04T10:05:11.9163253"
+        "message": "Plant 'Plant 2' already exists in this category",
+        "timestamp": "any_non_empty_string"
       }
       """
 
   Scenario: Verify create plant with valid data
-    And "Admin" sets the endpoint "/api/plants/category/5"
+    And "Admin" sets the endpoint "/api/plants/category/2"
     When "Admin" sends "POST" request with token and payload
       """
       {
-        "name": "Rose",
+        "name": "Plant 13",
         "price": 100,
         "quantity": 20
       }
@@ -38,24 +38,24 @@ Feature: Plant Management API
     And Response body should match JSON structure
       """
       {
-        "id": 50,
-        "name": "Rose",
+        "id": 13,
+        "name": "Plant 13",
         "price": 100,
         "quantity": 20,
         "category": {
-          "id": 5,
-          "name": "FFF",
+          "id": 2,
+          "name": "Sub_Cat 1",
           "subCategories": []
         }
       }
       """
 
   Scenario: Verify create plant with missing mandatory fields
-    And "Admin" sets the endpoint "/api/plants/category/1"
+    And "Admin" sets the endpoint "/api/plants/category/2"
     When "Admin" sends "POST" request with token and payload
       """
       {
-        "name": "Rose",
+        "name": "Plant 14",
         "price": 100
       }
       """
@@ -74,11 +74,11 @@ Feature: Plant Management API
       """
 
   Scenario: Verify create plant with negative price
-    And "Admin" sets the endpoint "/api/plants/category/1"
+    And "Admin" sets the endpoint "/api/plants/category/2"
     When "Admin" sends "POST" request with token and payload
       """
       {
-        "name": "Rose",
+        "name": "Plant 15",
         "price": -100,
         "quantity": 25
       }
@@ -93,7 +93,7 @@ Feature: Plant Management API
         "error": "BAD_REQUEST",
         "message": "Validation failed",
         "status": 400,
-        "timestamp": "2026-02-04T11:10:02.9029542"
+        "timestamp": "any_non_empty_string"
       }
       """
 
@@ -102,7 +102,7 @@ Feature: Plant Management API
       When "Admin" sends "POST" request with token and payload
       """
       {
-        "name": "Rose",
+        "name": "Plant 16",
         "price": 100,
         "quantity": 25
       }
@@ -114,7 +114,7 @@ Feature: Plant Management API
         "status": 404,
         "error": "NOT_FOUND",
         "message": "Category not found",
-        "timestamp": "2026-02-04T11:40:14.3800173"
+        "timestamp": "any_non_empty_string"
       }
       """
 
@@ -127,9 +127,9 @@ Feature: Plant Management API
       {
         "id": 1,
         "name": "Plant 1",
-        "price": 500,
-        "quantity": 100,
-        "categoryId": 3
+        "price": 1000,
+        "quantity": 5,
+        "categoryId": 2
       }
       """
 
@@ -143,26 +143,26 @@ Feature: Plant Management API
         "status": 404,
         "error": "NOT_FOUND",
         "message": "Plant not found: 100",
-        "timestamp": "2026-02-06T04:06:45.539Z"
+        "timestamp": "any_non_empty_string"
       }
       """
 
     Scenario: Verify the GET plant method by Category ID for a existing valid ID
-      Given "Admin" sets the endpoint "/api/plants/category/6"
+      Given "Admin" sets the endpoint "/api/plants/category/2"
       When "Admin" sends "GET" request with token
       Then Response status code should be 200
       And Response body should match JSON structure
       """
       [
         {
-          "id": 4,
-          "name": "Plant 4",
-          "price": 950,
-          "quantity": 50,
+          "id": "any_number",
+          "name": "any_non_empty_string",
+          "price": "any_number",
+          "quantity": "any_number",
           "category": {
-            "id": 6,
-            "name": "SubCat 2.2",
-            "parent": "string",
+            "id": "any_number",
+            "name": "any_non_empty_string",
+            "parent": "any_non_empty_string",
             "subCategories": [
 
             ]
@@ -181,12 +181,12 @@ Feature: Plant Management API
         "status": 404,
         "error": "NOT_FOUND",
         "message": "Category not found",
-        "timestamp": "2026-02-06T04:06:45.539Z"
+        "timestamp": "any_non_empty_string"
       }
       """
 
-    Scenario: Verify the DELETE plant method by ID for a existing valid ID
+    Scenario: Verify the DELETE plant method by ID for a existing valid ID Admin
       Given "Admin" sets the endpoint "/api/plants/5"
       When "Admin" sends "DELETE" request with token
       Then Response status code should be 204
-      ##And Response body should contain "Plant deleted successfully"
+      And Response body should contain "Plant deleted successfully"

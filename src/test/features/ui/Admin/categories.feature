@@ -1,12 +1,12 @@
 @categories
-Feature: Category Management - Admin
+Feature: Category Management - Admin UI
 
     Background:
         Given the user logged-in as "Admin"
         When the user provide credentials with username "admin" and password "admin123" and click the login button for ui
         Then User should be redirected to the dashboard
 
-    @viewCategories
+    @viewcategories
     Scenario: Verify category page is visible to admin user
         When user navigates to "ui/categories"
         Then category list table should be visible
@@ -14,53 +14,92 @@ Feature: Category Management - Admin
         And search option should be visible
         And sorting option should be visible
 
-    @addCategory
+    @addcategory
     Scenario: Verify Add Category button is visible to Admin
         When user navigates to "ui/categories"
         Then Add Category button should be visible and enabled
 
-    @editCategory
+    #TC_ADMIN_CAT_13
+    @editcategory
     Scenario: Verify the Edit category button in Actions 
         When user navigates to "ui/categories"
         And user clicks on Edit button
         Then user navigates to edit category page
 
-    @editCategoryName
-    Scenario: Verify the Validation errors when editing a categoryName that not meet the valid criteria (3-10)
+    #TC_ADMIN_CAT_14
+    @editcategoryname
+    Scenario Outline: Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10)
         When user navigates to "ui/categories"
         And user clicks on Edit button
         And user navigates to edit category page
-        And user provide categoryName "AnthuriumAnthurium" 
-        Then user click save button
+        And user provide categoryName "<name>"
+        Then the error message should be visible
 
-    @categoryName_required
+    Examples:
+      | name            |
+      |                 |
+      |An               |
+      |Anthuriummm      |
+      |Anthuriummmmmmmmm|
+
+    #TC_ADMIN_CAT_15
+    @editcategorySaveButton
+    Scenario: Verify the Save button functionality in the Edit Category
+        When user navigates to "ui/categories"
+        And user clicks on edit button for category "Sub_Cat 1"
+        And user navigates to edit category page
+        And user edits the categoryname "Sub_Cat 1"
+        And user click save button
+        Then user navigates to category page
+        And the success message should be displayed
+        And the category name should be updated to "Sub_Cat 01"
+
+    #TC_ADMIN_CAT_16
+    @editcategoryCancelButton
+    Scenario: Verify the Cancel button functionality in the Edit Category
+        When user navigates to "ui/categories"
+        And user clicks on edit button for category "Sub_Cat 1"
+        And user navigates to edit category page
+        And user edits the categoryname "Sub_Cat 1"
+        And user clicks on cancel button
+        Then user navigates to category page
+        And the category name should remain as "Sub_Cat 1"
+
+    #TC_ADMIN_CAT_17
+    @deleteCategoryConfirmation
+    Scenario: Verify the Delete Category button in Action
+        When user navigates to "ui/categories"
+        And user clicks on delete button for category "Sub_Cat 1"
+        Then delete confirmation popup should be displayed
+
+    @categoryname_required
     Scenario: Verify category name is required to create a category
         When user navigates to "ui/categories"
         And user clicks on Add Category button
         And user clicks save button without entering category name
         Then validation message "Category name is required" should be displayed
 
-    @categorySorting
+    @categorysorting
     Scenario: Verify category list sorting works for ID, Name and Parent
         When user navigates to "ui/categories"
         Then user sorts category list by ID
         And user sorts category list by Name
         And user sorts category list by Parent
 
-    @searchWithoutParent
+    @searchwithoutparent
     Scenario: Verify categories can be searched without selecting parent category
         When user navigates to "ui/categories"
-        And user enters subcategory name "CAT1" in search field
+        And user enters subcategory name "Sub_Cat 1" in search field
         And user clicks Search button
         Then search results should be displayed
         And results should match the search criteria
 
-    @filterByParent
+    @filterbyparent
     Scenario: Verify filtering categories by parent category
         When user navigates to "ui/categories"
-        And user selects parent category "Flowering"
+        And user selects parent category "Category 1"
         And user clicks Search button
-        Then only subcategories belonging to parent category "Flowering" should be displayed
+        Then only subcategories belonging to parent category "Category 1" should be displayed
 
 
 

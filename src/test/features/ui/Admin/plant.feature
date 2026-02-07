@@ -1,5 +1,5 @@
 @plants
-Feature: Plant management
+Feature: Plant Management - Admin
 
   Background:
     Given the user logged-in as "Admin"
@@ -12,45 +12,45 @@ Feature: Plant management
 
   Scenario: Verify plant quantity cannot be a minus value
     And User clicks "Add a Plant" button
-    And Provide "valid" plantName "Anthurium", select category "subcat 1.1", price as "1000", and quantity as "-1" for ui
+    And Provide "valid" plantName "Plant 6", select category "Sub_Cat 3", price as "1500", and quantity as "-1" for ui
     And User clicks "Save" button
     Then User see an error message as "Quantity cannot be negative"
 
   Scenario: Verify plant name length validation
     And User clicks "Add a Plant" button
-    And Provide "invalid" plantName "ab", select category "subcat 1.1", price as "500", and quantity as "10" for ui
+    And Provide "invalid" plantName "ab", select category "Sub_Cat 3", price as "250", and quantity as "40" for ui
     And User clicks "Save" button
     Then User see an error message as "Plant name must be between 3 and 25 characters"
 
-    When Provide "invalid" plantName "This is a lengthy plant name", select category "subcat 1.1", price as "120", and quantity as "12" for ui
+    When Provide "invalid" plantName "This is a lengthy plant name", select category "Sub_Cat 4", price as "650", and quantity as "20" for ui
     And User clicks "Save" button
     Then User see an error message as "Plant name must be between 3 and 25 characters"
 
   Scenario: Verify plant category validation
     And User clicks "Add a Plant" button
-    When Provide "valid" plantName "Daffodil1", select category "", price as "700", and quantity as "15" for ui
+    When Provide "valid" plantName "Plant 4", select category "", price as "800", and quantity as "2" for ui
     And User clicks "Save" button
     Then User see an error message as "Category is required"
 
   Scenario: Verify price validation
     And User clicks "Add a Plant" button
-    When Provide "valid" plantName "Blue Water Lily", select category "subcat 1.1", price as "0", and quantity as "15" for ui
+    When Provide "valid" plantName "Plant 12", select category "Sub_Cat 4", price as "0", and quantity as "20" for ui
     And User clicks "Save" button
     Then User see an error message as "Price must be greater than 0"
 
-    When Provide "valid" plantName "Blue Water Lily", select category "subcat 1.1", price as "", and quantity as "15" for ui
+    When Provide "valid" plantName "Plant 12", select category "Sub_Cat 4", price as "", and quantity as "20" for ui
     And User clicks "Save" button
     Then User see an error message as "Price is required"
 
   Scenario: Verify successful plant addition
     And User clicks "Add a Plant" button
-    When Provide "valid" plantName "Daffodil1", select category "subcat 1.1", price as "700", and quantity as "15" for ui
+    When Provide "valid" plantName "Plant 10", select category "Sub_Cat 4", price as "800", and quantity as "19" for ui
     And User clicks "Save" button
     Then User see a success message as "Plant added successfully"
 
   Scenario: Verify duplicate validation
     And User clicks "Add a Plant" button
-    When Provide "invalid" plantName "Daffodil1", select category "subcat 1.1", price as "500", and quantity as "12" for ui
+    When Provide "invalid" plantName "Plant 10", select category "Sub_Cat 4", price as "800", and quantity as "19" for ui
     And User clicks "Save" button
     Then User see an error message as "Plant 'Daffodil1' already exists in this category"
 
@@ -63,11 +63,11 @@ Feature: Plant management
 
     Examples:
       | status  | name        | category    | price | quantity |
-      | valid   | testplant   | subcat 1.1  | 700   | 15       |
-      | invalid |             | subcat 1.1  | 700   | 15       |
-      | invalid | testplant   |             | 700   | 15       |
-      | invalid | testplant   | subcat 1.1  |       | 15       |
-      | valid   | testplant   | subcat 1.1  | 700   |          |
+      | valid   | plant11     | Sub_Cat 1   | 750   | 16       |
+      | invalid |             | Sub_Cat 1   | 1000  | 5        |
+      | invalid | Plant 1     |             | 1000  | 5        |
+      | invalid | Plant 1     | Sub_Cat 1   |       | 5        |
+      | valid   | Plant 1     | Sub_Cat 1   | 1000  |          |
       | invalid |             |             |       |          |
 
   Scenario: Verify visibility of the pagination for plants list for admin

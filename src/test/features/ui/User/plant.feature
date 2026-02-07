@@ -1,5 +1,5 @@
 @plants
-Feature: Plant Management
+Feature: Plant Management - User
 
   Background:
     Given the user logged-in as "User"
@@ -12,12 +12,13 @@ Feature: Plant Management
     And All plants should be displayed
 
   Scenario: Verify filter by a specific plant category
-    Then User selects category "Fl_01" from filter
-    And Only plants with category "ABC" should be displayed
+    Then User selects category "Sub_Cat_1" from filter
+    And User clicks "Search" button
+    And Only plants with category "Sub_Cat_1" should be displayed
 
   Scenario: Verify search plants by existing plant name
-    Then User searches for plant "Anthurium"
-    And The plant "Anthurium" should be visible in the results
+    Then User searches for plant "Plant 1"
+    And The plant "Plant 1" should be visible in the results
 
   Scenario: Verify search plants by non-existing plant name
     Then User searches for plant "NonExistentPlant"
@@ -25,10 +26,10 @@ Feature: Plant Management
     Then A message "No plants found" should be visible
 
   Scenario: Verify search with a valid plant name and a specific category filter
-    Then User searches for plant "Anthurium"
-    And User selects category "Fl_01" from filter
-    Then The plant "Anthurium" should be visible in the results
-    And Only plants with category "Fl_01" should be displayed
+    Then User searches for plant "Plant 1"
+    And User selects category "Sub_Cat 1" from filter
+    Then The plant "Plant 1" should be visible in the results
+    And Only plants with category "Sub_Cat 1" should be displayed
 
   Scenario: Verify visibility of the pagination for plants list
     Then The pagination should be visible for non-admin user

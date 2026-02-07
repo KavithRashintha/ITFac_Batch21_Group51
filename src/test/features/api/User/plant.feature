@@ -21,14 +21,14 @@ Feature: Plant Management API
     And Response page number should be 1
 
   Scenario: Verify search plants by existing name
-    And "User" sets the endpoint "/api/plants/paged?name=Rose&page=0&size=10"
+    And "User" sets the endpoint "/api/plants/paged?name=Plant 1&page=0&size=10"
     When "User" sends "GET" request with token
     Then Response status code should be 200
-    And Response body 'content' should be an array with at least 1 items
-    And The first plant in 'content' should have name "Rose"
+    And Response body 'content' should be an array with 1 items
+    And The first plant in 'content' should have name "Plant 1"
 
   Scenario: Verify search plants by non-existing name
-    And "User" sets the endpoint "/api/plants/paged?name=NonExistingPlant&page=0&size=10"
+    And "User" sets the endpoint "/api/plants/paged?name=Plant 25&page=0&size=10"
     When "User" sends "GET" request with token
     Then Response status code should be 200
     And Response body 'content' should be an array with 0 items
@@ -66,7 +66,7 @@ Feature: Plant Management API
       }
       """
 
-  Scenario: Verify the DELETE plant method by ID for a existing valid ID
+  Scenario: Verify the DELETE plant method by ID for a existing valid ID User
     And "User" sets the endpoint "/api/plants/1"
     When "User" sends "DELETE" request with token
     Then Response status code should be 403
@@ -76,7 +76,7 @@ Feature: Plant Management API
         "status": 403,
         "error": "Forbidden",
         "message": "string",
-        "timestamp": "2026-02-06T09:08:18.880Z"
+        "timestamp": "any_non_empty_string"
       }
       """
 
@@ -103,7 +103,7 @@ Feature: Plant Management API
         "status": 403,
         "error": "Forbidden",
         "message": "string",
-        "timestamp": "2026-02-06T09:08:18.880Z"
+        "timestamp": "any_non_empty_string"
       }
       """
 
@@ -130,6 +130,6 @@ Feature: Plant Management API
         "status": 403,
         "error": "Forbidden",
         "message": "string",
-        "timestamp": "2026-02-06T09:08:18.880Z"
+        "timestamp": "any_non_empty_string"
       }
       """
