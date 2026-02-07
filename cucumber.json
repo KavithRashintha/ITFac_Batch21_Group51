@@ -2,10 +2,10 @@
   "default": {
     "format": [
       "summary",
-      "allure-cucumberjs/reporter"
+      "progress",
+      "allure-cucumberjs/reporter:out.txt"
     ],
     "formatOptions": {
-      "snippetInterface": "async-await",
       "resultsDir": "allure-results"
     },
     "publishQuiet": true,
@@ -13,7 +13,8 @@
     "import": [
       "src/test/steps/**/*.js",
       "src/test/hooks/**/*.js",
-      "src/test/context/**/*.js"
+      "src/test/context/**/*.js",
+      "src/test/pages/**/*.js"
     ]
   }
 }

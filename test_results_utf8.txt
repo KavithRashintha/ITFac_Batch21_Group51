@@ -1,0 +1,1781 @@
+﻿
+> itfac_batch21_group51@1.0.0 test
+> cucumber-js
+
+.....F--..................F--....................................F-.......F-.......F-.......FA.......F-.......F-........F.......F-...................................F.................F.......F-.......F..............................................F---..........................................
+Verifying ASC sort order for field: name
+Total records: 6
+F.................................F-.........................F..........................F-.................F.................F........F........F.................F-.................................................A----.......A-.......A--.......A----.......A----.......A----.......A----.......A-------.......A------.......A--.......A---.......A-UU.......A----.......A---.................A-A-........A-A--A-........A-A-........A-A--A-........A-A-........A-A-........A-A--........A-A--........A-A--........A-A--........A-A--........A-A--..................A-.........F.........F.....................................................A----.......AU.......UU.......UU.......AUUU.......AUUU.......AUUUUUU..................FA-.........F....................F--.F................A-......................................................F--........U........U........U........U........U........U...................A--....A----..................U......................................................................F-.......F-..
+
+Failures:
+
+1) Scenario: Create category without parent # src\test\features\api\Admin\categories.feature:8
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+   ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   ΓêÜ And Admin sets the endpoint "/api/categories" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\salesSteps.js:5
+   ΓêÜ When Admin sends POST request for categories with payload # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\categoriesSteps.js:91
+       """
+       {
+         "id": 7,
+         "name": "Category 3"
+       }
+       """
+   ├ù Then Response status code should be 201 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+       Error: expect(received).toBe(expected) // Object.is equality
+
+       Expected: 201
+       Received: 400
+           at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+           at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+   - And Response body should contain expected category name # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\categoriesSteps.js:230
+   - And Response body should have property "subCategories" as empty array # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\categoriesSteps.js:234
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+       Attachment (image/png)
+
+2) Scenario: Create sub category under parent category # src\test\features\api\Admin\categories.feature:44
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+   ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   ΓêÜ Given parent category "Category 1" exists # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\categoriesSteps.js:6
+   ΓêÜ And Admin sets the endpoint "/api/categories" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\salesSteps.js:5
+   ΓêÜ When Admin sends POST request for categories with payload # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\categoriesSteps.js:91
+       """
+       {
+         "id": 8,
+         "name": "Sub_Cat 5",
+         "parent": {
+           "id": 4
+         }
+       }
+       """
+   ├ù Then Response status code should be 201 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+       Error: expect(received).toBe(expected) // Object.is equality
+
+       Expected: 201
+       Received: 400
+           at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+           at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+   - And Response body should contain expected category name # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\categoriesSteps.js:230
+   - And Response body should have parent with stored parent id # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\categoriesSteps.js:239
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+       Attachment (image/png)
+
+3) Scenario: Verify PUT category method for updating the category name with valid data # src\test\features\api\Admin\categories.feature:137
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+   ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   ΓêÜ And "Admin" sets the endpoint "/api/categories/15" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   ΓêÜ When "Admin" sends "PUT" request with token and payload # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:44
+       """
+       {
+         "name": "Sub_Cat4",
+         "parentId": 4
+       }
+       """
+   ├ù Then Response status code should be 200 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+       Error: expect(received).toBe(expected) // Object.is equality
+
+       Expected: 200
+       Received: 404
+           at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+           at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+   - And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+         "id": 5,
+         "name": "Sub_Cat4",
+         "subCategories": []
+       }
+       """
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+       Attachment (image/png)
+
+4) Scenario: Verify PUT category method for updating the parent ID with valid data # src\test\features\api\Admin\categories.feature:159
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+   ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   ΓêÜ And "Admin" sets the endpoint "/api/categories/15" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   ΓêÜ When "Admin" sends "PUT" request with token and payload # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:44
+       """
+       {
+         "name": "Sub_Cat4_",
+         "parentId": 4
+       }
+       """
+   ├ù Then Response status code should be 200 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+       Error: expect(received).toBe(expected) // Object.is equality
+
+       Expected: 200
+       Received: 404
+           at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+           at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+   - And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+          "id": 5,
+          "name": "Sub_Cat4_",
+          "subCategories": []
+       }
+       """
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+       Attachment (image/png)
+
+5) Scenario: Verify PUT category method with an empty category name # src\test\features\api\Admin\categories.feature:181
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+   ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   ΓêÜ And "Admin" sets the endpoint "/api/categories/15" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   ΓêÜ When "Admin" sends "PUT" request with token and payload # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:44
+       """
+       {
+         "name": "",
+         "parentId": 4
+       }
+       """
+   ├ù Then Response status code should be 400 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+       Error: expect(received).toBe(expected) // Object.is equality
+
+       Expected: 400
+       Received: 404
+           at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+           at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+   - And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+         "status": 400,
+         "error": "BAD_REQUEST",
+         "message": "Category name must not be empty"
+       }
+       """
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+       Attachment (image/png)
+
+6) Scenario: Verify DELETE category by Id method for deleting a category that has no subcategories # src\test\features\api\Admin\categories.feature:202
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+   ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   ΓêÜ And "Admin" sets the endpoint "/api/categories/7" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   ΓêÜ When "Admin" sends "DELETE" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+   ├ù Then Response status code should be 204 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+       Error: expect(received).toBe(expected) // Object.is equality
+
+       Expected: 204
+       Received: 404
+           at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+           at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+   ├ù And Response body should contain "Category deleted successfully"
+       Multiple step definitions match:
+         Response body should contain {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:99 
+         Response body should contain {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:120
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+       Attachment (image/png)
+
+7) Scenario: Verify DELETE category method for attempting to delete a category that has one or more subcategories # src\test\features\api\Admin\categories.feature:211
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+   ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   ΓêÜ And "Admin" sets the endpoint "/api/categories/4" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   ΓêÜ When "Admin" sends "DELETE" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+   ├ù Then Response status code should be 409 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+       Error: expect(received).toBe(expected) // Object.is equality
+
+       Expected: 409
+       Received: 500
+           at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+           at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+   - And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+         "status": 409,
+         "error": "CONFLICT",
+         "message": "Cannot delete main category because it has associated subcategories"
+       }
+       """
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+       Attachment (image/png)
+
+8) Scenario: Verify DELETE category method for attempting to delete a category that has related records # src\test\features\api\Admin\categories.feature:227
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+   ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   ΓêÜ And "Admin" sets the endpoint "/api/categories/4" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   ΓêÜ When "Admin" sends "DELETE" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+   ├ù Then Response status code should be 409 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+       Error: expect(received).toBe(expected) // Object.is equality
+
+       Expected: 409
+       Received: 500
+           at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+           at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+   - And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+         "status": 409,
+         "error": "CONFLICT",
+         "message": "Cannot delete category because it has related plant/sales records"
+       }
+       """
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+       Attachment (image/png)
+
+9) Scenario: Verify create plant with duplicate name # src\test\features\api\Admin\plant.feature:6
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+   ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+   ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+   ΓêÜ And "Admin" sets the endpoint "/api/plants/category/2" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+   ΓêÜ When "Admin" sends "POST" request with token and payload # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:44
+       """
+       {
+         "name": "Plant 2",
+         "price": 100,
+         "quantity": 20
+       }
+       """
+   ΓêÜ Then Response status code should be 400 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+   ├ù And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+       """
+       {
+         "status": 400,
+         "error": "DUPLICATE_RESOURCE",
+         "message": "Plant 'Plant 2' already exists in this category",
+         "timestamp": "any_non_empty_string"
+       }
+       """
+       Error: expect(received).toBe(expected) // Object.is equality
+
+       Expected: "DUPLICATE_RESOURCE"
+       Received: "BAD_REQUEST"
+           at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+           at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:93:36)
+           at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:96:5)
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+   ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+       Attachment (image/png)
+
+10) Scenario: Verify create plant with valid data # src\test\features\api\Admin\plant.feature:27
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ And "Admin" sets the endpoint "/api/plants/category/2" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "Admin" sends "POST" request with token and payload # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:44
+        """
+        {
+          "name": "Plant 13",
+          "price": 100,
+          "quantity": 20
+        }
+        """
+    ├ù Then Response status code should be 201 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+        Error: expect(received).toBe(expected) // Object.is equality
+
+        Expected: 201
+        Received: 400
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+    - And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+        """
+        {
+          "id": 13,
+          "name": "Plant 13",
+          "price": 100,
+          "quantity": 20,
+          "category": {
+            "id": 2,
+            "name": "Sub_Cat 1",
+            "subCategories": []
+          }
+        }
+        """
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+11) Scenario: Verify the GET plant method by ID for a existing valid ID # src\test\features\api\Admin\plant.feature:121
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ Given "Admin" sets the endpoint "/api/plants/1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "Admin" sends "GET" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+    ΓêÜ Then Response status code should be 200 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    ├ù And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+        """
+        {
+          "id": 1,
+          "name": "Plant 1",
+          "price": 1000,
+          "quantity": 5,
+          "categoryId": 2
+        }
+        """
+        Error: expect(received).toBe(expected) // Object.is equality
+
+        Expected: 5
+        Received: 2
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:93:36)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:96:5)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+12) Scenario: Verify the GET plant method by Category ID for a existing valid ID # src\test\features\api\Admin\plant.feature:150
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ Given "Admin" sets the endpoint "/api/plants/category/2" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "Admin" sends "GET" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+    ΓêÜ Then Response status code should be 200 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    ├ù And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+        """
+        [
+          {
+            "id": "any_number",
+            "name": "any_non_empty_string",
+            "price": "any_number",
+            "quantity": "any_number",
+            "category": {
+              "id": "any_number",
+              "name": "any_non_empty_string",
+              "parent": "any_non_empty_string",
+              "subCategories": [
+
+              ]
+            }
+          }
+        ]
+        """
+        Error: expect(received).toHaveProperty(path)
+
+        Expected path: "parent"
+        Received path: []
+
+        Received value: {"id": 2, "name": "Category 1", "subCategories": [{"id": 4, "name": "CAT1", "subCategories": [{"id": 5, "name": "Sub_Cat 3", "subCategories": []}, {"id": 6, "name": "Sub_Cat 5", "subCategories": []}]}]}
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:45:31)
+            at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:81:17)
+            at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:81:17)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:96:5)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+13) Scenario: Verify the GET plant method by Category ID for a non-existing ID # src\test\features\api\Admin\plant.feature:174
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ Given "Admin" sets the endpoint "/api/plants/category/100" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "Admin" sends "GET" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+    ├ù Then Response status code should be 404 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+        Error: expect(received).toBe(expected) // Object.is equality
+
+        Expected: 404
+        Received: 200
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+    - And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+        """
+        {
+          "status": 404,
+          "error": "NOT_FOUND",
+          "message": "Category not found",
+          "timestamp": "any_non_empty_string"
+        }
+        """
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+14) Scenario: Verify the DELETE plant method by ID for a existing valid ID # src\test\features\api\Admin\plant.feature:188
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ Given "Admin" sets the endpoint "/api/plants/5" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "Admin" sends "DELETE" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+    ├ù Then Response status code should be 204 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+        Error: expect(received).toBe(expected) // Object.is equality
+
+        Expected: 204
+        Received: 500
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+15) Scenario: Ensure deletion fails when attempting to delete a sale that was already deleted # src\test\features\api\Admin\sales.feature:43
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given Admin logs in with username "admin" and password "admin123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ And Admin sets the endpoint "/api/sales/12" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\salesSteps.js:5
+    ΓêÜ When Admin sends "DELETE" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\salesSteps.js:10
+    ├ù Then Response should have status code 204 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\salesSteps.js:112
+        Error: expect(received).toBe(expected) // Object.is equality
+
+        Expected: 204
+        Received: 404
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/Admin/salesSteps.js:113:34)
+    - When Admin sends "DELETE" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\salesSteps.js:10
+    - Then Response should have status code 404 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\salesSteps.js:112
+    - And Response body should contain error message "Sale not found" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\salesSteps.js:170
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+16) Scenario: User searches categories with pagination # src\test\features\api\User\categories.feature:35
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given User logs in with username "testuser" and password "test123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ Given User sets the endpoint "/api/categories/page" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\User\categoriesSteps.js:10
+    ΓêÜ And User sets query parameters # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\User\categoriesSteps.js:33
+        | name      |      |
+        | parentId  |      |
+        | page      | 0    |
+        | size      | 10   |
+        | sortField | name |
+        | sortDir   | asc  |
+    ΓêÜ When User sends GET request # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\User\categoriesSteps.js:16
+    ΓêÜ Then Response status code should be 200 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    ΓêÜ And Response body should have pagination structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\User\categoriesSteps.js:72
+    ΓêÜ And Number of records should be less than or equal to 10 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\User\categoriesSteps.js:90
+    ├ù And Results should be sorted by "name" in "asc" order # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\User\categoriesSteps.js:94
+        Error: Results are not sorted by "name" in "asc" order.
+        Found 5 violation(s):
+          [0ΓåÆ1]: "Sub_Cat 5" > "Sub_Cat 3"
+          [1ΓåÆ2]: "Sub_Cat 3" > "Category 3"
+          [2ΓåÆ3]: "Category 3" > "Category 2"
+          [3ΓåÆ4]: "Category 2" > "Category 1"
+          [4ΓåÆ5]: "Category 1" > "CAT1"
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/User/categoriesSteps.js:151:15)
+            at Object.run (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\user_code_runner.js:24:27)
+            at C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\step_runner.js:64:114
+            at AsyncLocalStorage.run (node:async_hooks:346:14)
+            at runInTestCaseScope (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\scope\test_case_scope.js:9:26)
+            at Object.run (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\step_runner.js:64:63)
+            at async TestCaseRunner.invokeStep (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\test_case_runner.js:127:16)
+            at async TestCaseRunner.runStep (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\test_case_runner.js:299:26)
+            at async C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\test_case_runner.js:212:44
+            at async TestCaseRunner.aroundTestStep (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\test_case_runner.js:152:32)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+17) Scenario: Verify GET specific category by ID for an existing valid category ID # src\test\features\api\User\categories.feature:103
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given User logs in with username "testuser" and password "test123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ And "User" sets the endpoint "/api/categories/8" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "User" sends "GET" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+    ├ù Then Response status code should be 200 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+        Error: expect(received).toBe(expected) // Object.is equality
+
+        Expected: 200
+        Received: 404
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:36:36)
+    - And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+        """
+        {
+        "id": 8,
+        "name": "Sub_Cat 5",
+        "parentId": 4
+        }
+        """
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+18) Scenario: Verify unauthorized access # src\test\features\api\User\plant.feature:6
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given User logs in with username "testuser" and password "test123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ And "User" sets the endpoint "/api/plants/paged?page=0&size=5" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "User" sends "GET" request without token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:85
+    ├ù Then Response should have status code 401 and message containing "Unauthorized" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:113
+        Error: expect(received).toBe(expected) // Object.is equality
+
+        Expected: 401
+        Received: 200
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/plantSteps.js:114:36)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+19) Scenario: Verify search plants by existing name # src\test\features\api\User\plant.feature:23
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given User logs in with username "testuser" and password "test123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ And "User" sets the endpoint "/api/plants/paged?name=Plant 1&page=0&size=10" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "User" sends "GET" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+    ΓêÜ Then Response status code should be 200 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    ├ù And Response body 'content' should be an array with 1 items # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:125
+        Error: expect(received).toBe(expected) // Object.is equality
+
+        Expected: 1
+        Received: 4
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/plantSteps.js:129:33)
+    - And The first plant in 'content' should have name "Plant 1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:146
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+20) Scenario: Verify the GET all plants method # src\test\features\api\User\plant.feature:36
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given User logs in with username "testuser" and password "test123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ And "User" sets the endpoint "/api/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "User" sends "GET" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+    ΓêÜ Then Response status code should be 200 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    ├ù And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+        """
+        [
+          {
+            "id": "any_number",
+            "name": "any_non_empty_string",
+            "price": "any_number",
+            "quantity": "any_number",
+            "category": {
+              "id": "any_number",
+              "name": "any_non_empty_string",
+              "subCategories": []
+            }
+          }
+        ]
+        """
+        Error: expect(received).toBe(expected) // Object.is equality
+
+        Expected: 0
+        Received: 1
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:88:47)
+            at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:81:17)
+            at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:81:17)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:96:5)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+21) Scenario: Verify the DELETE plant method by ID for a existing valid ID # src\test\features\api\User\plant.feature:69
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given User logs in with username "testuser" and password "test123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ And "User" sets the endpoint "/api/plants/1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "User" sends "DELETE" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:10
+    ΓêÜ Then Response status code should be 403 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    ├ù And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+        """
+        {
+          "status": 403,
+          "error": "Forbidden",
+          "message": "string",
+          "timestamp": "any_non_empty_string"
+        }
+        """
+        Error: expect(received).toHaveProperty(path)
+
+        Expected path: "message"
+        Received path: []
+
+        Received value: {"error": "Forbidden", "path": "/api/plants/1", "status": 403, "timestamp": "2026-02-07T19:24:57.121+00:00"}
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:45:31)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:96:5)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+22) Scenario: Verify the POST method for create a plant # src\test\features\api\User\plant.feature:83
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given User logs in with username "testuser" and password "test123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ And "User" sets the endpoint "/api/plants/category/3" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "User" sends "POST" request with token and payload # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:44
+        """
+          {
+            "id": 15,
+            "name": "Rose",
+            "price": 100,
+            "quantity": 20,
+            "category": {
+              "id": 1,
+              "name": "Category 1",
+              "subCategories": []
+            }
+          }
+        """
+    ΓêÜ Then Response status code should be 403 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    ├ù And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+        """
+        {
+          "status": 403,
+          "error": "Forbidden",
+          "message": "string",
+          "timestamp": "any_non_empty_string"
+        }
+        """
+        Error: expect(received).toHaveProperty(path)
+
+        Expected path: "message"
+        Received path: []
+
+        Received value: {"error": "Forbidden", "path": "/api/plants/category/3", "status": 403, "timestamp": "2026-02-07T19:24:57.909+00:00"}
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:45:31)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:96:5)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+23) Scenario: Verify the PUT method for update a plant # src\test\features\api\User\plant.feature:110
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given User logs in with username "testuser" and password "test123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ And "User" sets the endpoint "/api/plants/2" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:5
+    ΓêÜ When "User" sends "PUT" request with token and payload # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\plantSteps.js:44
+        """
+          {
+            "id": 2,
+            "name": "Plant 2",
+            "price": 790,
+            "quantity": 50,
+            "category": {
+              "id": 4,
+              "name": "SubCat 1.2",
+              "subCategories": []
+            }
+          }
+        """
+    ΓêÜ Then Response status code should be 403 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:35
+    ├ù And Response body should match JSON structure # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:39
+        """
+        {
+          "status": 403,
+          "error": "Forbidden",
+          "message": "string",
+          "timestamp": "any_non_empty_string"
+        }
+        """
+        Error: expect(received).toHaveProperty(path)
+
+        Expected path: "message"
+        Received path: []
+
+        Received value: {"error": "Forbidden", "path": "/api/plants/2", "status": 403, "timestamp": "2026-02-07T19:24:59.327+00:00"}
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at validate (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:45:31)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:96:5)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+24) Scenario: Verify a regular user cannot delete a sale # src\test\features\api\User\sales.feature:13
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given User logs in with username "testuser" and password "test123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\loginSteps.js:5
+    ΓêÜ And Normal User sets the endpoint "/api/sales/5" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\User\salesSteps.js:5
+    ΓêÜ When User sends "DELETE" request with token # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\User\salesSteps.js:10
+    ├ù Then Response should have status code 403 # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\Admin\salesSteps.js:112
+        Error: expect(received).toBe(expected) // Object.is equality
+
+        Expected: 403
+        Received: 404
+            at Proxy.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\playwright\lib\matchers\expect.js:213:24)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/Admin/salesSteps.js:113:34)
+    - And Response body should contain error "Forbidden: You do not have permission to delete this sale" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\api\User\salesSteps.js:54
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+25) Scenario: Verify category page is visible to admin user # src\test\features\ui\Admin\categories.feature:10
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - Then category list table should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:96
+    - And pagination should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:101
+    - And search option should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:106
+    - And sorting option should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:111
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+26) Scenario: Verify Add Category button is visible to Admin # src\test\features\ui\Admin\categories.feature:18
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - Then Add Category button should be visible and enabled # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:115
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+27) Scenario: Verify the Edit category button in Actions # src\test\features\ui\Admin\categories.feature:24
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user clicks on Edit button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:12
+    - Then user navigates to edit category page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:16
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+28) Scenario: Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10) # src\test\features\ui\Admin\categories.feature:40
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user clicks on Edit button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:12
+    - And user navigates to edit category page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:16
+    - And user provide categoryName "" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:23
+    - Then the error message should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:28
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+29) Scenario: Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10) # src\test\features\ui\Admin\categories.feature:41
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user clicks on Edit button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:12
+    - And user navigates to edit category page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:16
+    - And user provide categoryName "An" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:23
+    - Then the error message should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:28
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+30) Scenario: Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10) # src\test\features\ui\Admin\categories.feature:42
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user clicks on Edit button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:12
+    - And user navigates to edit category page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:16
+    - And user provide categoryName "Anthuriummm" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:23
+    - Then the error message should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:28
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+31) Scenario: Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10) # src\test\features\ui\Admin\categories.feature:43
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user clicks on Edit button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:12
+    - And user navigates to edit category page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:16
+    - And user provide categoryName "Anthuriummmmmmmmm" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:23
+    - Then the error message should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:28
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+32) Scenario: Verify the Save button functionality in the Edit Category # src\test\features\ui\Admin\categories.feature:47
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user clicks on edit button for category "Sub_Cat 1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:37
+    - And user navigates to edit category page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:16
+    - And user edits the categoryname "Sub_Cat 1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:44
+    - And user click save button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:49
+    - Then user navigates to category page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:54
+    - And the success message should be displayed # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:58
+    - And the category name should be updated to "Sub_Cat 01" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:63
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+33) Scenario: Verify the Cancel button functionality in the Edit Category # src\test\features\ui\Admin\categories.feature:59
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user clicks on edit button for category "Sub_Cat 1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:37
+    - And user navigates to edit category page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:16
+    - And user edits the categoryname "Sub_Cat 1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:44
+    - And user clicks on cancel button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:70
+    - Then user navigates to category page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:54
+    - And the category name should remain as "Sub_Cat 1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:74
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+34) Scenario: Verify the Delete Category button in Action # src\test\features\ui\Admin\categories.feature:70
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user clicks on delete button for category "Sub_Cat 1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:81
+    - Then delete confirmation popup should be displayed # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:86
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+35) Scenario: Verify category name is required to create a category # src\test\features\ui\Admin\categories.feature:76
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user clicks on Add Category button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:125
+    - And user clicks save button without entering category name # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:132
+    - Then validation message "Category name is required" should be displayed # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:137
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+36) Scenario: Verify category list sorting works for ID, Name and Parent # src\test\features\ui\Admin\categories.feature:83
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - Then user sorts category list by ID # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:146
+    ? And user sorts category list by Name
+        Undefined. Implement with the following snippet:
+
+          Then('user sorts category list by Name', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? And user sorts category list by Parent
+        Undefined. Implement with the following snippet:
+
+          Then('user sorts category list by Parent', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+37) Scenario: Verify categories can be searched without selecting parent category # src\test\features\ui\Admin\categories.feature:90
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user enters subcategory name "Sub_Cat 1" in search field # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:169
+    - And user clicks Search button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:177
+    - Then search results should be displayed # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:183
+    - And results should match the search criteria # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:187
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+38) Scenario: Verify filtering categories by parent category # src\test\features\ui\Admin\categories.feature:98
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - And user selects parent category "Category 1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:199
+    - And user clicks Search button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:177
+    - Then only subcategories belonging to parent category "Category 1" should be displayed # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:205
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+39) Scenario: Verify plant quantity cannot be a minus value # src\test\features\ui\Admin\plant.feature:13
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - And Provide "valid" plantName "Plant 6", select category "Sub_Cat 3", price as "1500", and quantity as "-1" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Save" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User see an error message as "Quantity cannot be negative" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:35
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+40) Scenario: Verify plant name length validation # src\test\features\ui\Admin\plant.feature:19
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - And Provide "invalid" plantName "ab", select category "Sub_Cat 3", price as "250", and quantity as "40" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Save" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User see an error message as "Plant name must be between 3 and 25 characters" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:35
+    - When Provide "invalid" plantName "This is a lengthy plant name", select category "Sub_Cat 4", price as "650", and quantity as "20" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Save" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User see an error message as "Plant name must be between 3 and 25 characters" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:35
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+41) Scenario: Verify plant category validation # src\test\features\ui\Admin\plant.feature:29
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - When Provide "valid" plantName "Plant 4", select category "", price as "800", and quantity as "2" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Save" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User see an error message as "Category is required" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:35
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+42) Scenario: Verify price validation # src\test\features\ui\Admin\plant.feature:35
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - When Provide "valid" plantName "Plant 12", select category "Sub_Cat 4", price as "0", and quantity as "20" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Save" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User see an error message as "Price must be greater than 0" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:35
+    - When Provide "valid" plantName "Plant 12", select category "Sub_Cat 4", price as "", and quantity as "20" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Save" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User see an error message as "Price is required" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:35
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+43) Scenario: Verify successful plant addition # src\test\features\ui\Admin\plant.feature:45
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - When Provide "valid" plantName "Plant 10", select category "Sub_Cat 4", price as "800", and quantity as "19" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Save" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User see a success message as "Plant added successfully" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:40
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+44) Scenario: Verify duplicate validation # src\test\features\ui\Admin\plant.feature:51
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - When Provide "invalid" plantName "Plant 10", select category "Sub_Cat 4", price as "800", and quantity as "19" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Save" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User see an error message as "Plant 'Daffodil1' already exists in this category" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:35
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+45) Scenario: Verify Cancel button functionality # src\test\features\ui\Admin\plant.feature:66
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - When Provide "valid" plantName "plant11", select category "Sub_Cat 1", price as "750", and quantity as "16" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Cancel" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User should be on the "/ui/plants" page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:79
+    - And The plant "plant11" should not be in the list # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:84
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+46) Scenario: Verify Cancel button functionality # src\test\features\ui\Admin\plant.feature:67
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - When Provide "invalid" plantName "", select category "Sub_Cat 1", price as "1000", and quantity as "5" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Cancel" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User should be on the "/ui/plants" page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:79
+    - And The plant "" should not be in the list # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:84
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+47) Scenario: Verify Cancel button functionality # src\test\features\ui\Admin\plant.feature:68
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - When Provide "invalid" plantName "Plant 1", select category "", price as "1000", and quantity as "5" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Cancel" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User should be on the "/ui/plants" page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:79
+    - And The plant "Plant 1" should not be in the list # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:84
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+48) Scenario: Verify Cancel button functionality # src\test\features\ui\Admin\plant.feature:69
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - When Provide "invalid" plantName "Plant 1", select category "Sub_Cat 1", price as "", and quantity as "5" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Cancel" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User should be on the "/ui/plants" page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:79
+    - And The plant "Plant 1" should not be in the list # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:84
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+49) Scenario: Verify Cancel button functionality # src\test\features\ui\Admin\plant.feature:70
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - When Provide "valid" plantName "Plant 1", select category "Sub_Cat 1", price as "1000", and quantity as "" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Cancel" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User should be on the "/ui/plants" page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:79
+    - And The plant "Plant 1" should not be in the list # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:84
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+50) Scenario: Verify Cancel button functionality # src\test\features\ui\Admin\plant.feature:71
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù And User clicks "Add a Plant" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - When Provide "invalid" plantName "", select category "", price as "", and quantity as "" for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:28
+    ├ù And User clicks "Cancel" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then User should be on the "/ui/plants" page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:79
+    - And The plant "" should not be in the list # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:84
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+51) Scenario: Verify the Next button functionality of the pagination # src\test\features\ui\Admin\plant.feature:76
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ΓêÜ And The pagination should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:47
+    ├ù And User clicks "Next" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then The page "2" should be currently active # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:54
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+52) Scenario: Verify Edit plant button in Actions # src\test\features\ui\Admin\plant.feature:81
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ΓêÜ And User clicks "Edit" button in the action of first record # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:61
+    ├ù Then User see the current details of the plant # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:66
+        Error: function timed out, ensure the promise resolves within 5000 milliseconds
+            at Timeout.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:581:17)
+            at process.processTimers (node:internal/timers:519:7)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+53) Scenario: Verify Delete plant button in Actions # src\test\features\ui\Admin\plant.feature:85
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ΓêÜ And User clicks "Delete" button in the action of first record # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:61
+    ├ù Then User see a confirmation message # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:73
+        Error: No confirmation message appeared!
+            at PlantPage.verifyDeleteConfirmation (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/pages/PlantPage.js:39:19)
+            at AllureCucumberWorld.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/ui/Admin/plantSteps.js:75:21)
+            at Object.run (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\user_code_runner.js:24:27)
+            at C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\step_runner.js:64:114
+            at AsyncLocalStorage.run (node:async_hooks:346:14)
+            at runInTestCaseScope (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\scope\test_case_scope.js:9:26)
+            at Object.run (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\step_runner.js:64:63)
+            at async TestCaseRunner.invokeStep (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\test_case_runner.js:127:16)
+            at async TestCaseRunner.runStep (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\test_case_runner.js:299:26)
+            at async C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\runtime\test_case_runner.js:212:44
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+54) Scenario: Verify category list page is visible for user # src\test\features\ui\User\categories.feature:10
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - Then category list table should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:96
+    - And pagination should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:101
+    - And search option should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:106
+    - And sorting option should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:111
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+55) Scenario: Verify Add Category button is hidden for non admin user # src\test\features\ui\User\categories.feature:18
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    ? Then Add Category button should not be visible
+        Undefined. Implement with the following snippet:
+
+          Then('Add Category button should not be visible', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+56) Scenario: Verify that the Category Edit button is disabled for users # src\test\features\ui\User\categories.feature:24
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ? When user navigates to category page "ui/categories"
+        Undefined. Implement with the following snippet:
+
+          When('user navigates to category page {string}', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? Then the Edit button for category "Sub_Cat 4" should be disabled
+        Undefined. Implement with the following snippet:
+
+          Then('the Edit button for category {string} should be disabled', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+57) Scenario: Verify that the Category Delete button is disabled for users # src\test\features\ui\User\categories.feature:30
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ? When user navigates to category page "ui/categories"
+        Undefined. Implement with the following snippet:
+
+          When('user navigates to category page {string}', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? Then the Delete button for category "Sub_Cat 4" should be disabled
+        Undefined. Implement with the following snippet:
+
+          Then('the Delete button for category {string} should be disabled', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+58) Scenario: Verify search functionality for a valid subcategory name # src\test\features\ui\User\categories.feature:36
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    ? And user enters "Sub_Cat 3" in the search bar
+        Undefined. Implement with the following snippet:
+
+          When('user enters {string} in the search bar', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? And user clicks on the search button
+        Undefined. Implement with the following snippet:
+
+          When('user clicks on the search button', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? Then the search results should display category/subcategory "Sub_Cat 3"
+        Undefined. Implement with the following snippet:
+
+          Then('the search results should display category\\/subcategory {string}', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+59) Scenario: Verify "No category found" message displays when the records do not exist # src\test\features\ui\User\categories.feature:44
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    ? And user enters "Sub_Cat3" in the search bar
+        Undefined. Implement with the following snippet:
+
+          When('user enters {string} in the search bar', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? And user clicks on the search button
+        Undefined. Implement with the following snippet:
+
+          When('user clicks on the search button', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? Then "No category found" message should be displayed
+        Undefined. Implement with the following snippet:
+
+          Then('{string} message should be displayed', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+60) Scenario: Verify that clicking the Reset button clears the entered search criteria # src\test\features\ui\User\categories.feature:52
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When user navigates to "ui/categories"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    ? And user enters "Sub_Cat 3" in the search bar
+        Undefined. Implement with the following snippet:
+
+          When('user enters {string} in the search bar', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? And user clicks on the search button
+        Undefined. Implement with the following snippet:
+
+          When('user clicks on the search button', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? And the search results should display category/subcategory "Sub_Cat 3"
+        Undefined. Implement with the following snippet:
+
+          When('the search results should display category\\/subcategory {string}', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? And user clicks on the Reset button
+        Undefined. Implement with the following snippet:
+
+          When('user clicks on the Reset button', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? Then the search input should be cleared
+        Undefined. Implement with the following snippet:
+
+          Then('the search input should be cleared', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ? And the category list should be reset
+        Undefined. Implement with the following snippet:
+
+          Then('the category list should be reset', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+61) Scenario: Verify filter by a specific plant category # src\test\features\ui\User\plant.feature:14
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ├ù Then User selects category "Sub_Cat_1" from filter # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:6
+        Error: function timed out, ensure the promise resolves within 15000 milliseconds
+            at Timeout.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:581:17)
+            at process.processTimers (node:internal/timers:519:7)
+    ├ù And User clicks "Search" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - And Only plants with category "Sub_Cat_1" should be displayed # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:37
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+62) Scenario: Verify search plants by existing plant name # src\test\features\ui\User\plant.feature:19
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ΓêÜ Then User searches for plant "Plant 1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:12
+    ├ù And The plant "Plant 1" should be visible in the results # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:44
+        Error: function timed out, ensure the promise resolves within 10000 milliseconds
+            at Timeout.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:581:17)
+            at process.processTimers (node:internal/timers:519:7)
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+63) Scenario: Verify search with a valid plant name and a specific category filter # src\test\features\ui\User\plant.feature:28
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ΓêÜ Then User searches for plant "Plant 1" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:12
+    ├ù And User selects category "Sub_Cat 1" from filter # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:6
+        page.selectOption: Target page, context or browser has been closed
+        Call log:
+        [2m  - waiting for locator('select[name="categoryId"]')[22m
+        [2m    - locator resolved to <select name="categoryId" class="form-select">ΓÇª</select>[22m
+        [2m  - attempting select option action[22m
+        [2m    2 ├ù waiting for element to be visible and enabled[22m
+        [2m      - did not find some options[22m
+        [2m    - retrying select option action[22m
+        [2m    - waiting 20ms[22m
+        [2m    2 ├ù waiting for element to be visible and enabled[22m
+        [2m      - did not find some options[22m
+        [2m    - retrying select option action[22m
+        [2m      - waiting 100ms[22m
+        [2m    23 ├ù waiting for element to be visible and enabled[22m
+        [2m       - did not find some options[22m
+        [2m     - retrying select option action[22m
+        [2m       - waiting 500ms[22m
+
+            at PlantPage.filterByCategory (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\src\test\pages\PlantPage.js:54:25)
+            at AllureCucumberWorld.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:8:21)
+    - Then The plant "Plant 1" should be visible in the results # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:44
+    - And Only plants with category "Sub_Cat 1" should be displayed # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:37
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ├ù After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        page.screenshot: Target page, context or browser has been closed
+            at AllureCucumberWorld.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:14:42)
+
+64) Scenario: Verify the Next button functionality of the pagination # src\test\features\ui\User\plant.feature:37
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ΓêÜ And The pagination should be visible for non-admin user # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:85
+    ├ù And User clicks "Next" button
+        Multiple step definitions match:
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:21
+          User clicks {string} button - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:27 
+    - Then The page "2" should be currently active # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:54
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+65) Scenario: Verify the functionality of sort indicator # src\test\features\ui\User\plant.feature:57
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/plants" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ΓêÜ And User clicks on "Name" column header # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:101
+    ├ù Then User see the sort indicator "down" in the name column # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:106
+        Error: function timed out, ensure the promise resolves within 5000 milliseconds
+            at Timeout.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:581:17)
+            at process.processTimers (node:internal/timers:519:7)
+    - When User clicks on "Name" column header # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:101
+    - Then User see the sort indicator "up" in the name column # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\User\plantSteps.js:106
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+66) Scenario: Verify Sell Plant button hidden in User view # src\test\features\ui\User\sales.feature:10
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/sales" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ? Then The "Sell Plant" button should be hidden
+        Undefined. Implement with the following snippet:
+
+          Then('The {string} button should be hidden', function (string) {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+67) Scenario: Verify Sell Plant items visibility in User view # src\test\features\ui\User\sales.feature:13
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/sales" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ? Then The Sales Plant items should be visibile in User View
+        Undefined. Implement with the following snippet:
+
+          Then('The Sales Plant items should be visibile in User View', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+68) Scenario: Verify Sales items are sorted in ascending order by date in User view # src\test\features\ui\User\sales.feature:16
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/sales" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ? Then The Sales Plant items should be sorted by date in ascending order in User View
+        Undefined. Implement with the following snippet:
+
+          Then('The Sales Plant items should be sorted by date in ascending order in User View', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+69) Scenario: Verify Sell Plant Delete button hidden in User view # src\test\features\ui\User\sales.feature:19
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/sales" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ? Then The Delete button should be hidden in User View
+        Undefined. Implement with the following snippet:
+
+          Then('The Delete button should be hidden in User View', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+70) Scenario: Verify Sales List Table responsiveness # src\test\features\ui\User\sales.feature:22
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/sales" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ? Then Sales list table should be responsive
+        Undefined. Implement with the following snippet:
+
+          Then('Sales list table should be responsive', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+71) Scenario: Verify no single sale view page exists # src\test\features\ui\User\sales.feature:25
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ΓêÜ When User navigates to "/ui/sales" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\plantSteps.js:7
+    ? Then No single sale view option should be available
+        Undefined. Implement with the following snippet:
+
+          Then('No single sale view option should be available', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+72) Scenario: Verify Login page is displayed # src\test\features\ui\login.feature:15
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given user is not logged in # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:33
+    ├ù When user navigates to "ui/login"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - Then login page should be displayed # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:42
+    - And username and password fields should be visible # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:47
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+73) Scenario: Verify username and password fields are mandatory # src\test\features\ui\login.feature:22
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ├ù Given user navigates to "ui/login"
+        Multiple step definitions match:
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:7
+          user navigates to {string} - file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:13          
+    - When user clicks the login button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:54
+    - Then validation message "Username is required" should be displayed # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:137
+    - And validation message "Password is required" should be displayed # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\Admin\categoriesSteps.js:137
+    - And user should not be logged in # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:59
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+74) Scenario: Verify successful login redirects to Dashboard # src\test\features\ui\login.feature:39
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given user is on the login page # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:37
+    ΓêÜ When user enters username "testuser" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:66
+    ΓêÜ And user enters password "test123" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:71
+    ΓêÜ And user clicks the login button # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:54
+    ? Then user should be redirected to the dashboard
+        Undefined. Implement with the following snippet:
+
+          Then('user should be redirected to the dashboard', function () {
+            // Write code here that turns the phrase above into concrete actions
+            return 'pending';
+          });
+
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+
+75) Scenario: Verify allowed sidebar navigation # src\test\features\ui\navigation.feature:20
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "Admin" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "admin" and password "admin123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When User clicks on "Inventory" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\navigationSteps.js:7
+        Error: function timed out, ensure the promise resolves within 5000 milliseconds
+            at Timeout.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:581:17)
+            at process.processTimers (node:internal/timers:519:7)
+    - Then User should be navigated to "/ui/inventory" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\navigationSteps.js:14
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+76) Scenario: Verify allowed sidebar navigation # src\test\features\ui\navigation.feature:21
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:4
+    ΓêÜ Before # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:4
+    ΓêÜ Given the user logged-in as "User" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:7
+    ΓêÜ When the user provide credentials with username "testuser" and password "test123" and click the login button for ui # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:18
+    ΓêÜ Then User should be redirected to the dashboard # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\loginSteps.js:26
+    ├ù When User clicks on "Inventory" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\navigationSteps.js:7
+        Error: function timed out, ensure the promise resolves within 5000 milliseconds
+            at Timeout.<anonymous> (C:\Users\dinuk\Desktop\My Docs\Projects\ITFac_Batch21_Group51\node_modules\@cucumber\cucumber\lib\time.js:64:20)
+            at listOnTimeout (node:internal/timers:581:17)
+            at process.processTimers (node:internal/timers:519:7)
+    - Then User should be navigated to "/ui/inventory" # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\steps\ui\navigationSteps.js:14
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\context\context.js:12
+    ΓêÜ After # file:\C:\Users\dinuk\Desktop\My%20Docs\Projects\ITFac_Batch21_Group51\src\test\hooks\hooks.js:10
+        Attachment (image/png)
+
+131 scenarios (32 failed, 35 ambiguous, 9 undefined, 55 passed)
+781 steps (32 failed, 51 ambiguous, 26 undefined, 119 skipped, 553 passed)
+4m06.946s (executing steps: 4m06.006s)

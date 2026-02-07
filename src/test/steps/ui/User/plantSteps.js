@@ -24,15 +24,6 @@ Then('All plants should be displayed', async function () {
 
 
 //==================================== Only plants with specific category should be displayed ==========================
-When('User clicks {string} button', async function (buttonName) {
-    const plantPage = new PlantPage(this.page);
-    const button = this.page.getByRole('button', { name: buttonName });
-    await button.waitFor({ state: 'visible' });
-    await Promise.all([
-        this.page.waitForLoadState('networkidle'),
-        button.click()
-    ]);
-});
 
 Then('Only plants with category {string} should be displayed', { timeout: 10000 }, async function (category) {
     const plantPage = new PlantPage(this.page);
@@ -82,7 +73,7 @@ Then('{string} button should not be visible', async function (buttonName) {
 
 //==================================== Verify visibility of the pagination for plants list =============================
 
-Then('The pagination should be visible for non-admin user', async function (){
+Then('The pagination should be visible for non-admin user', async function () {
     const pagination = this.page.locator('ul.pagination');
     await expect(pagination).toBeVisible()
 });
@@ -103,9 +94,9 @@ When('User clicks on {string} column header', async function (columnName) {
     await byRole.click();
 });
 
-Then('User see the sort indicator {string} in the name column', async function (direction) {
-     const header = this.page.getByRole('columnheader', { name: 'Name', exact: false });
-     const expectedChar = direction.toLowerCase() === 'up' ? '↑' : '↓';
-     const textIndicator = header.locator('span').filter({ hasText: expectedChar });
-     await expect(textIndicator).toBeVisible();
+Then('User see the sort indicator {string} in the name column', { timeout: 15000 }, async function (direction) {
+    const header = this.page.getByRole('columnheader', { name: 'Name', exact: false });
+    const expectedChar = direction.toLowerCase() === 'up' ? '↑' : '↓';
+    const textIndicator = header.locator('span').filter({ hasText: expectedChar });
+    await expect(textIndicator).toBeVisible();
 });

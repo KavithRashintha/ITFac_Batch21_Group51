@@ -14,13 +14,13 @@ export class BasePage {
         // Try to handle dialogs if this is a Delete action
         if (buttonName === "Delete") {
             this.page.once('dialog', async dialog => {
-                this.lastDialogMessage = dialog.message();
+                this.page.lastDialogMessage = dialog.message();
                 await dialog.dismiss();
             });
         }
 
         const firstRow = this.page.locator('tbody tr').first();
-        
+
         // Strategy 1: Global button/link (e.g., "Add a Plant")
         const globalBtn = this.page.getByRole('button', { name: buttonName });
         const globalLink = this.page.getByRole('link', { name: buttonName });
@@ -34,7 +34,7 @@ export class BasePage {
 
         if (await globalBtn.count() > 0 && await globalBtn.isVisible()) {
             await globalBtn.click();
-        } 
+        }
         else if (await globalLink.count() > 0 && await globalLink.isVisible()) {
             await globalLink.click();
         }
@@ -47,7 +47,7 @@ export class BasePage {
             else if (await actionHref.count() > 0) await actionHref.click();
             else throw new Error(`Failed to find button: ${buttonName}`);
         } else {
-             throw new Error(`Failed to find button: ${buttonName}`);
+            throw new Error(`Failed to find button: ${buttonName}`);
         }
     }
 

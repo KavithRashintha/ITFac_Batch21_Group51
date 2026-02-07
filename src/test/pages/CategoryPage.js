@@ -34,7 +34,7 @@ export class CategoryPage extends BasePage {
     async deleteCategory(name) {
         const row = this.page.locator('table tbody tr').filter({ hasText: name }).first();
         this.page.once('dialog', async dialog => {
-            this.lastDialogMessage = dialog.message();
+            this.page.lastDialogMessage = dialog.message();
             await dialog.dismiss();
         });
         await row.locator('[title="Delete"]').click();

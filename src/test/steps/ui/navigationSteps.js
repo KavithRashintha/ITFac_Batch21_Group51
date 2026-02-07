@@ -1,6 +1,6 @@
 import { When, Then, setDefaultTimeout } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import { BasePage } from "../pages/BasePage.js";
+import { BasePage } from "../../pages/BasePage.js";
 
 /* -------- Sidebar Click -------- */
 

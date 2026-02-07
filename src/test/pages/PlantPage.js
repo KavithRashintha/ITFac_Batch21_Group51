@@ -12,7 +12,7 @@ export class PlantPage extends BasePage {
         if (name) await this.page.fill('input[name="name"]', name);
         if (price) await this.page.fill('input[name="price"]', price);
         if (quantity) await this.page.fill('input[name="quantity"]', quantity);
-        
+
         if (category && category.trim() !== "") {
             // Assuming index 1 selection based on original code
             await this.page.selectOption('#categoryId', { index: 1 });
@@ -35,11 +35,11 @@ export class PlantPage extends BasePage {
     }
 
     async verifyDeleteConfirmation() {
-        if (!this.lastDialogMessage) {
+        if (!this.page.lastDialogMessage) {
             throw new Error("No confirmation message appeared!");
         }
-        expect(this.lastDialogMessage).toBe('Delete this plant?');
-        await this.page.close(); // Closing context as per original code logic
+        expect(this.page.lastDialogMessage).toBe('Delete this plant?');
+        // Removing await this.page.close() as it closes the current page, better to let After hook handle it
     }
 
     async searchPlant(plantName) {
@@ -52,7 +52,7 @@ export class PlantPage extends BasePage {
 
     async filterByCategory(category) {
         await this.page.selectOption('select[name="categoryId"]', { label: category });
-        await this.page.locator(this.tableRows).first().waitFor({ timeout: 10000 }).catch(() => {});
+        await this.page.locator(this.tableRows).first().waitFor({ timeout: 10000 }).catch(() => { });
     }
 
     async verifyOnlyCategoryDisplayed(category) {

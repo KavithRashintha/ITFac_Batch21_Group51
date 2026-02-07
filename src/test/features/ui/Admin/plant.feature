@@ -32,12 +32,13 @@ Feature: Plant Management - Admin
     And User clicks "Save" button
     Then User see an error message as "Category is required"
 
-  Scenario: Verify price validation
+  Scenario: Verify zero price validation
     And User clicks "Add a Plant" button
     When Provide "valid" plantName "Plant 12", select category "Sub_Cat 4", price as "0", and quantity as "20" for ui
     And User clicks "Save" button
     Then User see an error message as "Price must be greater than 0"
 
+  Scenario: Verify empty price validation
     When Provide "valid" plantName "Plant 12", select category "Sub_Cat 4", price as "", and quantity as "20" for ui
     And User clicks "Save" button
     Then User see an error message as "Price is required"
@@ -63,7 +64,7 @@ Feature: Plant Management - Admin
 
     Examples:
       | status  | name        | category    | price | quantity |
-      | valid   | plant11     | Sub_Cat 1   | 750   | 16       |
+      | valid   | plant118    | Sub_Cat 1   | 750   | 16       |
       | invalid |             | Sub_Cat 1   | 1000  | 5        |
       | invalid | Plant 1     |             | 1000  | 5        |
       | invalid | Plant 1     | Sub_Cat 1   |       | 5        |

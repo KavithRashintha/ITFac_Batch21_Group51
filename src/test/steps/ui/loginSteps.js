@@ -10,10 +10,6 @@ Given('the user logged-in as {string}', { timeout: 10000 }, async function (role
 });
 
 // -------------------------------------------- Login Action ----------------------------------------------
-When('user navigates to {string}', async function (path) {
-  const loginPage = new LoginPage(this.page);
-  await loginPage.navigateTo(`${url}/${path}`);
-});
 
 When(
   'the user provide credentials with username {string} and password {string} and click the login button for ui',
@@ -24,6 +20,11 @@ When(
 );
 
 Then('User should be redirected to the dashboard', async function () {
+  const loginPage = new LoginPage(this.page);
+  await loginPage.verifyDashboardRedirect();
+});
+
+Then('user should be redirected to the dashboard', async function () {
   const loginPage = new LoginPage(this.page);
   await loginPage.verifyDashboardRedirect();
 });
@@ -52,8 +53,8 @@ Then('username and password fields should be visible', async function () {
 // ------------------------------------------ Empty login form submit validation -------------------------------
 
 When('user clicks the login button', async function () {
-   const loginPage = new LoginPage(this.page);
-   await this.page.click(loginPage.loginButton);
+  const loginPage = new LoginPage(this.page);
+  await this.page.click(loginPage.loginButton);
 });
 
 Then('user should not be logged in', async function () {

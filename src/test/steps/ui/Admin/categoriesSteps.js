@@ -4,31 +4,26 @@ import { CategoryPage } from '../../../pages/CategoryPage.js';
 
 //--------------------------- TC_ADMIN_CAT_13: Verify the Edit category button in Actions ---------------------------
 
-When('user navigates to {string}', { timeout: 30000 }, async function (path) {
-    const categoryPage = new CategoryPage(this.page);
-    await categoryPage.navigateTo(`http://localhost:8080/${path}`);
-});
-
 When('user clicks on Edit button', async function () {
-    await this.page.locator('[title="Edit"]').first().click();
+  await this.page.locator('[title="Edit"]').first().click();
 });
 
-Then('user navigates to edit category page', async function(){
-    await this.page.waitForURL('**/ui/categories/edit/**');
+Then('user navigates to edit category page', async function () {
+  await this.page.waitForURL('**/ui/categories/edit/**');
 });
 
 
 //-------------- TC_ADMIN_CAT_14: Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10)------------
 
-When('user provide categoryName {string}', async function(newCategoryName){
-    const categoryPage = new CategoryPage(this.page);
-    await this.page.fill(categoryPage.categoryNameInput, newCategoryName);
-} );
+When('user provide categoryName {string}', async function (newCategoryName) {
+  const categoryPage = new CategoryPage(this.page);
+  await this.page.fill(categoryPage.categoryNameInput, newCategoryName);
+});
 
 Then('the error message should be visible', async function () {
-    const categoryPage = new CategoryPage(this.page);
-    await this.page.click(categoryPage.saveButton);
-    await this.page.waitForSelector('.invalid-feedback');
+  const categoryPage = new CategoryPage(this.page);
+  await this.page.click(categoryPage.saveButton);
+  await this.page.waitForSelector('.invalid-feedback');
 });
 
 
@@ -47,11 +42,11 @@ When('user edits the categoryname {string}', async function (newName) {
 });
 
 Then('user click save button', async function () {
-    const categoryPage = new CategoryPage(this.page);
-    await this.page.click(categoryPage.saveButton);
+  const categoryPage = new CategoryPage(this.page);
+  await this.page.click(categoryPage.saveButton);
 });
 
-Then('user navigates to category page', async function(){
+Then('user navigates to category page', async function () {
   await this.page.waitForURL('**/ui/categories');
 });
 
@@ -85,10 +80,10 @@ When('user clicks on delete button for category {string}', async function (categ
 
 Then('delete confirmation popup should be displayed', async function () {
   const categoryPage = new CategoryPage(this.page);
-  if (!this.lastDialogMessage) {
+  if (!this.page.lastDialogMessage) {
     throw new Error("No confirmation message appeared!");
   }
-  expect(this.lastDialogMessage).toBe('Delete this category?');
+  expect(this.page.lastDialogMessage).toBe('Delete this category?');
 });
 
 // ---------- View Categories ----------
@@ -164,6 +159,28 @@ Then('user sorts category list by ID', async function () {
   expect(isSortedAsc || isSortedDesc).toBe(true);
 });
 
+Then('user sorts category list by Name', async function () {
+  const nameHeader = this.page.locator('th', { hasText: 'Name' });
+  await expect(nameHeader).toBeVisible();
+  await nameHeader.click();
+  await this.page.waitForLoadState('networkidle');
+
+  const names = await this.page.locator('tbody tr td:nth-child(2)').allTextContents();
+  const sorted = [...names].sort((a, b) => a.localeCompare(b));
+  const reversed = [...sorted].reverse();
+  expect(JSON.stringify(names) === JSON.stringify(sorted) || JSON.stringify(names) === JSON.stringify(reversed)).toBe(true);
+});
+
+Then('user sorts category list by Parent', async function () {
+  const parentHeader = this.page.locator('th', { hasText: 'Parent' });
+  await expect(parentHeader).toBeVisible();
+  await parentHeader.click();
+  await this.page.waitForLoadState('networkidle');
+
+  const parents = await this.page.locator('tbody tr td:nth-child(3)').allTextContents();
+  expect(parents.length).toBeGreaterThan(0);
+});
+
 // ---------- Search categories without parent filter ----------
 
 When('user enters subcategory name {string} in search field', async function (subcategory) {
@@ -188,7 +205,7 @@ Then('results should match the search criteria', async function () {
   await this.page.waitForLoadState('networkidle');
   const names = await this.page.locator('tbody tr td:nth-child(2)').allTextContents();
   expect(names.length).toBeGreaterThan(0);
-  const hasMatchingResult = names.some(name => 
+  const hasMatchingResult = names.some(name =>
     name.toLowerCase().includes(this.searchTerm?.toLowerCase() || '')
   );
   expect(hasMatchingResult).toBe(true);

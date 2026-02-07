@@ -4,56 +4,75 @@ import { CategoryPage } from '../../../pages/CategoryPage.js';
 
 //---------- TC_USER_CAT_01: Verify the Search functionality of the categories list for non-admin user ----------
 
-When('User navigates to {string} page', async function (path) {
+//---------- TC_USER_CAT_01: Verify the Search functionality of the categories list for non-admin user ----------
+
+When('user navigates to category page {string}', async function (path) {
     const categoryPage = new CategoryPage(this.page);
     await categoryPage.navigateTo(`http://localhost:8080/${path}`);
 });
 
-When('User enters subcategory name {string} in search field', async function (name) {
+When('user enters {string} in the search bar', async function (name) {
     const categoryPage = new CategoryPage(this.page);
     await this.page.fill(categoryPage.searchInput, name);
     this.searchTerm = name;
 });
 
-When('User clicks Search button for categories list', async function () {
+When('user clicks on the search button', async function () {
     const categoryPage = new CategoryPage(this.page);
     await this.page.click(categoryPage.searchButton);
     await this.page.waitForLoadState('networkidle');
 });
 
-Then('Search results should be displayed in categories table', async function () {
-    const categoryPage = new CategoryPage(this.page);
-    await expect(this.page.locator(categoryPage.table)).toBeVisible();
-});
-
-Then('Results should match the search criteria in categories list', async function () {
-    const categoryPage = new CategoryPage(this.page);
+Then('the search results should display category/subcategory {string}', async function (searchTerm) {
     const names = await this.page.locator('tbody tr td:nth-child(2)').allTextContents();
-    expect(names.length).toBeGreaterThan(0);
-    const hasMatchingResult = names.some(name => 
-      name.toLowerCase().includes(this.searchTerm?.toLowerCase() || '')
+    const hasMatchingResult = names.some(name =>
+        name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     expect(hasMatchingResult).toBe(true);
 });
 
-//---------- TC_USER_CAT_02: Verify the Filter functionality of the categories list for non-admin user ----------
-
-When('User selects parent category {string} from dropdown', async function (category) {
-    const categoryPage = new CategoryPage(this.page);
-    await categoryPage.filterByParent(category);
+Then('{string} message should be displayed', async function (message) {
+    await expect(this.page.locator(`text=${message}`)).toBeVisible();
 });
 
-Then('Only subcategories belonging to parent category {string} should be visible', async function (category) {
+//---------- Search Reset ----------
+
+When('user clicks on the Reset button', async function () {
+    await this.page.click('button:has-text("Reset")');
     await this.page.waitForLoadState('networkidle');
-    const parentColumnValues = await this.page.locator('tbody tr td:nth-child(3)').allTextContents();
-    expect(parentColumnValues.length).toBeGreaterThan(0);
-    const nonEmptyParents = parentColumnValues.filter(p => p.trim() && p.trim() !== '-');
-    nonEmptyParents.forEach(parent => {
-      expect(parent.trim()).toBe(category);
-    });
 });
 
-//---------- TC_USER_CAT_03: Verify sorting of category list by Name for non-admin user ----------
+Then('the search input should be cleared', async function () {
+    const categoryPage = new CategoryPage(this.page);
+    const value = await this.page.inputValue(categoryPage.searchInput);
+    expect(value).toBe('');
+});
+
+Then('the category list should be reset', async function () {
+    const rows = this.page.locator('tbody tr');
+    await expect(rows).toBeVisible();
+});
+
+//---------- Button Visibility/State ----------
+
+Then('Add Category button should not be visible', async function () {
+    const categoryPage = new CategoryPage(this.page);
+    await expect(this.page.locator(categoryPage.addCategoryButton)).not.toBeVisible();
+});
+
+Then('the Edit button for category {string} should be disabled', async function (categoryName) {
+    const row = this.page.locator('table tbody tr').filter({ hasText: categoryName }).first();
+    const editBtn = row.locator('[title="Edit"]');
+    await expect(editBtn).toBeDisabled();
+});
+
+Then('the Delete button for category {string} should be disabled', async function (categoryName) {
+    const row = this.page.locator('table tbody tr').filter({ hasText: categoryName }).first();
+    const deleteBtn = row.locator('[title="Delete"]');
+    await expect(deleteBtn).toBeDisabled();
+});
+
+//---------- Existing User Sorting (Keep for now if needed, but feature file uses Name/Parent) ----------
 
 When('User sorts category list by Name', async function () {
     await this.page.locator('th', { hasText: 'Name' }).click();
@@ -64,12 +83,10 @@ Then('Category list should be sorted by name', async function () {
     const names = await this.page.locator('tbody tr td:nth-child(2)').allTextContents();
     const sorted = [...names].sort((a, b) => a.localeCompare(b));
     const reversed = [...sorted].reverse();
-    const isSorted = JSON.stringify(names) === JSON.stringify(sorted) || 
-                     JSON.stringify(names) === JSON.stringify(reversed);
+    const isSorted = JSON.stringify(names) === JSON.stringify(sorted) ||
+        JSON.stringify(names) === JSON.stringify(reversed);
     expect(isSorted).toBe(true);
 });
-
-//---------- TC_USER_CAT_04: Verify sorting of category list by Parent for non-admin user ----------
 
 When('User sorts category list by Parent', async function () {
     await this.page.locator('th', { hasText: 'Parent' }).click();
@@ -80,8 +97,6 @@ Then('Category list should be sorted by parent', async function () {
     const parents = await this.page.locator('tbody tr td:nth-child(3)').allTextContents();
     expect(parents.length).toBeGreaterThan(0);
 });
-
-//-------------------------- Verify the visibility of the pagination --------------------------
 
 Then('The pagination should be visible for user view', async function () {
     const categoryPage = new CategoryPage(this.page);
