@@ -1,5 +1,5 @@
 @sales
-Feature: Sales management
+Feature: Sales Management UI - User
 
   Background:
     Given the user logged-in as "User"

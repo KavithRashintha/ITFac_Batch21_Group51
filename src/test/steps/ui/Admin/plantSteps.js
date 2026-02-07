@@ -30,17 +30,17 @@ When('User clicks {string} button', async function (buttonName) {
 
 //============================= Form Filling ====================================================
 
-When('Provide {string} plantName {string}, select category {string}, price as {string}, and quantity as {string} for ui',{ timeout: 15000 }, async function (_, name, category, price, quantity) {
-    if (name !== undefined){
+When('Provide {string} plantName {string}, select category {string}, price as {string}, and quantity as {string} for ui', { timeout: 15000 }, async function (_, name, category, price, quantity) {
+    if (name !== undefined) {
         await this.page.fill('input[name="name"]', name);
     }
-    if (price !== undefined){
+    if (price !== undefined) {
         await this.page.fill('input[name="price"]', price);
     }
     if (category && category.trim() !== "") {
-        await this.page.selectOption('#categoryId', {index: 1});
+        await this.page.selectOption('#categoryId', { index: 1 });
     }
-    if (quantity !== undefined){
+    if (quantity !== undefined) {
         await this.page.fill('input[name="quantity"]', quantity);
     }
 });
@@ -60,7 +60,7 @@ Then('User see a success message as {string}', async function (message) {
 
 //=================== Verify visibility of the pagination for plants list ==============================================
 
-Then('The pagination should be visible', async function (){
+Then('The pagination should be visible', async function () {
     const pagination = this.page.locator('ul.pagination');
     await expect(pagination).toBeVisible()
 });

@@ -1,4 +1,4 @@
-Feature: Login test validation for API
+Feature: Login API
 
   Scenario: Admin login with valid credentials
     When Admin logs in with username "admin" and password "admin123"

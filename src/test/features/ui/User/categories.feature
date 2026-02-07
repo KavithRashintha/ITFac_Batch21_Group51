@@ -1,5 +1,5 @@
 @categories
-Feature: Category Management - User
+Feature: Category Management UI - User
 
     Background:
         Given the user logged-in as "User"
@@ -23,21 +23,21 @@ Feature: Category Management - User
     @editCategoryButtonDisabled
     Scenario: Verify that the Category Edit button is disabled for users
         When user navigates to category page "ui/categories"
-        Then the Edit button for category "Anthurium" should be disabled
+        Then the Edit button for category "Plant1" should be disabled
     
     #TC_USER_CAT_09
     @deleteCategoryButtonDisabled
     Scenario: Verify that the Category Delete button is disabled for users
         When user navigates to category page "ui/categories"
-        Then the Delete button for category "Anthurium" should be disabled
+        Then the Delete button for category "Plant1" should be disabled
 
     #TC_ADMIN_CAT_11
     @searchValidSubcategory
     Scenario: Verify search functionality for a valid subcategory name
         When user navigates to "ui/categories"
-        And user enters "Apple" in the search bar
+        And user enters "Plant1" in the search bar
         And user clicks on the search button
-        Then the search results should display category/subcategory "Apple"
+        Then the search results should display category/subcategory "Plant1"
 
     #TC_ADMIN_CAT_12
     @searchInvalidSubcategory

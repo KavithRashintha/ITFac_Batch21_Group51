@@ -41,36 +41,28 @@ When('{string} sends {string} request with token', async function (role, method)
 
 
 // -------------------- Generic request WITH token and payload --------------------
-When('{string} sends {string} request with token and payload', async function (role, method, body) {
+When('{string} sends {string} request with token and payload', async function (role, method) {
 
-    if (!this.token) {
-        throw new Error("Token is not available. Make sure login ran first.");
-    }
-
-    const options = {
-        headers: {
-            Authorization: `${this.tokenType} ${this.token}`,
-            "Content-Type": "application/json"
-        },
-        data: JSON.parse(body)
-    };
+    const unAuthContext = await this.request.newContext({
+        baseURL: 'http://localhost:8080',
+        extraHTTPHeaders: {
+            'Content-Type': 'application/json'
+        }
+    });
 
     switch (method.toUpperCase()) {
-
+        case "GET":
+            this.response = await unAuthContext.get(this.endpoint);
+            break;
         case "POST":
-            this.response = await this.apiContext.post(this.endpoint, options);
+            this.response = await unAuthContext.post(this.endpoint);
             break;
-
         case "PUT":
-            this.response = await this.apiContext.put(this.endpoint, options);
+            this.response = await unAuthContext.put(this.endpoint);
             break;
-
         case "DELETE":
-            this.response = await this.apiContext.delete(this.endpoint, options);
+            this.response = await unAuthContext.delete(this.endpoint);
             break;
-
-        default:
-            throw new Error(`Unsupported method for payload request: ${method}`);
     }
 
     try {
@@ -78,11 +70,13 @@ When('{string} sends {string} request with token and payload', async function (r
     } catch {
         this.responseBody = {};
     }
+
+    await unAuthContext.dispose();
 });
 
 
 // -------------------- Generic request without token --------------------
-When('{string} sends {string} request without token', async function(role, method) {
+When('{string} sends {string} request without token', async function (role, method) {
     const options = {};
 
     switch (method.toUpperCase()) {
@@ -110,7 +104,7 @@ When('{string} sends {string} request without token', async function(role, metho
 });
 
 // -------------------- Assertion for Unauthorized --------------------
-Then('Response should have status code {int} and message containing {string}', function(statusCode, expectedMessage) {
+Then('Response should have status code {int} and message containing {string}', function (statusCode, expectedMessage) {
     expect(this.response.status()).toBe(statusCode);
     expect(this.responseBody).toHaveProperty("message");
     expect(this.responseBody.message).toContain(expectedMessage);
@@ -122,33 +116,33 @@ Then('Response body should contain {string}', function (expectedText) {
     expect(bodyAsString).toContain(expectedText);
 });
 
-Then("Response body 'content' should be an array with {int} items", function(expectedCount) {
+Then("Response body 'content' should be an array with {int} items", function (expectedCount) {
     const arrayToCheck = this.responseBody.content;
     expect(arrayToCheck).toBeDefined();
     expect(Array.isArray(arrayToCheck)).toBeTruthy();
     expect(arrayToCheck.length).toBe(expectedCount);
 });
 
-Then("Response body 'content' should be an array with at most {int} items", function(expectedCount) {
+Then("Response body 'content' should be an array with at most {int} items", function (expectedCount) {
     const arrayToCheck = this.responseBody.content;
     expect(arrayToCheck).toBeDefined();
     expect(Array.isArray(arrayToCheck)).toBeTruthy();
     expect(arrayToCheck.length).toBeLessThanOrEqual(expectedCount);
 });
 
-Then("Response body 'content' should be an array with at least {int} items", function(expectedCount) {
+Then("Response body 'content' should be an array with at least {int} items", function (expectedCount) {
     const arrayToCheck = this.responseBody.content;
     expect(arrayToCheck).toBeDefined();
     expect(Array.isArray(arrayToCheck)).toBeTruthy();
     expect(arrayToCheck.length).toBeGreaterThanOrEqual(expectedCount);
 });
 
-Then("The first plant in 'content' should have name {string}", function(expectedName) {
+Then("The first plant in 'content' should have name {string}", function (expectedName) {
     const firstPlant = this.responseBody.content[0];
     expect(firstPlant).toBeDefined();
     expect(firstPlant.name).toBe(expectedName);
 });
 
-Then("Response page number should be {int}", function(expectedPage) {
+Then("Response page number should be {int}", function (expectedPage) {
     expect(this.responseBody.pageable.pageNumber).toBe(expectedPage);
 });

@@ -1,5 +1,5 @@
 @categories-api
-Feature: Category API Management
+Feature: Category Management API - Admin
 
   Background:
     Given Admin logs in with username "admin" and password "admin123"
@@ -48,7 +48,7 @@ Feature: Category API Management
       """
       {
         "id": 8,
-        "name": "Sub_Cat 5",
+        "name": "Sub_Cat5",
         "parent": {
           "id": 4
         }
@@ -60,14 +60,14 @@ Feature: Category API Management
 
   @duplicate_subcategory_same_parent
   Scenario: Create sub category with duplicate name under same parent
-    Given parent category "Flowering" exists
-    And subcategory "CAT1" already exists under parent "Flowering"
+    Given parent category "Category 2" exists
+    And subcategory "Sub_Cat3" already exists under parent "Category 2"
     And Admin sets the endpoint "/api/categories"
     When Admin sends POST request for categories with payload
       """
       {
         "id": 9,
-        "name": "Sub_Cat 3",
+        "name": "Sub_Cat3",
         "parent": {
           "id": 4
         }
@@ -115,7 +115,7 @@ Feature: Category API Management
       """
       {
         "id": 11,
-        "name": "Sub Category 5"
+        "name": "Sub_Category5"
       }
       """
     Then Response status code should be 400
@@ -136,7 +136,7 @@ Feature: Category API Management
   @updatecategoryname
   Scenario: Verify PUT category method for updating the category name with valid data
     # Ensure ID 10 exists or use a dynamic ID setup in background
-    And "Admin" sets the endpoint "/api/categories/15"
+    And "Admin" sets the endpoint "/api/categories/6"
     When "Admin" sends "PUT" request with token and payload
       """
       {
@@ -148,7 +148,7 @@ Feature: Category API Management
     And Response body should match JSON structure
       """
       {
-        "id": 5,
+        "id": 6,
         "name": "Sub_Cat4",
         "subCategories": []
       }
@@ -158,7 +158,7 @@ Feature: Category API Management
   @updateparentID
   Scenario: Verify PUT category method for updating the parent ID with valid data
     # Assuming ID 15 is a subcategory moving to Parent ID 13
-    And "Admin" sets the endpoint "/api/categories/15"
+    And "Admin" sets the endpoint "/api/categories/6"
     When "Admin" sends "PUT" request with token and payload
       """
       {
@@ -170,7 +170,7 @@ Feature: Category API Management
     And Response body should match JSON structure
       """
       {
-         "id": 5,
+         "id": 6,
          "name": "Sub_Cat4_",
          "subCategories": []
       }
@@ -179,7 +179,7 @@ Feature: Category API Management
   # TC_ADMIN_CAT_22
   @updateEmptyCategoryName
   Scenario: Verify PUT category method with an empty category name
-    And "Admin" sets the endpoint "/api/categories/15"
+    And "Admin" sets the endpoint "/api/categories/6"
     When "Admin" sends "PUT" request with token and payload
       """
       {

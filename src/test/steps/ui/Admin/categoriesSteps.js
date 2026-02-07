@@ -13,30 +13,30 @@ function sortStrings(arr, direction = 'asc') {
 //--------------------------- TC_ADMIN_CAT_13: Verify the Edit category button in Actions ---------------------------
 
 When('user navigates to {string}', { timeout: 30000 }, async function (path) {
-    await this.page.goto(`http://localhost:8080/${path}`, { 
-        waitUntil: 'domcontentloaded',
-        timeout: 30000 
-    });
+  await this.page.goto(`http://localhost:8080/${path}`, {
+    waitUntil: 'domcontentloaded',
+    timeout: 30000
+  });
 });
 
 When('user clicks on Edit button', async function () {
-    await this.page.locator('[title="Edit"]').first().click();
+  await this.page.locator('[title="Edit"]').first().click();
 });
 
-Then('user navigates to edit category page', async function(){
-    await this.page.waitForURL('**/ui/categories/edit/**');
+Then('user navigates to edit category page', async function () {
+  await this.page.waitForURL('**/ui/categories/edit/**');
 });
 
 
 //-------------- TC_ADMIN_CAT_14: Verify the Validation errors when editing a categoryname that not meet the valid criteria (3-10)------------
 
-When('user provide categoryName {string}', async function(newCategoryName){
-    await this.page.fill('input[name="name"]',newCategoryName);
-} );
+When('user provide categoryName {string}', async function (newCategoryName) {
+  await this.page.fill('input[name="name"]', newCategoryName);
+});
 
 Then('the error message should be visible', async function () {
-    await this.page.click('button[type="submit"]');
-    await this.page.waitForSelector('.invalid-feedback');
+  await this.page.click('button[type="submit"]');
+  await this.page.waitForSelector('.invalid-feedback');
 });
 
 
@@ -56,10 +56,10 @@ When('user edits the categoryname {string}', async function (newName) {
 });
 
 Then('user click save button', async function () {
-    await this.page.click('button[type="submit"]');
+  await this.page.click('button[type="submit"]');
 });
 
-Then('user navigates to category page', async function(){
+Then('user navigates to category page', async function () {
   await this.page.waitForURL('**/ui/categories');
 });
 
@@ -93,8 +93,8 @@ When('user clicks on delete button for category {string}', async function (categ
   }).first();
   await expect(row).toBeVisible();
   this.page.once('dialog', async dialog => {
-    this.lastDialogMessage = dialog.message(); 
-    await dialog.dismiss(); 
+    this.lastDialogMessage = dialog.message();
+    await dialog.dismiss();
   });
 
   await row.locator('[title="Delete"]').click();
@@ -130,7 +130,7 @@ Then('sorting option should be visible', async function () {
 Then('Add Category button should be visible and enabled', { timeout: 15000 }, async function () {
   // Wait for the page to fully load
   await this.page.waitForLoadState('networkidle');
-  
+
   // Use a more flexible selector that works for both buttons and links
   const addCategoryButton = this.page.locator('button:has-text("Add A Category"), a:has-text("Add A Category")').first();
 
@@ -158,7 +158,7 @@ Then('validation message {string} should be displayed', async function (expected
   const validationMessage = this.page.locator('text=' + expectedMessage).or(
     this.page.locator('.error-message, .validation-error, .invalid-feedback, [role="alert"]')
   );
-  
+
   await expect(validationMessage.first()).toBeVisible({ timeout: 5000 });
 });
 
@@ -243,7 +243,7 @@ When('user enters subcategory name {string} in search field', async function (su
   const searchInput = this.page.getByPlaceholder('Search sub category');
   await expect(searchInput).toBeVisible();
   await searchInput.fill(subcategory);
-  
+
   // Store search term for validation
   this.searchTerm = subcategory;
 });
@@ -252,7 +252,7 @@ When('user clicks Search button', async function () {
   const searchButton = this.page.locator('button:has-text("Search")');
   await expect(searchButton).toBeVisible();
   await searchButton.click();
-  
+
   // Wait for search results to load
   await this.page.waitForLoadState('networkidle');
 });
@@ -265,16 +265,16 @@ Then('search results should be displayed', async function () {
 Then('results should match the search criteria', async function () {
   // Wait for results to load
   await this.page.waitForLoadState('networkidle');
-  
+
   const names = await this.page.locator('tbody tr td:nth-child(2)').allTextContents();
   expect(names.length).toBeGreaterThan(0);
-  
+
   // Verify at least one result contains the searched term (stored in context)
   // If search was for "Sub_1", check that at least one name contains it
-  const hasMatchingResult = names.some(name => 
+  const hasMatchingResult = names.some(name =>
     name.toLowerCase().includes(this.searchTerm?.toLowerCase() || '')
   );
-  
+
   expect(hasMatchingResult).toBe(true);
 });
 
@@ -285,7 +285,7 @@ When('user selects parent category {string}', async function (parentCategory) {
   const parentDropdown = this.page.locator('select').first();
   await expect(parentDropdown).toBeVisible();
   await parentDropdown.selectOption({ label: parentCategory });
-  
+
   // Store selected parent for validation
   this.selectedParent = parentCategory;
 });
@@ -295,17 +295,17 @@ Then(
   async function (parentCategory) {
     // Wait for filtered results
     await this.page.waitForLoadState('networkidle');
-    
+
     const parentColumnValues = await this.page
       .locator('tbody tr td:nth-child(3)')
       .allTextContents();
 
     // Verify we have results
     expect(parentColumnValues.length).toBeGreaterThan(0);
-    
+
     // All rows should match selected parent (filter out empty/dash values)
     const nonEmptyParents = parentColumnValues.filter(p => p.trim() && p.trim() !== '-');
-    
+
     nonEmptyParents.forEach(parent => {
       expect(parent.trim()).toBe(parentCategory);
     });

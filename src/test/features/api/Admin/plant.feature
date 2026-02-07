@@ -1,14 +1,14 @@
-Feature: Plant Management API
+Feature: Plant Management API - Admin
 
   Background:
     Given Admin logs in with username "admin" and password "admin123"
 
   Scenario: Verify create plant with duplicate name
-    And "Admin" sets the endpoint "/api/plants/category/2"
+    And "Admin" sets the endpoint "/api/plants/category/6"
     When "Admin" sends "POST" request with token and payload
       """
       {
-        "name": "Plant 2",
+        "name": "Plant12",
         "price": 100,
         "quantity": 20
       }
@@ -19,17 +19,17 @@ Feature: Plant Management API
       {
         "status": 400,
         "error": "DUPLICATE_RESOURCE",
-        "message": "Plant 'Plant 2' already exists in this category",
+        "message": "Plant 'Plant13' already exists in this category",
         "timestamp": "any_non_empty_string"
       }
       """
 
   Scenario: Verify create plant with valid data
-    And "Admin" sets the endpoint "/api/plants/category/2"
+    And "Admin" sets the endpoint "/api/plants/category/4"
     When "Admin" sends "POST" request with token and payload
       """
       {
-        "name": "Plant 13",
+        "name": "Plant13",
         "price": 100,
         "quantity": 20
       }
@@ -39,12 +39,12 @@ Feature: Plant Management API
       """
       {
         "id": 13,
-        "name": "Plant 13",
+        "name": "Plant13",
         "price": 100,
         "quantity": 20,
         "category": {
-          "id": 2,
-          "name": "Sub_Cat 1",
+          "id": 6,
+          "name": "Sub_Cat4",
           "subCategories": []
         }
       }
@@ -55,7 +55,7 @@ Feature: Plant Management API
     When "Admin" sends "POST" request with token and payload
       """
       {
-        "name": "Plant 14",
+        "name": "Plant14",
         "price": 100
       }
       """
@@ -78,7 +78,7 @@ Feature: Plant Management API
     When "Admin" sends "POST" request with token and payload
       """
       {
-        "name": "Plant 15",
+        "name": "Plant15",
         "price": -100,
         "quantity": 25
       }
@@ -142,7 +142,7 @@ Feature: Plant Management API
       {
         "status": 404,
         "error": "NOT_FOUND",
-        "message": "Plant not found: 100",
+        "path": "Plant not found: 100",
         "timestamp": "any_non_empty_string"
       }
       """
@@ -180,13 +180,13 @@ Feature: Plant Management API
       {
         "status": 404,
         "error": "NOT_FOUND",
-        "message": "Category not found",
+        "path": "Category not found",
         "timestamp": "any_non_empty_string"
       }
       """
 
     Scenario: Verify the DELETE plant method by ID for a existing valid ID
-      Given "Admin" sets the endpoint "/api/plants/5"
+      Given "Admin" sets the endpoint "/api/plants/11"
       When "Admin" sends "DELETE" request with token
       Then Response status code should be 204
       ##And Response body should contain "Plant deleted successfully"

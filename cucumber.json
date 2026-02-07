@@ -2,10 +2,10 @@
   "default": {
     "format": [
       "summary",
+      "progress",
       "allure-cucumberjs/reporter"
     ],
     "formatOptions": {
-      "snippetInterface": "async-await",
       "resultsDir": "allure-results"
     },
     "publishQuiet": true,

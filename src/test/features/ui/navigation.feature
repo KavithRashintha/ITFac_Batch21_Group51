@@ -1,5 +1,5 @@
 @navigation
-Feature: Sidebar navigation by role
+Feature: Sidebar Navigation
 
   Scenario Outline: Verify allowed sidebar navigation
     Given the user logged-in as "<role>"

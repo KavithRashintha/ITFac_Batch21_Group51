@@ -1,5 +1,5 @@
 @categories-user-apitests
-Feature: User Category API Operations
+Feature: Category Management API - User
 
   Background:
     Given User logs in with username "testuser" and password "test123"
@@ -36,7 +36,7 @@ Feature: User Category API Operations
     Given User sets the endpoint "/api/categories/page"
     And User sets query parameters
       | name      |      |
-      | parentId  |      |
+      | parentId  |     |
       | page      | 0    |
       | size      | 10   |
       | sortField | name |
@@ -71,11 +71,11 @@ Feature: User Category API Operations
   # TC_USER_CAT_16
   @updateCategoryNonAdmin
   Scenario: Verify PUT category method (Forbidden for User)
-    And "User" sets the endpoint "/api/categories/15"
+    And "User" sets the endpoint "/api/categories/6"
     When "User" sends "PUT" request with token and payload
       """
       {
-        "name": "Category 3",
+        "name": "Category 2",
         "parentId": null
       }
       """
@@ -101,7 +101,7 @@ Feature: User Category API Operations
   # TC_USER_CAT_18
   @getValidCategory
   Scenario: Verify GET specific category by ID for an existing valid category ID
-    And "User" sets the endpoint "/api/categories/15"
+    And "User" sets the endpoint "/api/categories/6"
     When "User" sends "GET" request with token
     Then Response status code should be 200
     And Response body should match JSON structure

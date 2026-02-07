@@ -1,5 +1,5 @@
 @login
-Feature: Login test validation for UI
+Feature: Login UI
 
   Scenario: Admin login with valid credentials
     Given the user logged-in as "Admin"

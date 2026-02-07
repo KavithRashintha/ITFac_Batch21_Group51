@@ -1,4 +1,4 @@
-Feature: Plant Management API
+Feature: Plant Management API - User
 
   Background:
     Given User logs in with username "testuser" and password "test123"
@@ -21,14 +21,14 @@ Feature: Plant Management API
     And Response page number should be 1
 
   Scenario: Verify search plants by existing name
-    And "User" sets the endpoint "/api/plants/paged?name=Plant 1&page=0&size=10"
+    And "User" sets the endpoint "/api/plants/paged?name=Plant1&page=0&size=10"
     When "User" sends "GET" request with token
     Then Response status code should be 200
     And Response body 'content' should be an array with 1 items
-    And The first plant in 'content' should have name "Plant 1"
+    And The first plant in 'content' should have name "Plant1"
 
   Scenario: Verify search plants by non-existing name
-    And "User" sets the endpoint "/api/plants/paged?name=Plant 25&page=0&size=10"
+    And "User" sets the endpoint "/api/plants/paged?name=Plant25&page=0&size=10"
     When "User" sends "GET" request with token
     Then Response status code should be 200
     And Response body 'content' should be an array with 0 items
@@ -67,7 +67,7 @@ Feature: Plant Management API
       """
 
   Scenario: Verify the DELETE plant method by ID for a existing valid ID
-    And "User" sets the endpoint "/api/plants/1"
+    And "User" sets the endpoint "/api/plants/10"
     When "User" sends "DELETE" request with token
     Then Response status code should be 403
     And Response body should match JSON structure
@@ -75,7 +75,7 @@ Feature: Plant Management API
       {
         "status": 403,
         "error": "Forbidden",
-        "message": "string",
+        "path": "string",
         "timestamp": "any_non_empty_string"
       }
       """
@@ -102,7 +102,7 @@ Feature: Plant Management API
       {
         "status": 403,
         "error": "Forbidden",
-        "message": "string",
+        "path": "string",
         "timestamp": "any_non_empty_string"
       }
       """
@@ -113,12 +113,12 @@ Feature: Plant Management API
     """
       {
         "id": 2,
-        "name": "Plant 2",
+        "name": "Plant2",
         "price": 790,
         "quantity": 50,
         "category": {
-          "id": 4,
-          "name": "SubCat 1.2",
+          "id": 2,
+          "name": "Sub_Cat1",
           "subCategories": []
         }
       }
@@ -129,7 +129,7 @@ Feature: Plant Management API
       {
         "status": 403,
         "error": "Forbidden",
-        "message": "string",
+        "path": "string",
         "timestamp": "any_non_empty_string"
       }
       """

@@ -1,4 +1,4 @@
-Feature: Sales API management
+Feature: Sales Management API - User
 
   Background:
     Given User logs in with username "testuser" and password "test123"

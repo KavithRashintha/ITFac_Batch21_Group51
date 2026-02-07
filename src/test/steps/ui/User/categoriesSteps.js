@@ -58,7 +58,7 @@ When('user clicks on the search button', async function() {
     await this.page.click('button[type="submit"]');  
 });
 
-Then('the search results should display category\\/subcategory {string}', async function(subcategoryName) {
+Then(/^the search results should display category\/subcategory "([^"]*)"$/, async function(subcategoryName) {
   await this.page.waitForSelector('table tbody tr');   
   const rows = this.page.locator('table tbody tr');
   const matchedRows = rows.filter({ hasText: subcategoryName });

@@ -1,5 +1,5 @@
 @categories
-Feature: Category management
+Feature: Category Management UI - Admin
 
     Background:
         Given the user logged-in as "Admin"
@@ -46,7 +46,7 @@ Feature: Category management
     @editcategorySaveButton
     Scenario: Verify the Save button functionality in the Edit Category
         When user navigates to "ui/categories"
-        And user clicks on edit button for category "Anthurium"
+        And user clicks on edit button for category "Plant9"
         And user navigates to edit category page
         And user edits the categoryname "Rose"
         And user click save button
@@ -58,7 +58,7 @@ Feature: Category management
     @editcategoryCancelButton
     Scenario: Verify the Cancel button functionality in the Edit Category
         When user navigates to "ui/categories"
-        And user clicks on edit button for category "Anthurium"
+        And user clicks on edit button for category "Plant9"
         And user navigates to edit category page
         And user edits the categoryname "RoseTemp"
         And user clicks on cancel button
@@ -69,7 +69,7 @@ Feature: Category management
     @deleteCategoryConfirmation
     Scenario: Verify the Delete Category button in Action
         When user navigates to "ui/categories"
-        And user clicks on delete button for category "Anthurium"
+        And user clicks on delete button for category "plant8"
         Then delete confirmation popup should be displayed
 
     @categoryname_required
@@ -89,7 +89,7 @@ Feature: Category management
     @searchwithoutparent
     Scenario: Verify categories can be searched without selecting parent category
         When user navigates to "ui/categories"
-        And user enters subcategory name "Sub_1" in search field
+        And user enters subcategory name "Sub_Cat1" in search field
         And user clicks Search button
         Then search results should be displayed
         And results should match the search criteria
@@ -97,9 +97,9 @@ Feature: Category management
     @filterbyparent
     Scenario: Verify filtering categories by parent category
         When user navigates to "ui/categories"
-        And user selects parent category "Fruits"
+        And user selects parent category "Category 1"
         And user clicks Search button
-        Then only subcategories belonging to parent category "Fruits" should be displayed
+        Then only subcategories belonging to parent category "Category 1" should be displayed
 
 
 
