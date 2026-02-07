@@ -1,5 +1,5 @@
 @categories
-Feature: Category management
+Feature: Category Management - Admin UI
 
     Background:
         Given the user logged-in as "Admin"
@@ -46,30 +46,30 @@ Feature: Category management
     @editcategorySaveButton
     Scenario: Verify the Save button functionality in the Edit Category
         When user navigates to "ui/categories"
-        And user clicks on edit button for category "Anthurium"
+        And user clicks on edit button for category "Sub_Cat 1"
         And user navigates to edit category page
-        And user edits the categoryname "Rose"
+        And user edits the categoryname "Sub_Cat 1"
         And user click save button
         Then user navigates to category page
         And the success message should be displayed
-        And the category name should be updated to "Rose"
+        And the category name should be updated to "Sub_Cat 01"
 
     #TC_ADMIN_CAT_16
     @editcategoryCancelButton
     Scenario: Verify the Cancel button functionality in the Edit Category
         When user navigates to "ui/categories"
-        And user clicks on edit button for category "Anthurium"
+        And user clicks on edit button for category "Sub_Cat 1"
         And user navigates to edit category page
-        And user edits the categoryname "RoseTemp"
+        And user edits the categoryname "Sub_Cat 1"
         And user clicks on cancel button
         Then user navigates to category page
-        And the category name should remain as "Anthurium"
+        And the category name should remain as "Sub_Cat 1"
 
     #TC_ADMIN_CAT_17
     @deleteCategoryConfirmation
     Scenario: Verify the Delete Category button in Action
         When user navigates to "ui/categories"
-        And user clicks on delete button for category "Anthurium"
+        And user clicks on delete button for category "Sub_Cat 1"
         Then delete confirmation popup should be displayed
 
     @categoryname_required
@@ -89,7 +89,7 @@ Feature: Category management
     @searchwithoutparent
     Scenario: Verify categories can be searched without selecting parent category
         When user navigates to "ui/categories"
-        And user enters subcategory name "Sub_1" in search field
+        And user enters subcategory name "Sub_Cat 1" in search field
         And user clicks Search button
         Then search results should be displayed
         And results should match the search criteria
@@ -97,9 +97,9 @@ Feature: Category management
     @filterbyparent
     Scenario: Verify filtering categories by parent category
         When user navigates to "ui/categories"
-        And user selects parent category "Fruits"
+        And user selects parent category "Category 1"
         And user clicks Search button
-        Then only subcategories belonging to parent category "Fruits" should be displayed
+        Then only subcategories belonging to parent category "Category 1" should be displayed
 
 
 

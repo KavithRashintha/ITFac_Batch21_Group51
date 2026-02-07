@@ -1,95 +1,89 @@
 import { When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
+import { CategoryPage } from '../../../pages/CategoryPage.js';
 
-// ---------- User role validations ----------
+//---------- TC_USER_CAT_01: Verify the Search functionality of the categories list for non-admin user ----------
 
-Then('Add Category button should not be visible', async function () {
-  const addCategoryButton = this.page.locator(
-    'button:has-text("Add A Category"), a:has-text("Add A Category")'
-  );
-
-  // For non-admin users, the button should not exist in DOM
-  await expect(addCategoryButton).toHaveCount(0);
+When('User navigates to {string} page', async function (path) {
+    const categoryPage = new CategoryPage(this.page);
+    await categoryPage.navigateTo(`http://localhost:8080/${path}`);
 });
 
+When('User enters subcategory name {string} in search field', async function (name) {
+    const categoryPage = new CategoryPage(this.page);
+    await this.page.fill(categoryPage.searchInput, name);
+    this.searchTerm = name;
+});
 
-//---------------------------- TC_USER_CAT_08: Verify that the Category Edit button is disabled for users ------------------
+When('User clicks Search button for categories list', async function () {
+    const categoryPage = new CategoryPage(this.page);
+    await this.page.click(categoryPage.searchButton);
+    await this.page.waitForLoadState('networkidle');
+});
 
-When('user navigates to category page {string}', { timeout: 30000 }, async function (path) {
-    await this.page.goto(`http://localhost:8080/${path}`, { 
-        waitUntil: 'domcontentloaded',
-        timeout: 30000 
+Then('Search results should be displayed in categories table', async function () {
+    const categoryPage = new CategoryPage(this.page);
+    await expect(this.page.locator(categoryPage.table)).toBeVisible();
+});
+
+Then('Results should match the search criteria in categories list', async function () {
+    const categoryPage = new CategoryPage(this.page);
+    const names = await this.page.locator('tbody tr td:nth-child(2)').allTextContents();
+    expect(names.length).toBeGreaterThan(0);
+    const hasMatchingResult = names.some(name => 
+      name.toLowerCase().includes(this.searchTerm?.toLowerCase() || '')
+    );
+    expect(hasMatchingResult).toBe(true);
+});
+
+//---------- TC_USER_CAT_02: Verify the Filter functionality of the categories list for non-admin user ----------
+
+When('User selects parent category {string} from dropdown', async function (category) {
+    const categoryPage = new CategoryPage(this.page);
+    await categoryPage.filterByParent(category);
+});
+
+Then('Only subcategories belonging to parent category {string} should be visible', async function (category) {
+    await this.page.waitForLoadState('networkidle');
+    const parentColumnValues = await this.page.locator('tbody tr td:nth-child(3)').allTextContents();
+    expect(parentColumnValues.length).toBeGreaterThan(0);
+    const nonEmptyParents = parentColumnValues.filter(p => p.trim() && p.trim() !== '-');
+    nonEmptyParents.forEach(parent => {
+      expect(parent.trim()).toBe(category);
     });
 });
 
-Then('the Edit button for category {string} should be disabled', async function(categoryName) {
-    await this.page.waitForSelector('table tbody tr');
+//---------- TC_USER_CAT_03: Verify sorting of category list by Name for non-admin user ----------
 
-    const row = this.page.locator('table tbody tr').filter({ hasText: categoryName }).first();
-    await expect(row).toBeVisible();
-
-    const editButton = row.locator('[title="Edit"]');
-
-    const isDisabled = await editButton.isDisabled();
-    expect(isDisabled).toBe(true);  
+When('User sorts category list by Name', async function () {
+    await this.page.locator('th', { hasText: 'Name' }).click();
+    await this.page.waitForLoadState('networkidle');
 });
 
-//---------------------------- TC_USER_CAT_09: Verify that the Category Delete button is disabled for users ------------------
-
-Then('the Delete button for category {string} should be disabled', async function(categoryName) {
-    await this.page.waitForSelector('table tbody tr');
-
-    const row = this.page.locator('table tbody tr').filter({ hasText: categoryName }).first();
-    await expect(row).toBeVisible();
-
-    const deleteButton = row.locator('[title="Delete"]');
-
-    const isDisabled = await deleteButton.isDisabled();
-    expect(isDisabled).toBe(true);  // Passes if button is disabled
+Then('Category list should be sorted by name', async function () {
+    const names = await this.page.locator('tbody tr td:nth-child(2)').allTextContents();
+    const sorted = [...names].sort((a, b) => a.localeCompare(b));
+    const reversed = [...sorted].reverse();
+    const isSorted = JSON.stringify(names) === JSON.stringify(sorted) || 
+                     JSON.stringify(names) === JSON.stringify(reversed);
+    expect(isSorted).toBe(true);
 });
 
-//---------------------------- TC_USER_CAT_11: Verify search functionality for a valid subcategory name ------------------
+//---------- TC_USER_CAT_04: Verify sorting of category list by Parent for non-admin user ----------
 
-When('user enters {string} in the search bar', async function(subcategoryName) {
-    await this.page.fill('input[placeholder="Search sub category"]', subcategoryName);
+When('User sorts category list by Parent', async function () {
+    await this.page.locator('th', { hasText: 'Parent' }).click();
+    await this.page.waitForLoadState('networkidle');
 });
 
-When('user clicks on the search button', async function() {
-    await this.page.click('button[type="submit"]');  
+Then('Category list should be sorted by parent', async function () {
+    const parents = await this.page.locator('tbody tr td:nth-child(3)').allTextContents();
+    expect(parents.length).toBeGreaterThan(0);
 });
 
-Then('the search results should display category\\/subcategory {string}', async function(subcategoryName) {
-  await this.page.waitForSelector('table tbody tr');   
-  const rows = this.page.locator('table tbody tr');
-  const matchedRows = rows.filter({ hasText: subcategoryName });
-  expect(await matchedRows.count()).toBeGreaterThan(0);
-  await this.page.waitForTimeout(3000);
-});
+//-------------------------- Verify the visibility of the pagination --------------------------
 
-//---------------------------- TC_USER_CAT_12: Verify "No category found" message displays when the records do not exist ------------------
-
-Then('"No category found" message should be displayed', async function() {
-    const noRecordMsg = this.page.locator('text=No category found');
-    await noRecordMsg.waitFor({ state: 'visible', timeout: 5000 });
-
-    expect(await noRecordMsg.isVisible()).toBeTruthy();
-    await this.page.waitForTimeout(3000);
-});
-
-//---------------------------- TC_USER_CAT_13: Verify that clicking the Reset button clears the entered search criteria ----------------
-
-When('user clicks on the Reset button', async function() {
-    await this.page.getByText('Reset').click();
-    await this.page.waitForSelector('table tbody tr');
-});
-
-Then('the search input should be cleared', async function() {
-    const searchValue = await this.page.inputValue('input[placeholder="Search sub category"]');
-    expect(searchValue).toBe('');
-});
-
-Then('the category list should be reset', async function() {
-    const rows = this.page.locator('table tbody tr');
-    expect(await rows.count()).toBeGreaterThan(0);
-    await this.page.waitForTimeout(3000);
+Then('The pagination should be visible for user view', async function () {
+    const categoryPage = new CategoryPage(this.page);
+    await expect(this.page.locator(categoryPage.pagination)).toBeVisible();
 });

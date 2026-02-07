@@ -1,5 +1,6 @@
 import { When, Then, setDefaultTimeout } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
+import { BasePage } from "../pages/BasePage.js";
 
 /* -------- Sidebar Click -------- */
 
@@ -11,5 +12,6 @@ When("User clicks on {string}", async function (menu) {
 /* -------- Route Assertion -------- */
 
 Then("User should be navigated to {string}", async function (route) {
-  await expect(this.page.url()).toContain(route);
+  const basePage = new BasePage(this.page);
+  await basePage.verifyUrlContains(route);
 });

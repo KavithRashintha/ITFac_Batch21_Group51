@@ -1,5 +1,5 @@
 @categories-api
-Feature: Category API Management
+Feature: Category Management - Admin API
 
   Background:
     Given Admin logs in with username "admin" and password "admin123"
@@ -20,7 +20,7 @@ Feature: Category API Management
 
   @duplicate_category_without_parent
   Scenario: Create category with duplicate name without parent
-    Given main category "Flowering" already exists
+    Given main category "Category 1" already exists
     And Admin sets the endpoint "/api/categories"
     When Admin sends POST request for categories with payload
       """
@@ -42,7 +42,7 @@ Feature: Category API Management
 
   @create_subcategory_under_parent
   Scenario: Create sub category under parent category
-    Given parent category "Flowering" exists
+    Given parent category "Category 1" exists
     And Admin sets the endpoint "/api/categories"
     When Admin sends POST request for categories with payload
       """
@@ -60,8 +60,8 @@ Feature: Category API Management
 
   @duplicate_subcategory_same_parent
   Scenario: Create sub category with duplicate name under same parent
-    Given parent category "Flowering" exists
-    And subcategory "CAT1" already exists under parent "Flowering"
+    Given parent category "Category 1" exists
+    And subcategory "CAT1" already exists under parent "Category 1"
     And Admin sets the endpoint "/api/categories"
     When Admin sends POST request for categories with payload
       """

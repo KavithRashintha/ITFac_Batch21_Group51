@@ -1,5 +1,5 @@
 @categories-user-apitests
-Feature: User Category API Operations
+Feature: Category Management - User
 
   Background:
     Given User logs in with username "testuser" and password "test123"
@@ -101,14 +101,14 @@ Feature: User Category API Operations
   # TC_USER_CAT_18
   @getValidCategory
   Scenario: Verify GET specific category by ID for an existing valid category ID
-    And "User" sets the endpoint "/api/categories/15"
+    And "User" sets the endpoint "/api/categories/8"
     When "User" sends "GET" request with token
     Then Response status code should be 200
     And Response body should match JSON structure
       """
       {
-      "id": 6,
-      "name": "Sub_Cat 4",
+      "id": 8,
+      "name": "Sub_Cat 5",
       "parentId": 4
       }
       """
