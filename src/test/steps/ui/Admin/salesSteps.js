@@ -25,9 +25,9 @@ Then(
 
     // Check if dates are in descending order (newest first)
     for (let i = 0; i < dates.length - 1; i++) {
-        const currentDate = dates[i];
-        const nextDate = dates[i + 1];
-        expect(currentDate.getTime()).toBeGreaterThanOrEqual(nextDate.getTime());
+      const currentDate = dates[i];
+      const nextDate = dates[i + 1];
+      expect(currentDate.getTime()).toBeGreaterThanOrEqual(nextDate.getTime());
     }
   },
 );
