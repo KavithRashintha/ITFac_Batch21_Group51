@@ -2,9 +2,11 @@
   "default": {
     "format": ["summary", "progress", "allure-cucumberjs/reporter:out.txt"],
     "formatOptions": {
-      "snippetInterface": "async-await",
       "resultsDir": "allure-results"
     },
+    "paths": [
+      "src/test/features/**/*.feature"
+    ],
     "publishQuiet": true,
     "dryRun": false,
     "import": [
