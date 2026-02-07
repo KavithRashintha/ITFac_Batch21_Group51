@@ -30,15 +30,7 @@ Then("All plants should be displayed", async function () {
 });
 
 //==================================== Only plants with specific category should be displayed ==========================
-When("User clicks {string} button", async function (buttonName) {
-  const plantPage = new PlantPage(this.page);
-  const button = this.page.getByRole("button", { name: buttonName });
-  await button.waitFor({ state: "visible" });
-  await Promise.all([
-    this.page.waitForLoadState("networkidle"),
-    button.click(),
-  ]);
-});
+// Generic button click is now in commonStep.js
 
 Then(
   "Only plants with category {string} should be displayed",
@@ -72,14 +64,7 @@ Then("No plants should be displayed", { timeout: 10000 }, async function () {
 
 //==================================== Verify specific message is visible (e.g., "No plants found") ====================
 
-Then(
-  "A message {string} should be visible",
-  { timeout: 10000 },
-  async function (message) {
-    const plantPage = new PlantPage(this.page);
-    await plantPage.verifyTextVisible(message);
-  },
-);
+// Reusable message visibility step is now in commonStep.js
 
 //==================================== Verify "Low" badge when plant quantity is below 5 ===============================
 Then(

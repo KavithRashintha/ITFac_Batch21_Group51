@@ -4,10 +4,7 @@ import { CategoryPage } from "../../../pages/CategoryPage.js";
 
 //---------- TC_USER_CAT_01: Verify the Search functionality of the categories list for non-admin user ----------
 
-When("User navigates to {string} page", async function (path) {
-  const categoryPage = new CategoryPage(this.page);
-  await categoryPage.navigateTo(`http://localhost:8080/${path}`);
-});
+// Navigation step is now in commonStep.js
 
 When(
   "User enters subcategory name {string} in search field",
@@ -109,7 +106,4 @@ Then("Category list should be sorted by parent", async function () {
 
 //-------------------------- Verify the visibility of the pagination --------------------------
 
-Then("The pagination should be visible for user view", async function () {
-  const categoryPage = new CategoryPage(this.page);
-  await expect(this.page.locator(categoryPage.pagination)).toBeVisible();
-});
+// Pagination visibility is now in commonStep.js

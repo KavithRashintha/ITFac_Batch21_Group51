@@ -1,37 +1,72 @@
-// import { When, Then, After } from "@cucumber/cucumber";
-// import { expect } from "@playwright/test";
+import { When, Then, After } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
+import { BasePage } from "../pages/BasePage.js";
 
-// const BASE_URL = "http://localhost:8080;
+const BASE_URL = "http://localhost:8080";
 
-// /**
-//  * Navigation step (REUSABLE)
-//  */
-// When("User navigates to {string}", async function (path) {
-//   await this.page.goto(`${BASE_URL}${path}`);
-// });
+/**
+ * Reusable Navigation Step
+ */
+When("User navigates to {string}", { timeout: 30000 }, async function (path) {
+    const basePage = new BasePage(this.page);
+    const url = path.startsWith('http') ? path : `${BASE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
+    await basePage.navigateTo(url);
+});
 
-// /**
-//  * Generic button visibility step (REUSABLE)
-//  */
-// Then("The {string} button should be visible", async function (buttonName) {
-//   const button =
-//     (await this.page.getByRole("button", { name: buttonName }).count()) > 0
-//       ? this.page.getByRole("button", { name: buttonName })
-//       : this.page.getByRole("link", { name: buttonName });
+// Alias for low-case 'user' if needed by some feature files
+When("user navigates to {string}", { timeout: 30000 }, async function (path) {
+    const basePage = new BasePage(this.page);
+    const url = path.startsWith('http') ? path : `${BASE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
+    await basePage.navigateTo(url);
+});
 
-//   await expect(button).toBeVisible();
-// });
+/**
+ * Sidebar Click Step
+ */
+When("User clicks on {string}", async function (menu) {
+    const menuItem = this.page.locator(`text=${menu}`).first();
+    await menuItem.click();
+});
 
-// /**
-//  * Generic validation message step (REUSABLE)
-//  */
-// Then('validation message {string} should be displayed', async function (message) {
-//   await expect(this.page.locator(`text=${message}`)).toBeVisible();
-// });
+/**
+ * Generic Button Click Step (Uses BasePage strategy)
+ */
+When("User clicks {string} button", async function (buttonName) {
+    const basePage = new BasePage(this.page);
+    await basePage.clickGenericButton(buttonName);
+});
 
-// /**
-//  * Cleanup and  close browser after each scenario (REUSABLE)
-//  */
-// After(async function () {
-//   await this.browser.close();
-// });
+/**
+ * Common Message Validations
+ */
+Then("User see a success message as {string}", async function (message) {
+    const basePage = new BasePage(this.page);
+    await basePage.verifyTextVisible(message);
+});
+
+Then("User see an error message as {string}", async function (message) {
+    const basePage = new BasePage(this.page);
+    await basePage.verifyTextVisible(message);
+});
+
+Then("global error message {string} should be displayed", async function (message) {
+    const basePage = new BasePage(this.page);
+    await basePage.verifyTextVisible(message);
+});
+
+Then('validation message {string} should be displayed', async function (message) {
+    const basePage = new BasePage(this.page);
+    await basePage.verifyTextVisible(message);
+});
+
+/**
+ * Common Table and Pagination Validations
+ */
+Then("The pagination should be visible", async function () {
+    await expect(this.page.locator('.pagination')).toBeVisible();
+});
+
+Then("User should be navigated to {string}", async function (route) {
+    const basePage = new BasePage(this.page);
+    await basePage.verifyUrlContains(route);
+});

@@ -4,10 +4,7 @@ import { CategoryPage } from "../../../pages/CategoryPage.js";
 
 //--------------------------- TC_ADMIN_CAT_13: Verify the Edit category button in Actions ---------------------------
 
-When("user navigates to {string}", { timeout: 30000 }, async function (path) {
-  const categoryPage = new CategoryPage(this.page);
-  await categoryPage.navigateTo(`http://localhost:8080/${path}`);
-});
+// Navigation step is now in commonStep.js
 
 When("user clicks on Edit button", async function () {
   await this.page.locator('[title="Edit"]').first().click();
@@ -111,10 +108,7 @@ Then("category list table should be visible", async function () {
   await expect(this.page.locator(categoryPage.table)).toBeVisible();
 });
 
-Then("pagination should be visible", async function () {
-  const categoryPage = new CategoryPage(this.page);
-  await expect(this.page.locator(categoryPage.pagination)).toBeVisible();
-});
+// Pagination visibility is now in commonStep.js
 
 Then("search option should be visible", async function () {
   const categoryPage = new CategoryPage(this.page);
@@ -154,19 +148,7 @@ When(
   },
 );
 
-Then(
-  "validation message {string} should be displayed",
-  async function (expectedMessage) {
-    const validationMessage = this.page
-      .locator("text=" + expectedMessage)
-      .or(
-        this.page.locator(
-          '.error-message, .validation-error, .invalid-feedback, [role="alert"]',
-        ),
-      );
-    await expect(validationMessage.first()).toBeVisible({ timeout: 5000 });
-  },
-);
+// Validation message Displayed is now in commonStep.js
 
 // ---------- Category sorting verification ----------
 

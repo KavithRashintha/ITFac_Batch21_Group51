@@ -13,11 +13,7 @@ Given(
   },
 );
 
-// -------------------------------------------- Login Action ----------------------------------------------
-When("user navigates to {string}", async function (path) {
-  const loginPage = new LoginPage(this.page);
-  await loginPage.navigateTo(`${url}/${path}`);
-});
+// Navigation and other shared steps are now in commonStep.js
 
 When(
   "the user provide credentials with username {string} and password {string} and click the login button for ui",
@@ -77,13 +73,7 @@ When("user enters password {string}", async function (password) {
   await this.page.fill(loginPage.passwordInput, password);
 });
 
-Then(
-  "global error message {string} should be displayed",
-  async function (message) {
-    const loginPage = new LoginPage(this.page);
-    await loginPage.verifyTextVisible(message);
-  },
-);
+// global error message {string} should be displayed - moved to commonStep.js
 
 Then("user should remain on the login page", async function () {
   const loginPage = new LoginPage(this.page);

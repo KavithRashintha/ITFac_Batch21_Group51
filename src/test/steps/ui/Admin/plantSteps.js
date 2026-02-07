@@ -4,10 +4,7 @@ import { PlantPage } from "../../../pages/PlantPage.js";
 
 // ============================== Navigation ==================================================
 
-When("User navigates to {string}", async function (url) {
-  const plantPage = new PlantPage(this.page);
-  await plantPage.navigateTo(`http://localhost:8080${url}`);
-});
+// Navigation step is now in commonStep.js
 
 //======================= Verify Add a Plant button visibility ===============================================
 
@@ -18,10 +15,7 @@ Then('The "Add a Plant" button should be visible', async function () {
 
 // ========================== Button Click =================================================
 
-When("User clicks {string} button", async function (buttonName) {
-  const plantPage = new PlantPage(this.page);
-  await plantPage.clickGenericButton(buttonName);
-});
+// Generic button click is now in commonStep.js
 
 //============================= Form Filling ====================================================
 
@@ -36,22 +30,11 @@ When(
 
 // ==================================== Display Messages ========================================================
 
-Then("User see an error message as {string}", async function (message) {
-  const plantPage = new PlantPage(this.page);
-  await plantPage.verifyTextVisible(message);
-});
-
-Then("User see a success message as {string}", async function (message) {
-  const plantPage = new PlantPage(this.page);
-  await plantPage.verifyTextVisible(message);
-});
+// Error/Success messages are now in commonStep.js
 
 //=================== Verify visibility of the pagination for plants list ==============================================
 
-Then("The pagination should be visible", async function () {
-  const pagination = this.page.locator("ul.pagination");
-  await expect(pagination).toBeVisible();
-});
+// Pagination visibility is now in commonStep.js
 
 //=================== Verify the Next button functionality of the pagination ===========================================
 

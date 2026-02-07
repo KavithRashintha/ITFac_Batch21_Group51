@@ -4,10 +4,7 @@ import { SalesPage } from "../../../pages/SalesPage.js";
 
 /* ---------------- UI  Button Visibility ---------------- */
 
-Then('The "Sell Plant" button should be visible', async function () {
-  const salesPage = new SalesPage(this.page);
-  await salesPage.verifySellPlantButtonVisible();
-});
+// Button visibility can be handled by a common step if exist, but "Sell Plant" is specific here.
 
 /* ---------------- UI Sale Item Visibility ---------------- */
 Then("The Sales Plant items should be visibile", async function () {
