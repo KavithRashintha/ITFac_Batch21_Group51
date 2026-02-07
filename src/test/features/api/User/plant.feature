@@ -66,7 +66,7 @@ Feature: Plant Management API
       }
       """
 
-  Scenario: Verify the DELETE plant method by ID for a existing valid ID
+  Scenario: Verify the DELETE plant method by ID for a existing valid ID User
     And "User" sets the endpoint "/api/plants/1"
     When "User" sends "DELETE" request with token
     Then Response status code should be 403
