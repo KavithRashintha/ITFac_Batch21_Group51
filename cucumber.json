@@ -1,9 +1,6 @@
 {
   "default": {
-    "format": [
-      "summary",
-      "allure-cucumberjs/reporter"
-    ],
+    "format": ["summary", "progress", "allure-cucumberjs/reporter:out.txt"],
     "formatOptions": {
       "snippetInterface": "async-await",
       "resultsDir": "allure-results"
@@ -13,7 +10,8 @@
     "import": [
       "src/test/steps/**/*.js",
       "src/test/hooks/**/*.js",
-      "src/test/context/**/*.js"
+      "src/test/context/**/*.js",
+      "src/test/pages/**/*.js"
     ]
   }
 }
