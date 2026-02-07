@@ -185,8 +185,8 @@ Feature: Plant Management API
       }
       """
 
-    Scenario: Verify the DELETE plant method by ID for a existing valid ID
+    Scenario: Verify the DELETE plant method by ID for a existing valid ID Admin
       Given "Admin" sets the endpoint "/api/plants/5"
       When "Admin" sends "DELETE" request with token
       Then Response status code should be 204
-      ##And Response body should contain "Plant deleted successfully"
+      And Response body should contain "Plant deleted successfully"

@@ -4,10 +4,7 @@ import { SalesPage } from "../../../pages/SalesPage.js";
 
 /* ---------------- UI  Button Visibility ---------------- */
 
-Then('The "Sell Plant" button should be visible', async function () {
-  const salesPage = new SalesPage(this.page);
-  await salesPage.verifySellPlantButtonVisible();
-});
+// Button visibility can be handled by a common step if exist, but "Sell Plant" is specific here.
 
 /* ---------------- UI Sale Item Visibility ---------------- */
 Then("The Sales Plant items should be visibile", async function () {
@@ -25,9 +22,9 @@ Then(
 
     // Check if dates are in descending order (newest first)
     for (let i = 0; i < dates.length - 1; i++) {
-        const currentDate = dates[i];
-        const nextDate = dates[i + 1];
-        expect(currentDate.getTime()).toBeGreaterThanOrEqual(nextDate.getTime());
+      const currentDate = dates[i];
+      const nextDate = dates[i + 1];
+      expect(currentDate.getTime()).toBeGreaterThanOrEqual(nextDate.getTime());
     }
   },
 );

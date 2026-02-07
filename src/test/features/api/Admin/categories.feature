@@ -11,6 +11,7 @@ Feature: Category Management - Admin API
       """
       {
         "id": 7,
+        
         "name": "Category 3"
       }
       """
@@ -228,7 +229,7 @@ Feature: Category Management - Admin API
     # ID 5 should be a category linked to existing Plants/Sales
     And "Admin" sets the endpoint "/api/categories/4"
     When "Admin" sends "DELETE" request with token
-    Then Response status code should be 409
+    Then Response status code should be "409"
     And Response body should match JSON structure
       """
       {
