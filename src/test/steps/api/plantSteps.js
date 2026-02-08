@@ -41,28 +41,26 @@ When('{string} sends {string} request with token', async function (role, method)
 
 
 // -------------------- Generic request WITH token and payload --------------------
-When('{string} sends {string} request with token and payload', async function (role, method) {
+When('{string} sends {string} request with token and payload', async function (role, method, docString) {
+    const payload = JSON.parse(docString);
 
-    const unAuthContext = await this.request.newContext({
-        baseURL: 'http://localhost:8080',
-        extraHTTPHeaders: {
+    const options = {
+        headers: {
+            Authorization: `${this.tokenType} ${this.token}`,
             'Content-Type': 'application/json'
-        }
-    });
+        },
+        data: payload
+    };
 
     switch (method.toUpperCase()) {
-        case "GET":
-            this.response = await unAuthContext.get(this.endpoint);
-            break;
         case "POST":
-            this.response = await unAuthContext.post(this.endpoint);
+            this.response = await this.apiContext.post(this.endpoint, options);
             break;
         case "PUT":
-            this.response = await unAuthContext.put(this.endpoint);
+            this.response = await this.apiContext.put(this.endpoint, options);
             break;
-        case "DELETE":
-            this.response = await unAuthContext.delete(this.endpoint);
-            break;
+        default:
+            throw new Error(`Unsupported method for payload request: ${method}`);
     }
 
     try {
@@ -70,8 +68,6 @@ When('{string} sends {string} request with token and payload', async function (r
     } catch {
         this.responseBody = {};
     }
-
-    await unAuthContext.dispose();
 });
 
 

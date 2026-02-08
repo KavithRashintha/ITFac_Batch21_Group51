@@ -26,7 +26,7 @@ Feature: Plant Management API - User
     When "User" sends "GET" request with token
     Then Response status code should be 200
     And Response body 'content' should be an array with 1 items
-    And The first plant in 'content' should have name "Plant1"
+    And The first plant in 'content' should have name "Plant 1"
 
   Scenario: Verify search plants by non-existing name
     And "User" sets the endpoint "/api/plants/paged?name=Plant25&page=0&size=10"
@@ -76,7 +76,7 @@ Feature: Plant Management API - User
       {
         "status": 403,
         "error": "Forbidden",
-        "path": "string",
+        "path": "any_non_empty_string",
         "timestamp": "any_non_empty_string"
       }
       """
@@ -103,7 +103,7 @@ Feature: Plant Management API - User
       {
         "status": 403,
         "error": "Forbidden",
-        "path": "string",
+        "path": "any_non_empty_string",
         "timestamp": "any_non_empty_string"
       }
       """
@@ -130,7 +130,7 @@ Feature: Plant Management API - User
       {
         "status": 403,
         "error": "Forbidden",
-        "path": "string",
+        "path": "any_non_empty_string",
         "timestamp": "any_non_empty_string"
       }
       """

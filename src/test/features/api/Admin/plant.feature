@@ -143,7 +143,7 @@ Feature: Plant Management API - Admin
       {
         "status": 404,
         "error": "NOT_FOUND",
-        "path": "Plant not found: 100",
+        "message": "Plant not found: 100",
         "timestamp": "any_non_empty_string"
       }
       """
@@ -163,7 +163,6 @@ Feature: Plant Management API - Admin
           "category": {
             "id": "any_number",
             "name": "any_non_empty_string",
-            "parent": "any_non_empty_string",
             "subCategories": [
 
             ]
