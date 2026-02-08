@@ -1,4 +1,4 @@
-@plants
+@plants @ui @user
 Feature: Plant Management UI - User
 
   Background:

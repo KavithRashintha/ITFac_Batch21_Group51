@@ -1,4 +1,4 @@
-@categories-api
+@categories @api @admin
 Feature: Category Management API - Admin
 
   Background:

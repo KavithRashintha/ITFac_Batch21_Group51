@@ -1,43 +1,31 @@
 import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-// ===================== Filter by category =====================
 When('User selects category {string} from filter', { timeout: 15000 }, async function (category) {
-    await this.page.selectOption('select[name="categoryId"]', { label: category });
-    const rows = this.page.locator('tbody tr');
-    await rows.first().waitFor({ timeout: 10000 }).catch(() => {}); 
+    await this.plantsPage.select('select[name="categoryId"]', { label: category });
+    const rows = this.plantsPage.getLocator('tbody tr');
+    await rows.first().waitFor({ timeout: 10000 }).catch(() => { });
 });
 
-// ===================== Search plants =====================
 When('User searches for plant {string}', { timeout: 20000 }, async function (plantName) {
-
-    const searchInput = this.page.locator('input[name="name"]');
-
+    const searchInput = this.plantsPage.getLocator('input[name="name"]');
     await searchInput.fill('');
     await searchInput.fill(plantName);
     await searchInput.press('Enter');
-
-    const rows = this.page.locator('tbody tr');
-
+    const rows = this.plantsPage.getLocator('tbody tr');
     await rows.first().waitFor({ timeout: 15000 });
 });
 
-
 Then('All plants should be displayed', async function () {
-    const rows = this.page.locator('tbody tr');
+    const rows = this.plantsPage.getLocator('tbody tr');
     await rows.first().waitFor({ timeout: 10000 });
     const count = await rows.count();
     await expect(count).toBeGreaterThan(0);
 });
 
-
-//==================================== Only plants with specific category should be displayed ==========================
 When('User clicks {string} button', async function (buttonName) {
-
-    const button = this.page.getByRole('button', { name: buttonName });
-
+    const button = this.plantsPage.getByRole('button', { name: buttonName });
     await button.waitFor({ state: 'visible' });
-
     await Promise.all([
         this.page.waitForLoadState('networkidle'),
         button.click()
@@ -45,46 +33,34 @@ When('User clicks {string} button', async function (buttonName) {
 });
 
 Then('Only plants with category {string} should be displayed', { timeout: 10000 }, async function (category) {
-    const categoryCells = this.page.locator('tbody tr td:nth-child(2)');
+    const categoryCells = this.plantsPage.getLocator('tbody tr td:nth-child(2)');
     const count = await categoryCells.count();
     for (let i = 0; i < count; i++) {
         await expect(categoryCells.nth(i)).toHaveText(category);
     }
 });
 
-//==================================== Check if a specific plant is visible ============================================
-
 Then('The plant {string} should be visible in the results', { timeout: 10000 }, async function (plantName) {
-    const plantCell = this.page.locator('tbody tr td', { hasText: plantName });
+    const plantCell = this.plantsPage.getLocator('tbody tr td', { hasText: plantName });
     await plantCell.waitFor({ timeout: 10000 });
-    await expect(plantCell).toBeVisible();
+    await this.plantsPage.verifyVisible(plantCell);
 });
-
-//==================================== Check if no plants are displayed ================================================
 
 Then('No plants should be displayed', { timeout: 10000 }, async function () {
-
-    const noPlantsRow = this.page.locator('tbody tr td', {
+    const noPlantsRow = this.plantsPage.getLocator('tbody tr td', {
         hasText: 'No plants found'
     });
-
-    await expect(noPlantsRow).toBeVisible();
+    await this.plantsPage.verifyVisible(noPlantsRow);
 });
-
-//==================================== Verify specific message is visible (e.g., "No plants found") ====================
 
 Then('A message {string} should be visible', { timeout: 10000 }, async function (message) {
-    const messageLocator = this.page.getByText(message, { exact: false });
-    await messageLocator.waitFor({ timeout: 10000 });
-    await expect(messageLocator).toBeVisible();
+    await this.plantsPage.verifyMessage(message, { timeout: 10000 });
 });
 
-//==================================== Verify "Low" badge when plant quantity is below 5 ===============================
 Then('Plants with quantity below {int} should display the {string} badge',
     { timeout: 60000 },
     async function (threshold, badgeText) {
-
-        const getRows = () => this.page.locator('tbody tr');
+        const getRows = () => this.plantsPage.getLocator('tbody tr');
         let foundLowQuantityPlant = false;
 
         while (true) {
@@ -93,8 +69,6 @@ Then('Plants with quantity below {int} should display the {string} badge',
 
             for (let i = 0; i < rowCount; i++) {
                 const row = rows.nth(i);
-
-                // Skip "No plants found"
                 if ((await row.locator('text=No plants found').count()) > 0) continue;
 
                 const quantitySpan = row.locator('td:nth-child(4) > span.text-danger.fw-bold');
@@ -107,16 +81,12 @@ Then('Plants with quantity below {int} should display the {string} badge',
 
                 if (quantity < threshold) {
                     foundLowQuantityPlant = true;
-
-                    // Badge
                     const badge = row.locator('td:nth-child(4) > span.badge', { hasText: badgeText });
-
                     await expect(badge).toBeVisible();
                 }
             }
 
-            // Pagination
-            const nextButtonLi = this.page.locator('.pagination li', { hasText: 'Next' });
+            const nextButtonLi = this.plantsPage.getLocator('.pagination li', { hasText: 'Next' });
             if ((await nextButtonLi.count()) === 0) break;
             const isDisabled = await nextButtonLi.first().getAttribute('class');
             if (isDisabled && isDisabled.includes('disabled')) break;
@@ -128,12 +98,10 @@ Then('Plants with quantity below {int} should display the {string} badge',
 
         expect(foundLowQuantityPlant).toBeTruthy();
     });
-//==================================== Verify Action plants button visibility ==========================================
 
 Then('{string} button should not be visible', async function (buttonName) {
-
-    const firstRow = this.page.locator('tbody tr').first();
-    await expect(firstRow).toBeVisible();
+    const firstRow = this.plantsPage.getLocator('tbody tr').first();
+    await this.plantsPage.verifyVisible(firstRow);
 
     const button = firstRow.getByRole('button', { name: buttonName });
     const link = firstRow.getByRole('link', { name: buttonName });
@@ -148,23 +116,17 @@ Then('{string} button should not be visible', async function (buttonName) {
     await expect(href).not.toBeVisible();
 });
 
-//==================================== Verify visibility of the pagination for plants list =============================
-
-Then('The pagination should be visible for non-admin user', async function (){
-    const pagination = this.page.locator('ul.pagination');
-    await expect(pagination).toBeVisible()
+Then('The pagination should be visible for non-admin user', async function () {
+    await this.plantsPage.verifyPaginationVisible();
 });
 
-//==================================== Verify the visibility of the sort indicator =====================================
-
 Then('User see the sort indicator in the Name column', async function () {
-
-    const header = this.page.getByRole('columnheader', { name: 'Name', exact: false });
-    await expect(header).toBeVisible();
+    const header = this.plantsPage.getByRole('columnheader', { name: 'Name', exact: false });
+    await this.plantsPage.verifyVisible(header);
 
     const byText = header.locator('span').filter({ hasText: /[↓↑]/ });
     const byCss = header.locator('a > span');
-    const byHrefContext = this.page.locator('th a[href*="sortField=name"] span');
+    const byHrefContext = this.plantsPage.getLocator('th a[href*="sortField=name"] span');
     const byXpath = header.locator('xpath=.//span');
 
     if (await byText.count() > 0) {
@@ -187,13 +149,11 @@ Then('User see the sort indicator in the Name column', async function () {
     }
 });
 
-//==================================== Verify the functionality of sort indicator ======================================
-
 When('User clicks on {string} column header', async function (columnName) {
-    const byLink = this.page.locator('th a').filter({ hasText: columnName });
-    const byRole = this.page.getByRole('columnheader', { name: columnName, exact: false });
-    const byText = this.page.locator('th').filter({ hasText: columnName });
-    const byXpath = this.page.locator(`xpath=//th[contains(., "${columnName}")]`);
+    const byLink = this.plantsPage.getLocator('th a').filter({ hasText: columnName });
+    const byRole = this.plantsPage.getByRole('columnheader', { name: columnName, exact: false });
+    const byText = this.plantsPage.getLocator('th').filter({ hasText: columnName });
+    const byXpath = this.plantsPage.getLocator(`xpath=//th[contains(., "${columnName}")]`);
 
     if (await byLink.count() > 0) {
         await byLink.click();
@@ -213,7 +173,7 @@ When('User clicks on {string} column header', async function (columnName) {
 });
 
 Then('User see the sort indicator {string} in the name column', async function (direction) {
-    const header = this.page.getByRole('columnheader', { name: 'Name', exact: false });
+    const header = this.plantsPage.getByRole('columnheader', { name: 'Name', exact: false });
 
     const expectedChar = direction.toLowerCase() === 'up' ? '↑' : '↓';
     const expectedClass = direction.toLowerCase() === 'up' ? 'bi-arrow-up' : 'bi-arrow-down';
@@ -223,7 +183,7 @@ Then('User see the sort indicator {string} in the name column', async function (
     try {
         await expect(anyIndicator).toBeVisible({ timeout: 5000 });
     } catch (e) {
-        console.log(`Debug: Timed out waiting for sort indicator. Header text is: "${await header.innerText()}"`);
+
         throw e;
     }
 

@@ -1,0 +1,33 @@
+{
+    "validSales": {
+        "sale1": {
+            "plant": "Plant1",
+            "quantity": "5",
+            "customerName": "John Doe",
+            "customerEmail": "john@example.com"
+        }
+    },
+    "invalidSales": {
+        "negativeQuantity": {
+            "plant": "Plant1",
+            "quantity": "-1",
+            "customerName": "Jane Doe",
+            "customerEmail": "jane@example.com",
+            "expectedError": "Quantity cannot be negative"
+        },
+        "insufficientStock": {
+            "plant": "Plant1",
+            "quantity": "1000",
+            "customerName": "Bob Smith",
+            "customerEmail": "bob@example.com",
+            "expectedError": "Insufficient stock"
+        }
+    },
+    "messages": {
+        "success": {
+            "created": "Sale created successfully",
+            "updated": "Sale updated successfully",
+            "deleted": "Sale deleted successfully"
+        }
+    }
+}

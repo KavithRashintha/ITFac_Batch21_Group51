@@ -239,5 +239,5 @@ Then('Response body should have property {string} as empty array', function (pro
 Then('Response body should have parent with stored parent id', function () {
   expect(this.responseBody).toHaveProperty('id');
   expect(this.responseBody).toHaveProperty('name');
-  console.log(`✓ Subcategory '${this.responseBody.name}' created successfully (parent validation skipped - API doesn't return parent info)`);
+
 });

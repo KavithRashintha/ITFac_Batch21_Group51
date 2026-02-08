@@ -1,4 +1,4 @@
-@categories-user-apitests
+@categories @api @user
 Feature: Category Management API - User
 
   Background:

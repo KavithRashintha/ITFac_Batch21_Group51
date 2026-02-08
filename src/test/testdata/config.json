@@ -1,0 +1,17 @@
+{
+    "baseURL": "http://localhost:8080",
+    "timeout": {
+        "default": 30000,
+        "navigation": 30000,
+        "element": 15000,
+        "short": 5000
+    },
+    "browser": {
+        "headless": false,
+        "slowMo": 1000
+    },
+    "screenshots": {
+        "onFailure": true,
+        "fullPage": true
+    }
+}

@@ -1,5 +1,7 @@
+@login @api
 Feature: Login API
 
+  @admin
   Scenario: Admin login with valid credentials
     When Admin logs in with username "admin" and password "admin123"
     Then Response status code should be 200
@@ -11,6 +13,7 @@ Feature: Login API
       }
       """
 
+  @user
   Scenario: User login with valid credentials
     When User logs in with username "testuser" and password "test123"
     Then Response status code should be 200

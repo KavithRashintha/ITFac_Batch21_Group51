@@ -1,4 +1,4 @@
-@categories
+@categories @ui @admin
 Feature: Category Management UI - Admin
 
     Background:

@@ -3,13 +3,19 @@
     "format": [
       "summary",
       "progress",
+      "html:cucumber-report.html",
+      "json:results.json",
       "allure-cucumberjs/reporter"
     ],
     "formatOptions": {
+      "snippetInterface": "async-await",
       "resultsDir": "allure-results"
     },
     "publishQuiet": true,
     "dryRun": false,
+    "paths": [
+      "src/test/features/**/*.feature"
+    ],
     "import": [
       "src/test/steps/**/*.js",
       "src/test/hooks/**/*.js",

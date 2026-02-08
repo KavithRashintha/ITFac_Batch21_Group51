@@ -33,7 +33,7 @@ When('User sends GET request', async function () {
 Given('User sets query parameters', function (dataTable) {
   this.queryParams = {};
   const rows = dataTable.rawTable.slice(1); // Skip header row
-  
+
   rows.forEach(([key, value]) => {
     if (value !== '') { // Only add non-empty values
       this.queryParams[key] = value;
@@ -51,7 +51,7 @@ Then('Response body should be a non-empty array', function () {
 Then('Each category should have properties {string}, {string}, {string}', function (prop1, prop2, prop3) {
   expect(Array.isArray(this.responseBody)).toBe(true);
   expect(this.responseBody.length).toBeGreaterThan(0);
-  
+
   this.responseBody.forEach((category, index) => {
     expect(category).toHaveProperty(prop1);
     expect(category).toHaveProperty(prop2);
@@ -62,7 +62,7 @@ Then('Each category should have properties {string}, {string}, {string}', functi
 Then('Each category should have properties {string}, {string}', function (prop1, prop2) {
   expect(Array.isArray(this.responseBody)).toBe(true);
   expect(this.responseBody.length).toBeGreaterThan(0);
-  
+
   this.responseBody.forEach((category, index) => {
     expect(category).toHaveProperty(prop1);
     expect(category).toHaveProperty(prop2);
@@ -93,61 +93,59 @@ Then('Number of records should be less than or equal to {int}', function (size) 
 
 Then('Results should be sorted by {string} in {string} order', function (field, dir) {
   const data = this.responseBody.content;
-  
+
   if (data.length < 2) {
     return; // Cannot verify sorting with less than 2 items
   }
 
   // Log all values to debug
-  console.log(`\nVerifying ${dir.toUpperCase()} sort order for field: ${field}`);
-  console.log(`Total records: ${data.length}`);
-  
+
+
   let violations = [];
-  
+
   for (let i = 1; i < data.length; i++) {
     const current = data[i][field];
     const previous = data[i - 1][field];
-    
+
     // Handle null/undefined values
     if (current == null || previous == null) continue;
-    
+
     // String comparison using case-insensitive localeCompare
     if (typeof current === 'string' && typeof previous === 'string') {
       const comparison = previous.toLowerCase().localeCompare(current.toLowerCase());
-      
+
       if (dir.toLowerCase() === 'asc') {
         // For ascending: previous should be <= current, so comparison should be <= 0
         if (comparison > 0) {
-          violations.push(`  [${i-1}→${i}]: "${previous}" > "${current}"`);
+          violations.push(`  [${i - 1}→${i}]: "${previous}" > "${current}"`);
         }
       } else {
         // For descending: previous should be >= current, so comparison should be >= 0
         if (comparison < 0) {
-          violations.push(`  [${i-1}→${i}]: "${previous}" < "${current}"`);
+          violations.push(`  [${i - 1}→${i}]: "${previous}" < "${current}"`);
         }
       }
     } else {
       // Numeric comparison
       if (dir.toLowerCase() === 'asc') {
         if (current < previous) {
-          violations.push(`  [${i-1}→${i}]: ${previous} > ${current}`);
+          violations.push(`  [${i - 1}→${i}]: ${previous} > ${current}`);
         }
       } else {
         if (current > previous) {
-          violations.push(`  [${i-1}→${i}]: ${previous} < ${current}`);
+          violations.push(`  [${i - 1}→${i}]: ${previous} < ${current}`);
         }
       }
     }
   }
-  
+
   if (violations.length > 0) {
-    console.log(`\n⚠ Sorting violations found (${violations.length}):`);
-    violations.forEach(v => console.log(v));
+
     throw new Error(`Results are not sorted by "${field}" in "${dir}" order.\nFound ${violations.length} violation(s):\n${violations.join('\n')}`);
-  } else {
-    console.log(`✓ All ${data.length} records are correctly sorted in ${dir.toUpperCase()} order`);
   }
 });
+
+
 
 // ---------- User POST Request (For Access Denial Test) ----------
 

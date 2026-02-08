@@ -1,87 +1,67 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import { expect } from '@playwright/test';
 
-const url = "http://localhost:8080";
-
-// ----------------------------- Background Navigation (Admin/User) --------------------------------------
 Given('the user logged-in as {string}', { timeout: 10000 }, async function (role) {
-  await this.page.goto(`${url}/ui/login`, {
-    waitUntil: 'domcontentloaded'
-  });
-  
-  // Wait for the login form to be ready
-  await this.page.waitForSelector('input[name="username"]', { timeout: 5000 });
+  await this.loginPage.navigateToLogin();
 });
 
-// -------------------------------------------- Login Action ----------------------------------------------
 When('user navigates to {string}', async function (path) {
-  await this.page.goto(`${url}/${path}`);
+  await this.loginPage.navigateTo(`/${path}`);
 });
 
 When(
   'the user provide credentials with username {string} and password {string} and click the login button for ui',
   async function (username, password) {
-    await this.page.fill('input[name="username"]', username);
-    await this.page.fill('input[name="password"]', password);
-    await this.page.click('button[type="submit"]');
+    await this.loginPage.login(username, password);
   }
 );
 
 Then('User should be redirected to the dashboard', async function () {
-  await expect(this.page).toHaveURL(/\/ui\/dashboard/);
+  await this.loginPage.verifyRedirectToDashboard();
 });
-
-// ---------------------------------------------- Login page validation --------------------------------------
 
 Given('user is not logged in', async function () {
   // Precondition only
 });
 
 Given('user is on the login page', async function () {
-  await this.page.goto(`${url}/ui/login`);
+  await this.loginPage.navigateToLogin();
 });
 
 Then('login page should be displayed', async function () {
-  await expect(this.page).toHaveURL(/\/ui\/login/);
+  await this.loginPage.verifyLoginPageDisplayed();
 });
 
 Then('username and password fields should be visible', async function () {
-  await expect(this.page.locator('input[name="username"]')).toBeVisible();
-  await expect(this.page.locator('input[name="password"]')).toBeVisible();
+  await this.loginPage.verifyUsernameAndPasswordFieldsVisible();
 });
 
-// ------------------------------------------ Empty login form submit validation -------------------------------
-
 When('user clicks the login button', async function () {
-  await this.page.click('button[type="submit"]');
+  await this.loginPage.clickLoginButton();
 });
 
 Then('user should not be logged in', async function () {
-  await expect(this.page).toHaveURL(/\/ui\/login/);
+  await this.loginPage.verifyRemainsOnLoginPage();
 });
 
-// ------------------------------------------- Invalid credentials ---------------------------------------------
-
 When('user enters username {string}', async function (username) {
-  await this.page.fill('input[name="username"]', username);
+  await this.loginPage.fill(this.loginPage.usernameInput, username);
 });
 
 When('user enters password {string}', async function (password) {
-  await this.page.fill('input[name="password"]', password);
+  await this.loginPage.fill(this.loginPage.passwordInput, password);
 });
 
 Then(
   'global error message {string} should be displayed',
   async function (message) {
-    await expect(this.page.locator(`text=${message}`)).toBeVisible();
+    await this.loginPage.verifyErrorMessage(message);
   }
 );
 
 Then('user should remain on the login page', async function () {
-  await expect(this.page).toHaveURL(/\/ui\/login/);
+  await this.loginPage.verifyRemainsOnLoginPage();
 });
 
-// ------------------------------------- Successful Login ------------------------------------------------------
 Then('user should be redirected to the dashboard', async function () {
-  await expect(this.page).toHaveURL(/\/ui\/dashboard/);
+  await this.loginPage.verifyRedirectToDashboard();
 });

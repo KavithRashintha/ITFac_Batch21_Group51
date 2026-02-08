@@ -1,5 +1,5 @@
-@plants
-Feature: Plant Management API - Admin
+@plants @ui @admin
+Feature: Plant Management UI - Admin
 
   Background:
     Given the user logged-in as "Admin"

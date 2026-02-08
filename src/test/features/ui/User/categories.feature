@@ -1,4 +1,4 @@
-@categories
+@categories @ui @user
 Feature: Category Management UI - User
 
     Background:

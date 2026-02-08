@@ -1,3 +1,4 @@
+@plants @api @user
 Feature: Plant Management API - User
 
   Background:

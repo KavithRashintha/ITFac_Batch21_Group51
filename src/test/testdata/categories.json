@@ -1,0 +1,57 @@
+{
+    "validCategories": {
+        "mainCategory": {
+            "name": "Flowering",
+            "minLength": 3,
+            "maxLength": 10
+        },
+        "subCategory": {
+            "name": "Sub_Cat1",
+            "parent": "Category 1"
+        }
+    },
+    "invalidCategories": {
+        "tooShort": {
+            "name": "An",
+            "expectedError": "Category name must be between 3 and 10 characters"
+        },
+        "tooLong": {
+            "name": "Anthuriummm",
+            "expectedError": "Category name must be between 3 and 10 characters"
+        },
+        "empty": {
+            "name": "",
+            "expectedError": "Category name is required"
+        }
+    },
+    "testCategories": [
+        {
+            "name": "Plant9",
+            "editTo": "Rose"
+        },
+        {
+            "name": "Category 1",
+            "type": "parent"
+        },
+        {
+            "name": "Category 2",
+            "type": "parent"
+        },
+        {
+            "name": "Sub_Cat3",
+            "parent": "Category 2"
+        }
+    ],
+    "messages": {
+        "success": {
+            "created": "Category created successfully",
+            "updated": "Category updated successfully",
+            "deleted": "Category deleted successfully"
+        },
+        "error": {
+            "required": "Category name is required",
+            "duplicate": "already exists",
+            "deleteConfirmation": "Delete this category?"
+        }
+    }
+}

@@ -1,3 +1,4 @@
+@sales @api @admin
 Feature: Sales Management API - Admin
 
   Background:

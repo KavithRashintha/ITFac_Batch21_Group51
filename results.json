@@ -4,92 +4,64 @@
     "elements": [
       {
         "description": "",
-        "id": "plant-management-api;verify-create-plant-with-duplicate-name",
+        "id": "login-ui;admin-login-with-valid-credentials",
         "keyword": "Scenario",
-        "line": 6,
-        "name": "Verify create plant with duplicate name",
+        "line": 4,
+        "name": "Admin login with valid credentials",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6316499
+              "duration": 393252000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2746799
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
-            "name": "Admin logged-in with username \"admin\" and password \"admin123\"",
+            "line": 5,
+            "name": "the user logged-in as \"Admin\"",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:8"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:3"
             },
             "result": {
               "status": "passed",
-              "duration": 82778199
+              "duration": 1759782600
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
-            "line": 7,
-            "name": "Admin sets the endpoint \"/api/plants/category/5\"",
-            "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:6"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 106799
-            }
-          },
-          {
-            "arguments": [
-              {
-                "content": "{\n  \"name\": \"Rose\",\n  \"price\": 100,\n  \"quantity\": 20\n}",
-                "line": 9
-              }
-            ],
             "keyword": "When ",
-            "line": 8,
-            "name": "Admin sends POST request with payload",
+            "line": 6,
+            "name": "the user provide credentials with username \"admin\" and password \"admin123\" and click the login button for ui",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:11"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 21331700
+              "duration": 3185468700
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 16,
-            "name": "Response status code should be 400",
+            "line": 7,
+            "name": "User should be redirected to the dashboard",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:26"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:18"
             },
             "result": {
               "status": "passed",
-              "duration": 1230200
-            }
-          },
-          {
-            "arguments": [
-              {
-                "content": "{\n  \"status\": 400,\n  \"error\": \"DUPLICATE_RESOURCE\",\n  \"message\": \"Plant 'Rose' already exists in this category\",\n  \"timestamp\": \"2026-02-04T10:05:11.9163253\"\n}",
-                "line": 18
-              }
-            ],
-            "keyword": "And ",
-            "line": 17,
-            "name": "Response body should match JSON structure",
-            "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:30"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1353800
+              "duration": 11016599
             }
           },
           {
@@ -97,7 +69,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1135500
+              "duration": 797400
             }
           },
           {
@@ -105,98 +77,179 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 125699
+              "duration": 146444499
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@ui",
+            "line": 1
+          }
+        ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "plant-management-api;verify-create-plant-with-valid-data",
+        "id": "login-ui;user-login-with-valid-credentials",
         "keyword": "Scenario",
-        "line": 27,
-        "name": "Verify create plant with valid data",
+        "line": 9,
+        "name": "User login with valid credentials",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 730000
+              "duration": 325909799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1537900
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
-            "name": "Admin logged-in with username \"admin\" and password \"admin123\"",
+            "line": 10,
+            "name": "the user logged-in as \"User\"",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:8"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:3"
             },
             "result": {
               "status": "passed",
-              "duration": 73496200
+              "duration": 1736751299
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
-            "line": 28,
-            "name": "Admin sets the endpoint \"/api/plants/category/5\"",
-            "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:6"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 136399
-            }
-          },
-          {
-            "arguments": [
-              {
-                "content": "{\n  \"name\": \"Rose\",\n  \"price\": 100,\n  \"quantity\": 20\n}",
-                "line": 30
-              }
-            ],
             "keyword": "When ",
-            "line": 29,
-            "name": "Admin sends POST request with payload",
+            "line": 11,
+            "name": "the user provide credentials with username \"testuser\" and password \"test123\" and click the login button for ui",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:11"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 33882499
+              "duration": 3190512800
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 37,
-            "name": "Response status code should be 201",
+            "line": 12,
+            "name": "User should be redirected to the dashboard",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:26"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:18"
             },
             "result": {
-              "status": "failed",
-              "duration": 1802300,
-              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m\n    at Proxy.<anonymous> (C:\\Users\\dinuk\\Desktop\\My Docs\\Projects\\ITFac_Batch21_Group51\\node_modules\\playwright\\lib\\matchers\\expect.js:213:24)\n    at World.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:27:36)"
+              "status": "passed",
+              "duration": 9020899
             }
           },
           {
-            "arguments": [
-              {
-                "content": "{\n  \"id\": 50,\n  \"name\": \"Rose\",\n  \"price\": 100,\n  \"quantity\": 20,\n  \"category\": {\n    \"id\": 5,\n    \"name\": \"FFF\",\n    \"subCategories\": []\n  }\n}",
-                "line": 39
-              }
-            ],
-            "keyword": "And ",
-            "line": 38,
-            "name": "Response body should match JSON structure",
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 552700
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 229350399
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@ui",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-ui;verify-login-page-is-displayed",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "Verify Login page is displayed",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 536329400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 924199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 16,
+            "name": "user is not logged in",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:30"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 108599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "user navigates to \"ui/login\"",
+            "result": {
+              "status": "ambiguous",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "login page should be displayed",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:30"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "username and password fields should be visible",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:34"
             },
             "result": {
               "status": "skipped",
@@ -208,7 +261,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 583200
+              "duration": 526700
             }
           },
           {
@@ -216,101 +269,109 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 93000
+              "duration": 398442499
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@ui",
+            "line": 1
+          },
+          {
+            "name": "@login_page",
+            "line": 14
+          }
+        ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "plant-management-api;verify-create-plant-with-missing-mandatory-fields",
+        "id": "login-ui;verify-username-and-password-fields-are-mandatory",
         "keyword": "Scenario",
-        "line": 53,
-        "name": "Verify create plant with missing mandatory fields",
+        "line": 22,
+        "name": "Verify username and password fields are mandatory",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 581699
+              "duration": 1124298499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 840200
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
-            "name": "Admin logged-in with username \"admin\" and password \"admin123\"",
-            "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:8"
-            },
+            "line": 23,
+            "name": "user navigates to \"ui/login\"",
             "result": {
-              "status": "passed",
-              "duration": 78153800
+              "status": "ambiguous",
+              "duration": 0
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
-            "line": 54,
-            "name": "Admin sets the endpoint \"/api/plants/category/1\"",
-            "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:6"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 85199
-            }
-          },
-          {
-            "arguments": [
-              {
-                "content": "{\n  \"name\": \"Rose\",\n  \"price\": 100\n}",
-                "line": 56
-              }
-            ],
             "keyword": "When ",
-            "line": 55,
-            "name": "Admin sends POST request with payload",
+            "line": 24,
+            "name": "user clicks the login button",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:11"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:38"
             },
             "result": {
-              "status": "passed",
-              "duration": 10882700
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 62,
-            "name": "Response status code should be 400",
+            "line": 25,
+            "name": "validation message \"Username is required\" should be displayed",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:26"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\Admin\\categoriesSteps.js:95"
             },
             "result": {
-              "status": "passed",
-              "duration": 251399
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
-            "arguments": [
-              {
-                "content": "{\n  \"details\": {\n    \"quantity\": \"Quantity is required\"\n  },\n  \"error\": \"BAD_REQUEST\",\n  \"message\": \"Validation failed\",\n  \"status\": 400,\n  \"timestamp\": \"any_non_empty_string\"\n}",
-                "line": 64
-              }
-            ],
+            "arguments": [],
             "keyword": "And ",
-            "line": 63,
-            "name": "Response body should match JSON structure",
+            "line": 26,
+            "name": "validation message \"Password is required\" should be displayed",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:30"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\Admin\\categoriesSteps.js:95"
             },
             "result": {
-              "status": "passed",
-              "duration": 1081200
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "user should not be logged in",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:42"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
@@ -318,7 +379,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 390200
+              "duration": 438700
             }
           },
           {
@@ -326,102 +387,125 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 45900
+              "duration": 164921000
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@ui",
+            "line": 1
+          },
+          {
+            "name": "@login_mandatory_fields",
+            "line": 21
+          }
+        ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "plant-management-api;verify-create-plant-with-negative-price",
+        "id": "login-ui;verify-error-message-for-invalid-login",
         "keyword": "Scenario",
-        "line": 76,
-        "name": "Verify create plant with negative price",
+        "line": 30,
+        "name": "Verify error message for invalid login",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 503700
+              "duration": 356392799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 966800
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
-            "name": "Admin logged-in with username \"admin\" and password \"admin123\"",
+            "line": 31,
+            "name": "user is on the login page",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:8"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:26"
             },
             "result": {
               "status": "passed",
-              "duration": 70895800
+              "duration": 1554792799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 32,
+            "name": "user enters username \"invalidUser\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1008101399
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 77,
-            "name": "Admin sets the endpoint \"/api/plants/category/1\"",
+            "line": 33,
+            "name": "user enters password \"invalidPass\"",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:6"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:50"
             },
             "result": {
               "status": "passed",
-              "duration": 62999
+              "duration": 1028489499
             }
           },
           {
-            "arguments": [
-              {
-                "content": "{\n  \"name\": \"Rose\",\n  \"price\": -100,\n  \"quantity\": 25\n}",
-                "line": 79
-              }
-            ],
-            "keyword": "When ",
-            "line": 78,
-            "name": "Admin sends POST request with payload",
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "user clicks the login button",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\Admin\\plantSteps.js:11"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:38"
             },
             "result": {
               "status": "passed",
-              "duration": 7938300
+              "duration": 1123462800
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 86,
-            "name": "Response status code should be 400",
+            "line": 35,
+            "name": "global error message \"Invalid username or password\" should be displayed",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:26"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:54"
             },
             "result": {
               "status": "passed",
-              "duration": 282000
+              "duration": 10327399
             }
           },
           {
-            "arguments": [
-              {
-                "content": "{\n  \"details\": {\n    \"quantity\": \"Quantity cannot be negative\"\n  },\n  \"error\": \"BAD_REQUEST\",\n  \"message\": \"Validation failed\",\n  \"status\": 400,\n  \"timestamp\": \"2026-02-04T11:10:02.9029542\"\n}",
-                "line": 88
-              }
-            ],
+            "arguments": [],
             "keyword": "And ",
-            "line": 87,
-            "name": "Response body should match JSON structure",
+            "line": 36,
+            "name": "user should remain on the login page",
             "match": {
-              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\api\\loginSteps.js:30"
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:61"
             },
             "result": {
-              "status": "failed",
-              "duration": 893800,
-              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveProperty\u001b[2m(\u001b[22m\u001b[32mpath\u001b[39m\u001b[2m)\u001b[22m\n\nExpected path: \u001b[32m\"quantity\"\u001b[39m\nReceived path: \u001b[31m[]\u001b[39m\n\nReceived value: \u001b[31m{\"price\": \"Price must be greater than 0\"}\u001b[39m\n    at Proxy.<anonymous> (C:\\Users\\dinuk\\Desktop\\My Docs\\Projects\\ITFac_Batch21_Group51\\node_modules\\playwright\\lib\\matchers\\expect.js:213:24)\n    at validateJsonStructure (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/utils/apiValidation.js:8:83)\n    at validateJsonStructure (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/utils/apiValidation.js:54:13)\n    at World.<anonymous> (file:///C:/Users/dinuk/Desktop/My%20Docs/Projects/ITFac_Batch21_Group51/src/test/steps/api/loginSteps.js:32:5)"
+              "status": "passed",
+              "duration": 1601700
             }
           },
           {
@@ -429,7 +513,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 368299
+              "duration": 314000
             }
           },
           {
@@ -437,19 +521,162 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 45299
+              "duration": 128850500
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@ui",
+            "line": 1
+          },
+          {
+            "name": "@login_invalid_credentials",
+            "line": 29
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-ui;verify-successful-login-redirects-to-dashboard",
+        "keyword": "Scenario",
+        "line": 39,
+        "name": "Verify successful login redirects to Dashboard",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 335166299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 917799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 40,
+            "name": "user is on the login page",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1425885099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "user enters username \"testuser\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1011234000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 42,
+            "name": "user enters password \"test123\"",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1012036100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "user clicks the login button",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:38"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1152891200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 44,
+            "name": "user should be redirected to the dashboard",
+            "match": {
+              "location": "file:\\C:\\Users\\dinuk\\Desktop\\My%20Docs\\Projects\\ITFac_Batch21_Group51\\src\\test\\steps\\ui\\loginSteps.js:65"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8800499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 415799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 163846799
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@ui",
+            "line": 1
+          },
+          {
+            "name": "@login_success",
+            "line": 38
+          }
+        ],
         "type": "scenario"
       }
     ],
-    "id": "plant-management-api",
-    "line": 1,
+    "id": "login-ui",
+    "line": 2,
     "keyword": "Feature",
-    "name": "Plant management API",
-    "tags": [],
-    "uri": "src\\test\\features\\api\\Admin\\plant.feature"
+    "name": "Login UI",
+    "tags": [
+      {
+        "name": "@login",
+        "line": 1
+      },
+      {
+        "name": "@ui",
+        "line": 1
+      }
+    ],
+    "uri": "src\\test\\features\\ui\\login.feature"
   }
 ]

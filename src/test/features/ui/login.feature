@@ -1,4 +1,4 @@
-@login
+@login @ui
 Feature: Login UI
 
   Scenario: Admin login with valid credentials

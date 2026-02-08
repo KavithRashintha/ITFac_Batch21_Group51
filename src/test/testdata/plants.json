@@ -1,0 +1,121 @@
+{
+    "validPlants": {
+        "plant1": {
+            "name": "Plant17",
+            "category": "Sub_Cat4",
+            "price": "800",
+            "quantity": "19"
+        },
+        "plant2": {
+            "name": "Plant 6",
+            "category": "Sub_Cat 3",
+            "price": "1500",
+            "quantity": "10"
+        }
+    },
+    "invalidPlants": {
+        "negativeQuantity": {
+            "name": "Plant 6",
+            "category": "Sub_Cat 3",
+            "price": "1500",
+            "quantity": "-1",
+            "expectedError": "Quantity cannot be negative"
+        },
+        "nameTooShort": {
+            "name": "ab",
+            "category": "Sub_Cat 3",
+            "price": "250",
+            "quantity": "40",
+            "expectedError": "Plant name must be between 3 and 25 characters"
+        },
+        "nameTooLong": {
+            "name": "This is a lengthy plant name",
+            "category": "Sub_Cat 4",
+            "price": "650",
+            "quantity": "20",
+            "expectedError": "Plant name must be between 3 and 25 characters"
+        },
+        "noCategory": {
+            "name": "Plant 4",
+            "category": "",
+            "price": "800",
+            "quantity": "2",
+            "expectedError": "Category is required"
+        },
+        "zeroPrice": {
+            "name": "Plant 12",
+            "category": "Sub_Cat 4",
+            "price": "0",
+            "quantity": "20",
+            "expectedError": "Price must be greater than 0"
+        },
+        "emptyPrice": {
+            "name": "Plant 12",
+            "category": "Sub_Cat 4",
+            "price": "",
+            "quantity": "20",
+            "expectedError": "Price is required"
+        },
+        "duplicate": {
+            "name": "Plant10",
+            "category": "Sub_Cat 4",
+            "price": "800",
+            "quantity": "19",
+            "expectedError": "Plant 'Plant10' already exists in this category"
+        }
+    },
+    "cancelTestData": [
+        {
+            "status": "valid",
+            "name": "plant19",
+            "category": "Sub_Cat1",
+            "price": "750",
+            "quantity": "16"
+        },
+        {
+            "status": "invalid",
+            "name": "",
+            "category": "Sub_Cat1",
+            "price": "1000",
+            "quantity": "5"
+        },
+        {
+            "status": "invalid",
+            "name": "Plant20",
+            "category": "",
+            "price": "1000",
+            "quantity": "5"
+        },
+        {
+            "status": "invalid",
+            "name": "Plant21",
+            "category": "Sub_Cat3",
+            "price": "",
+            "quantity": "5"
+        },
+        {
+            "status": "valid",
+            "name": "Plant22",
+            "category": "Sub_Cat4",
+            "price": "1000",
+            "quantity": ""
+        },
+        {
+            "status": "invalid",
+            "name": "",
+            "category": "",
+            "price": "",
+            "quantity": ""
+        }
+    ],
+    "messages": {
+        "success": {
+            "added": "Plant added successfully",
+            "updated": "Plant updated successfully",
+            "deleted": "Plant deleted successfully"
+        },
+        "error": {
+            "deleteConfirmation": "Delete this plant?"
+        }
+    }
+}

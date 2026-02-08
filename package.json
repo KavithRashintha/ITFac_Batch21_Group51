@@ -5,6 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js",
+    "test:ui": "cucumber-js --tags '@ui'",
+    "test:api": "cucumber-js --tags '@api'",
+    "test:admin": "cucumber-js --tags '@admin'",
+    "test:user": "cucumber-js --tags '@user'",
+    "test:categories": "cucumber-js --tags '@categories'",
+    "test:plants": "cucumber-js --tags '@plants'",
+    "test:sales": "cucumber-js --tags '@sales'",
+    "test:login": "cucumber-js --tags '@login'",
+    "test:navigation": "cucumber-js --tags '@navigation'",
     "report:generate": "allure generate allure-results --clean -o allure-report",
     "report:open": "allure open allure-report",
     "report": "npm run report:generate && npm run report:open"

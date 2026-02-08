@@ -1,4 +1,4 @@
-@sales
+@sales @ui @user
 Feature: Sales Management UI - User
 
   Background:

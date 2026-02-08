@@ -1,3 +1,4 @@
+@sales @api @user
 Feature: Sales Management API - User
 
   Background:
